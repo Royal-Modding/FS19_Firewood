@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="pallet">
+    <storeData>
+        <name>$l10n_shopItem_firewoodPallet</name>
+        <functions>
+            <function>$l10n_function_firewoodPallet</function>
+        </functions>
+        <specs>
+            <capacity>2400</capacity>
+            <fillTypes>firewood</fillTypes>
+        </specs>
+        <image>objects/pallets/firewoodPallet/store_firewoodPallet.png</image>
+        <price>12</price>
+        <allowLeasing>false</allowLeasing>
+        <showInStore>true</showInStore>
+        <canBeSold>true</canBeSold>
+        <rotation>0</rotation>
+        <brand>LIZARD</brand>
+        <category>pallets</category>
+        <financeCategory>OTHER</financeCategory>
+        <vertexBufferMemoryUsage>53952</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>7512</indexBufferMemoryUsage>
+        <textureMemoryUsage>4543976</textureMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+    </storeData>
+
+    <base>
+        <filename>objects/pallets/firewoodPallet/firewoodPallet.i3d</filename>
+        <size width="2" length="1.5" lengthOffset="0" />
+        <canBeReset>false</canBeReset>
+        <input allowed="false" />
+        <components>
+            <component centerOfMass="0 0.1 0" solverIterationCount="10" mass="480" />
+        </components>
+    </base>
+
+    <animations>
+        <animation name="firewoodFillAnimation">
+            <part node="box01" startTime="0.000" endTime="0.0001" visibility="false" />
+            <part node="box01" startTime="0.0001" endTime="1.000" visibility="true" />
+
+            <part node="box02" startTime="0.000" endTime="0.066" visibility="false" />
+            <part node="box02" startTime="0.066" endTime="1.000" visibility="true" />
+
+            <part node="box03" startTime="0.000" endTime="0.132" visibility="false" />
+            <part node="box03" startTime="0.132" endTime="1.000" visibility="true" />
+
+            <part node="box04" startTime="0.000" endTime="0.198" visibility="false" />
+            <part node="box04" startTime="0.198" endTime="1.000" visibility="true" />
+
+            <part node="box05" startTime="0.000" endTime="0.264" visibility="false" />
+            <part node="box05" startTime="0.264" endTime="1.000" visibility="true" />
+
+            <part node="box06" startTime="0.000" endTime="0.330" visibility="false" />
+            <part node="box06" startTime="0.330" endTime="1.000" visibility="true" />
+
+            <part node="box07" startTime="0.000" endTime="0.396" visibility="false" />
+            <part node="box07" startTime="0.396" endTime="1.000" visibility="true" />
+
+            <part node="box08" startTime="0.000" endTime="0.462" visibility="false" />
+            <part node="box08" startTime="0.462" endTime="1.000" visibility="true" />
+
+            <part node="box09" startTime="0.000" endTime="0.528" visibility="false" />
+            <part node="box09" startTime="0.528" endTime="1.000" visibility="true" />
+
+            <part node="box10" startTime="0.000" endTime="0.594" visibility="false" />
+            <part node="box10" startTime="0.594" endTime="1.000" visibility="true" />
+
+            <part node="box11" startTime="0.000" endTime="0.660" visibility="false" />
+            <part node="box11" startTime="0.660" endTime="1.000" visibility="true" />
+
+            <part node="box12" startTime="0.000" endTime="0.726" visibility="false" />
+            <part node="box12" startTime="0.726" endTime="1.000" visibility="true" />
+
+            <part node="box13" startTime="0.000" endTime="0.792" visibility="false" />
+            <part node="box13" startTime="0.792" endTime="1.000" visibility="true" />
+
+            <part node="box14" startTime="0.000" endTime="0.861" visibility="false" />
+            <part node="box14" startTime="0.861" endTime="1.000" visibility="true" />
+
+            <part node="box15" startTime="0.000" endTime="0.930" visibility="false" />
+            <part node="box15" startTime="0.930" endTime="1.000" visibility="true" />
+
+            <part node="box16" startTime="0.000" endTime="0.999" visibility="false" />
+            <part node="box16" startTime="0.999" endTime="1.000" visibility="true" />
+        </animation>
+    </animations>
+
+    <fillUnit>
+        <fillUnitConfigurations>
+            <fillUnitConfiguration>
+                <fillUnits removeVehicleIfEmpty="false">
+                    <fillUnit unit="$l10n_unit_literShort" fillTypes="firewood" capacity="2400">
+                        <dashboard displayType="ANIMATION" valueType="fillLevel" animName="firewoodFillAnimation" />
+                    </fillUnit>
+                </fillUnits>
+            </fillUnitConfiguration>
+        </fillUnitConfigurations>
+    </fillUnit>
+
+    <dischargeable requiresTipOcclusionArea="false">
+        <dischargeNode node="0>" emptySpeed="1000" fillUnitIndex="1" maxDistance="6" canStartDischargeAutomatically="true">
+            <trigger node="dischargeTrigger" />
+        </dischargeNode>
+    </dischargeable>
+
+    <dynamicMount triggerNode="dynamicMountTrigger" />
+
+    <tensionBeltObject>
+        <meshNodes>
+            <meshNode node="tensionBeltShape" />
+        </meshNodes>
+    </tensionBeltObject>
+
+    <i3dMappings>
+        <i3dMapping id="dynamicMountTrigger" node="0>0" />
+        <i3dMapping id="tensionBeltNode" node="0>1" />
+        <i3dMapping id="box01" node="0>2|0" />
+        <i3dMapping id="box02" node="0>2|1" />
+        <i3dMapping id="box03" node="0>2|2" />
+        <i3dMapping id="box04" node="0>2|3" />
+        <i3dMapping id="box05" node="0>2|4" />
+        <i3dMapping id="box06" node="0>2|5" />
+        <i3dMapping id="box07" node="0>2|6" />
+        <i3dMapping id="box08" node="0>2|7" />
+        <i3dMapping id="box09" node="0>2|8" />
+        <i3dMapping id="box10" node="0>2|9" />
+        <i3dMapping id="box11" node="0>2|10" />
+        <i3dMapping id="box12" node="0>2|11" />
+        <i3dMapping id="box13" node="0>2|12" />
+        <i3dMapping id="box14" node="0>2|13" />
+        <i3dMapping id="box15" node="0>2|14" />
+        <i3dMapping id="box16" node="0>2|15" />
+        <i3dMapping id="dischargeTrigger" node="0>3" />
+        <i3dMapping id="woolPallet_vis" node="0>4" />
+        <i3dMapping id="tensionBeltShape" node="0>4|6" />
+    </i3dMappings>
+</vehicle>

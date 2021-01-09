@@ -1,34 +1,74 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="${descVersion}">
-  <author>${author}</author>
-  <version>${version}</version>
-  <title>
-    <en>${title}</en>
-  </title>
-  <description>
-    <en>
-      <![CDATA[
+	<author>${author}</author>
+	<version>${version}</version>
+	<title>
+		<en>${title}</en>
+	</title>
+	<description>
+		<en>
+			<![CDATA[
 En description Firewood
 ]]>
-    </en>
-    <de>
-      <![CDATA[
+		</en>
+		<de>
+			<![CDATA[
 De description Firewood
 ]]>
-    </de>
-    <fr>
-      <![CDATA[
+		</de>
+		<fr>
+			<![CDATA[
 Fr description Firewood
 ]]>
-    </fr>
-  </description>
-  <multiplayer supported="true" />
-  <iconFilename>icon.png</iconFilename>
-  <extraSourceFiles>
-    <sourceFile filename="lib/rmod/Main.lua" />
-	<sourceFile filename="lib/utility/Main.lua" />
-    <sourceFile filename="Firewood.lua" />
-  </extraSourceFiles>
+		</fr>
+	</description>
+	<multiplayer supported="true" />
+	<iconFilename>icon.png</iconFilename>
+
+	<storeItems>
+		<storeItem xmlFilename="objects/pallets/firewoodPallet/firewoodPallet.xml" />
+	</storeItems>
+
+	<extraSourceFiles>
+		<sourceFile filename="lib/rmod/Main.lua" />
+		<sourceFile filename="lib/utility/Main.lua" />
+		<sourceFile filename="Firewood.lua" />
+		<sourceFile filename="playerExtension.lua" />
+	</extraSourceFiles>
+
+	<actions>
+		<action name="FIREWOOD_MAKE" axisType="HALF" />
+	</actions>
+
+	<inputBinding>
+		<actionBinding action="FIREWOOD_MAKE">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_q" />
+		</actionBinding>
+	</inputBinding>
+
+	<l10n>
+		<text name="shopItem_firewoodPallet">
+			<en>Firewood Pallet</en>
+			<de>Firewood Pallet</de>
+			<fr>Firewood Pallet</fr>
+		</text>
+		<text name="function_firewoodPallet">
+			<en>This pallet can be used to fill with firewood ready for sell.</en>
+			<de>This pallet can be used to fill with firewood ready for sell.</de>
+			<fr>This pallet can be used to fill with firewood ready for sell.</fr>
+		</text>
+		<text name="input_FIREWOOD_MAKE">
+			<en>Make firewood</en>
+			<de>Make firewood</de>
+			<fr>Make firewood</fr>
+		</text>
+		<text name="fw_MAKE">
+			<en>Make firewood</en>
+			<de>Make firewood</de>
+			<fr>Make firewood</fr>
+		</text>
+	</l10n>
+
 </modDesc>
 
 <!--
