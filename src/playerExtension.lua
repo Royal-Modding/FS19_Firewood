@@ -30,5 +30,5 @@ function PlayerExtension:updateActionEvents()
 end
 
 function PlayerExtension:makeFirewoodActionEvent()
-    print("a fa legna...")
+    Firewood:collectFirewood()
 end

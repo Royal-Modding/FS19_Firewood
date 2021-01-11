@@ -34,6 +34,7 @@ Fr description Firewood
 		<sourceFile filename="lib/utility/Main.lua" />
 		<sourceFile filename="Firewood.lua" />
 		<sourceFile filename="playerExtension.lua" />
+		<sourceFile filename="DeleteSplitShapeEvent.lua" />
 	</extraSourceFiles>
 
 	<actions>
@@ -67,6 +68,18 @@ Fr description Firewood
 			<de>Make firewood</de>
 			<fr>Make firewood</fr>
 		</text>
+		<text name="fw_warning_logtoobig">
+			<en>log too big! Taglia ancora!!</en>
+			<de>log too big! Taglia ancora!!</de>
+			<fr>log too big! Taglia ancora!!</fr>
+		</text>
+		<text name="fw_warning_nopallet">
+			<en>No pallet in range!</en>
+			<de>No pallet in range!</de>
+			<fr>No pallet in range!</fr>
+		</text>
+		
+
 	</l10n>
 
 </modDesc>

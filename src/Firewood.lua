@@ -14,27 +14,25 @@ Firewood.scanTimer = 0
 Firewood.scanTimeout = 250
 Firewood.foundSplitShape = nil
 
-
 function Firewood:initialize()
     Utility.overwrittenFunction(Player, "new", PlayerExtension.new)
     Utility.appendedFunction(Player, "updateActionEvents", PlayerExtension.updateActionEvents)
     if Player.makeFirewoodActionEvent == nil then
         Player.makeFirewoodActionEvent = PlayerExtension.makeFirewoodActionEvent
     end
+
+    Utility.overwrittenFunction(SellingStation, "load", Firewood.sellingStationLoad)
 end
 
 function Firewood:onValidateVehicleTypes(vehicleTypeManager, addSpecialization, addSpecializationBySpecialization, addSpecializationByVehicleType, addSpecializationByFunction)
     -- @param specName string name of the spec to add
     --addSpecialization("specName")
-
     -- @param specName string name of the spec to add
     -- @param requiredSpecName string name of the required spec
     --addSpecializationBySpecialization("specName", "requiredSpecName")
-
     -- @param specName string name of the spec to add
     -- @param requiredVehicleTypeName string name of the required vehicle type
     --addSpecializationByVehicleType("specName", "requiredVehicleTypeName")
-
     -- @param specName string name of the spec to add
     -- @param function function if return true spec will be added to the current vehicle type
     --addSpecializationByFunction("specName", function(vehicleType) return false end)
@@ -134,17 +132,105 @@ function Firewood:onPreDeleteMap()
 end
 
 function Firewood:onDeleteMap()
-    self:unloadFirewoodType()
 end
 
 function Firewood:raycastCallback(hitObjectId, _, _, _, _, _, _, _, _, _)
     if hitObjectId ~= g_currentMission.player.rootNode then
-        self.foundSplitShape = hitObjectId
-        return false
+        if getHasClassId(hitObjectId, ClassIds.SHAPE) then
+            local splitShapeType = getSplitType(hitObjectId)
+            if splitShapeType ~= 0 then
+                local splitType = g_splitTypeManager:getSplitTypeByIndex(splitShapeType)
+                if splitType ~= nil then
+                    self.foundSplitShape = {objectId = hitObjectId, splitType = splitType}
+                    return false
+                end
+            end
+        end
     end
     return true -- continue raycast
 end
 
+function Firewood:collectFirewood()
+    if self.foundSplitShape then
+        local splitShapeVolume = getVolume(self.foundSplitShape.objectId) * 1000
+        if splitShapeVolume < 400 then
+            local pallet = self:findPalletInRange(16)
+            if pallet then
+                local firewoodLiters = splitShapeVolume * 0.6
+                pallet.vehicle:addFillUnitFillLevel(pallet.vehicle:getOwnerFarmId(), pallet.fillUnitIndex, firewoodLiters, FillType.FIREWOOD, ToolType.UNDEFINED)
+                DeleteSplitShapeEvent.sendEvent(self.foundSplitShape.objectId)
+            else
+                g_currentMission:showBlinkingWarning(g_i18n:getText("fw_warning_nopallet"), 1500)
+            end
+        else
+            g_currentMission:showBlinkingWarning(g_i18n:getText("fw_warning_logtoobig"), 1500)
+        end
+    end
+end
+
+function Firewood:findPalletInRange(range)
+    local pallet = nil
+    local distance = math.huge
+    local px, py, pz = getWorldTranslation(g_currentMission.player.rootNode)
+
+    for _, v in pairs(g_currentMission.vehicles) do
+        if v.getFillUnits then
+            local fillUnitIndex = self:canLoadFirewood(v)
+            if fillUnitIndex then
+                local vx, vy, vz = getWorldTranslation(v.rootNode)
+                local d = MathUtil.vector3Length(px - vx, py - vy, pz - vz)
+                if d < distance then
+                    distance = d
+                    pallet = {vehicle = v, fillUnitIndex = fillUnitIndex}
+                end
+            end
+        end
+    end
+
+    if distance <= range then
+        return pallet
+    end
+
+    return nil
+end
+
+function Firewood:canLoadFirewood(vehicle)
+    for _, f in pairs(vehicle:getFillUnits()) do
+        local fillUnitIndex = f.fillUnitIndex
+        if vehicle:getFillUnitSupportsFillType(fillUnitIndex, FillType.FIREWOOD) then
+            if vehicle:getFillUnitLastValidFillType(FillType.FIREWOOD) or vehicle:getFillUnitLastValidFillType(FillType.UNKNOWN) then
+                if vehicle:getFillUnitFreeCapacity(fillUnitIndex) > 0 then
+                    return fillUnitIndex
+                end
+            end
+        end
+    end
+    return nil
+end
+
+---Add Firewood to selling stationName
+function Firewood.sellingStationLoad(object, superFunc, ...)
+    if not superFunc(object, ...) then
+        return false
+    end
+
+    local aW = object.acceptedFillTypes[FillType.WHEAT]
+    local aB = object.acceptedFillTypes[FillType.BARLEY]
+    local aO = object.acceptedFillTypes[FillType.OAT]
+    local aC = object.acceptedFillTypes[FillType.CANOLA]
+    local aS = object.acceptedFillTypes[FillType.SOYBEAN]
+    local aSF = object.acceptedFillTypes[FillType.SUNFLOWER]
+    local aM = object.acceptedFillTypes[FillType.MAIZE]
+
+    if object.acceptedFillTypes[FillType.FIREWOOD] == nil and (aW or aB or aO or aC or aS or aSF or aM ) then
+        object:addAcceptedFillType(FillType.FIREWOOD, g_fillTypeManager.fillTypes[FillType.FIREWOOD].pricePerLiter, true, false)
+
+        --Re-init the pricing dynamics for the added pellets.
+        object:initPricingDynamics()
+    end
+
+    return true
+end
 
 ---Add a Firewood
 function Firewood:loadFirewoodType()
@@ -153,28 +239,6 @@ function Firewood:loadFirewoodType()
     local pricePerLiter = 10
     local massPerLiter = 0.750 / 1000
 
-    local fillType = g_fillTypeManager:addFillType("FIREWOOD", g_i18n:getText("fillType_firewood"), true, pricePerLiter, massPerLiter, 32, hudOverlayFilename, hudOverlayFilenameSmall, self.directory, nil, { 1, 1, 1 }, nil, false)
+    g_fillTypeManager:addFillType("FIREWOOD", g_i18n:getText("fillType_firewood"), true, pricePerLiter, massPerLiter, 32, hudOverlayFilename, hudOverlayFilenameSmall, self.directory, nil, {1, 1, 1}, nil, false)
 
-    -- g_fillTypeManager:addFillTypeToCategory(fillType.index, g_fillTypeManager.nameToCategoryIndex["BULK"])
-
-    --local diffuseMapFilename = Utils.getFilename("resources/fillTypes/salt/salt_diffuse.png", self.modDirectory)
-    --local normalMapFilename = Utils.getFilename("resources/fillTypes/salt/salt_normal.png", self.modDirectory)
-    --local distanceMapFilename = Utils.getFilename("resources/fillTypes/salt/saltDistance_diffuse.png", self.modDirectory)
-
-    --self.saltHeightType = self.densityMapHeightManager:addDensityMapHeightType("SALT", math.rad(32), 0.8, 0.10, 0.10, 0.9, 1, false, diffuseMapFilename, normalMapFilename, distanceMapFilename, false)
-    --if self.saltHeightType == nil then
-    --    Logging.error("Could not create the salt height type. The combination of map and mods are not compatible")
-    --    return
-    --end
-
-    --local saltMaterialHolderFilename = Utils.getFilename("resources/fillTypes/salt/saltMaterialHolder.i3d", self.modDirectory)
-    --self.saltMaterialHolder = loadI3DFile(saltMaterialHolderFilename, false, true, false)
 end
-
-function Firewood:unloadFirewoodType()
-    --if self.saltMaterialHolder ~= nil then
-    --    delete(self.saltMaterialHolder)
-    --    self.saltMaterialHolder = nil
-    --end
-end
-

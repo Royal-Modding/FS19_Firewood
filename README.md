@@ -28,7 +28,4 @@ per i più pigri possibilità di trasformare interi alberi e/o tronchi di grosse
 
 
 Ricorda gli spacca legna !
-Trigger sulla zona del bancale?
-Ricorda non dobbiamo far sparire gli splitshape ancora grabbati dal player (errori lato server)
-
 

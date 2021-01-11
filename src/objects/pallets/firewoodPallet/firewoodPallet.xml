@@ -13,7 +13,7 @@
         <price>12</price>
         <allowLeasing>false</allowLeasing>
         <showInStore>true</showInStore>
-        <canBeSold>true</canBeSold>
+        <canBeSold>false</canBeSold>
         <rotation>0</rotation>
         <brand>LIZARD</brand>
         <category>pallets</category>
@@ -90,7 +90,7 @@
     <fillUnit>
         <fillUnitConfigurations>
             <fillUnitConfiguration>
-                <fillUnits removeVehicleIfEmpty="false">
+                <fillUnits removeVehicleIfEmpty="true">
                     <fillUnit unit="$l10n_unit_literShort" fillTypes="firewood" capacity="2400">
                         <dashboard displayType="ANIMATION" valueType="fillLevel" animName="firewoodFillAnimation" />
                     </fillUnit>
@@ -100,7 +100,7 @@
     </fillUnit>
 
     <dischargeable requiresTipOcclusionArea="false">
-        <dischargeNode node="0>" emptySpeed="1000" fillUnitIndex="1" maxDistance="6" canStartDischargeAutomatically="true">
+        <dischargeNode node="0>" emptySpeed="999999" fillUnitIndex="1" maxDistance="6" canStartDischargeAutomatically="true">
             <trigger node="dischargeTrigger" />
         </dischargeNode>
     </dischargeable>
