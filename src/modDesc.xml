@@ -27,6 +27,7 @@ Fr description Firewood
 
 	<storeItems>
 		<storeItem xmlFilename="objects/pallets/firewoodPallet/firewoodPallet.xml" />
+		<storeItem xmlFilename="placeables/firewoodSellPoint/firewoodSellPoint.xml" />
 	</storeItems>
 
 	<extraSourceFiles>
@@ -48,16 +49,32 @@ Fr description Firewood
 	</inputBinding>
 
 	<l10n>
-		<text name="shopItem_firewoodPallet">
+		<text name="fw_fillType_firewood">
+			<en>Firewood</en>
+			<de>Firewood</de>
+			<fr>Firewood</fr>
+		</text>
+		<text name="fw_shopItem_firewoodPallet">
 			<en>Firewood Pallet</en>
 			<de>Firewood Pallet</de>
 			<fr>Firewood Pallet</fr>
 		</text>
-		<text name="function_firewoodPallet">
+		<text name="fw_function_firewoodPallet">
 			<en>This pallet can be used to fill with firewood ready for sell.</en>
 			<de>This pallet can be used to fill with firewood ready for sell.</de>
 			<fr>This pallet can be used to fill with firewood ready for sell.</fr>
 		</text>
+		<text name="fw_function_firewoodSellPoint">
+			<en>Sell point for firewood</en>
+			<de>Sell point for firewood</de>
+			<fr>Sell point for firewood</fr>
+		</text>
+		<text name="fw_name_firewoodSellPoint">
+			<en>Firewood</en>
+			<de>Firewood</de>
+			<fr>Firewood</fr>
+		</text>
+
 		<text name="input_FIREWOOD_MAKE">
 			<en>Make firewood</en>
 			<de>Make firewood</de>

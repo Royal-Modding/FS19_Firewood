@@ -22,6 +22,9 @@ function Firewood:initialize()
     end
 
     Utility.overwrittenFunction(SellingStation, "load", Firewood.sellingStationLoad)
+
+    g_placeableTypeManager:addPlaceableType("firewoodBuyer", "FirewoodBuyerPlaceable", self.directory .. "FirewoodBuyerPlaceable.lua")
+
 end
 
 function Firewood:onValidateVehicleTypes(vehicleTypeManager, addSpecialization, addSpecializationBySpecialization, addSpecializationByVehicleType, addSpecializationByFunction)
@@ -239,6 +242,6 @@ function Firewood:loadFirewoodType()
     local pricePerLiter = 10
     local massPerLiter = 0.750 / 1000
 
-    g_fillTypeManager:addFillType("FIREWOOD", g_i18n:getText("fillType_firewood"), true, pricePerLiter, massPerLiter, 32, hudOverlayFilename, hudOverlayFilenameSmall, self.directory, nil, {1, 1, 1}, nil, false)
+    g_fillTypeManager:addFillType("FIREWOOD", g_i18n:getText("fw_fillType_firewood"), true, pricePerLiter, massPerLiter, 32, hudOverlayFilename, hudOverlayFilenameSmall, self.directory, nil, {1, 1, 1}, nil, false)
 
 end

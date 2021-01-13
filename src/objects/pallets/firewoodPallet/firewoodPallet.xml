@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <vehicle type="pallet">
     <storeData>
-        <name>$l10n_shopItem_firewoodPallet</name>
+        <name>$l10n_fw_shopItem_firewoodPallet</name>
         <functions>
-            <function>$l10n_function_firewoodPallet</function>
+            <function>$l10n_fw_function_firewoodPallet</function>
         </functions>
         <specs>
             <capacity>2400</capacity>

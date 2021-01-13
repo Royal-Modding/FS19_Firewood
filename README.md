@@ -27,5 +27,4 @@ per i più pigri possibilità di trasformare interi alberi e/o tronchi di grosse
 
 
 
-Ricorda gli spacca legna !
-
+Ricorda di provare gli spacca legna !

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable>
+    <storeData>
+        <name>$l10n_fw_name_firewoodSellPoint</name>
+        <image>placeables/firewoodSellPoint/store_firewoodSellPoint.png</image>
+        <price>0</price>
+        <specs>
+            <fillTypes>firewood</fillTypes>
+        </specs>
+        <functions>
+            <function>$l10n_fw_function_firewoodSellPoint</function>
+        </functions>
+        <dailyUpkeep>3</dailyUpkeep>
+        <lifetime>1000</lifetime>
+        <rotation>0</rotation>
+        <brand>LIZARD</brand>
+        <species>placeable</species>
+        <category>placeableMisc</category>
+    </storeData>
+
+    <placeableType>firewoodBuyer</placeableType>
+    <filename>placeables/firewoodSellPoint/firewoodSellPoint.i3d</filename>
+    <placement testSizeX="4" testSizeZ="6" sizeX="4" sizeZ="6" useRandomYRotation="false" useManualYRotation="true"/>
+
+    <firewoodBuyer sellTrigger="0" minPriceScale="1.2" maxPriceScale="1.6" minCapacity="2400" maxCapacity="7200" usageScale="1" />
+    
+    <!--
+    <sellingStation triggerNode="0" stationName="$l10n_fw_name_firewoodSellPoint" appearsOnPDA="false" storageRadius="0" litersForFullPriceDrop="100000" fullPriceRecoverHours="48">
+        <fillType name="firewood" priceScale="1.5" supportsGreatDemand="false" disablePriceDrop="true" />
+    </sellingStation>
+    -->
+
+    <!--
+    <seasons>
+        <maskAreas>
+            <maskArea startNode="1|0" widthNode="1|1" heightNode="1|2"/>
+        </maskAreas>
+    </seasons>
+    -->
+    
+    <!-- 
+    <triggerMarkers>
+        <triggerMarker node="2" />
+    </triggerMarkers>
+    -->
+
+    <tipOcclusionUpdateArea sizeX="4" sizeZ="6"/>
+
+    <clearAreas>
+        <clearArea startNode="1|0" widthNode="1|1" heightNode="1|2"/>
+    </clearAreas>
+
+    <!--
+    <leveling requireLeveling="true" maxSmoothDistance="10" maxSlope="75" maxEdgeAngle="30">
+        <levelAreas>
+            <levelArea startNode="1|0" widthNode="1|1" heightNode="1|2" groundType="cement"/>
+        </levelAreas>
+    </leveling>
+    -->
+
+</placeable>
