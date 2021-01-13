@@ -43,8 +43,8 @@ function FirewoodBuyerPlaceable:load(xmlFilename, x, y, z, rx, ry, rz, initRando
 
     self.priceScale = minPriceScale + math.random() * (maxPriceScale - minPriceScale)
 
-    local minCapacity = getXMLFloat(xmlFile, baseKey .. "#minCapacity") or 1
-    local maxCapacity = getXMLFloat(xmlFile, baseKey .. "#maxCapacity") or 1
+    local minCapacity = getXMLFloat(xmlFile, baseKey .. "#minCapacity") or 5000
+    local maxCapacity = getXMLFloat(xmlFile, baseKey .. "#maxCapacity") or 5000
 
     self.capacity = minCapacity + math.floor((math.random() * (maxCapacity - minCapacity)) / 100) * 100
 
@@ -124,10 +124,10 @@ function FirewoodBuyerPlaceable:saveToXMLFile(xmlFile, key, usedModNames)
     --self.sellingStation:saveToXMLFile(xmlFile, key .. ".sellingStation", usedModNames)
 end
 
-function FirewoodBuyerPlaceable:triggerPalletCallback(triggerId, otherId, onEnter, onLeave, onStay, otherShapeId)
+function FirewoodBuyerPlaceable:sellTriggerCallback(triggerId, otherId, onEnter, onLeave, onStay, otherShapeId)
     local object = g_currentMission:getNodeObject(otherId)
 
-    if object ~= nil then
+    if object ~= nil and onEnter then
         DebugUtil.printTableRecursively(object, nil, nil, 0)
     end
     --if object ~= nil and object.isa ~= nil and object:isa(Vehicle) and object.typeName:find("pallet") then
