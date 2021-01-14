@@ -16,10 +16,9 @@ function FirewoodBuyerPlaceable:new(isServer, isClient, customMt)
 end
 
 function FirewoodBuyerPlaceable:delete()
-    --if self.sellingStation ~= nil then
-    --    g_currentMission.storageSystem:removeUnloadingStation(self.sellingStation)
-    --    self.sellingStation:delete()
-    --end
+    if self.triggerNode ~= nil then
+        removeTrigger(self.triggerNode)
+    end
 
     unregisterObjectClassName(self)
     FirewoodBuyerPlaceable:superClass().delete(self)
@@ -30,31 +29,29 @@ function FirewoodBuyerPlaceable:load(xmlFilename, x, y, z, rx, ry, rz, initRando
         return false
     end
 
-    local xmlFile = loadXMLFile("TempXML", xmlFilename)
+    print("FirewoodBuyerPlaceable:load")
 
-    --self.sellingStation = SellingStation:new(self.isServer, self.isClient)
-    --self.sellingStation:load(self.nodeId, xmlFile, "placeable.sellingStation", self.customEnvironment)
-    --self.sellingStation.owningPlaceable = self
+    local xmlFile = loadXMLFile("TempXML", xmlFilename)
 
     local baseKey = "placeable.firewoodBuyer"
 
-    local minPriceScale = getXMLFloat(xmlFile, baseKey .. "#minPriceScale") or 1
-    local maxPriceScale = getXMLFloat(xmlFile, baseKey .. "#maxPriceScale") or 1
+    self.storedFirewood = 0
+    self.storageCapacity = 0
 
-    self.priceScale = minPriceScale + math.random() * (maxPriceScale - minPriceScale)
+    if self.isServer and not self.isInPreviewMode then
+        local minPriceScale = getXMLFloat(xmlFile, baseKey .. "#minPriceScale") or 1
+        local maxPriceScale = getXMLFloat(xmlFile, baseKey .. "#maxPriceScale") or 1
 
-    local minCapacity = getXMLFloat(xmlFile, baseKey .. "#minCapacity") or 5000
-    local maxCapacity = getXMLFloat(xmlFile, baseKey .. "#maxCapacity") or 5000
+        local minStorageCapacity = getXMLFloat(xmlFile, baseKey .. "#minStorageCapacity") or 5000
+        local maxStorageCapacity = getXMLFloat(xmlFile, baseKey .. "#maxStorageCapacity") or 5000
 
-    self.capacity = minCapacity + math.floor((math.random() * (maxCapacity - minCapacity)) / 100) * 100
+        self.priceScale = minPriceScale + math.random() * (maxPriceScale - minPriceScale)
 
-    self.firewoodAmount = 0
+        self.storageCapacity = minStorageCapacity + math.floor((math.random() * (maxStorageCapacity - minStorageCapacity)) / 100) * 100
 
-    if self.isServer then
         self.usageScale = getXMLFloat(xmlFile, baseKey .. "#usageScale") or 1
 
         local sellTrigger = getXMLString(xmlFile, baseKey .. "#sellTrigger")
-
         if sellTrigger ~= nil then
             self.triggerNode = I3DUtil.indexToObject(self.nodeId, sellTrigger)
             if self.triggerNode ~= nil then
@@ -63,46 +60,36 @@ function FirewoodBuyerPlaceable:load(xmlFilename, x, y, z, rx, ry, rz, initRando
         end
     end
 
+    self.dummyVisuals = {}
+    local dummyVisualsKey = baseKey .. ".dummyVisual"
+    local dummyVisualsIndex = 0
+    while true do
+        local key = string.format("%s(%d)", dummyVisualsKey, dummyVisualsIndex)
+        if not hasXMLProperty(xmlFile, key) then
+            break
+        end
+        local dummyVisual = getXMLString(xmlFile, key .. "#node")
+        if dummyVisual ~= nil then
+            local dummyVisualObject = I3DUtil.indexToObject(self.nodeId, dummyVisual)
+            if dummyVisualObject ~= nil then
+                table.insert(self.dummyVisuals, dummyVisualObject)
+            end
+        end
+        dummyVisualsIndex = dummyVisualsIndex + 1
+    end
+
     delete(xmlFile)
 
     return true
 end
 
 function FirewoodBuyerPlaceable:finalizePlacement()
+    print("FirewoodBuyerPlaceable:finalizePlacement")
     FirewoodBuyerPlaceable:superClass().finalizePlacement(self)
-    --self.sellingStation:register(true)
-    --g_currentMission.storageSystem:addUnloadingStation(self.sellingStation)
-end
-
-function FirewoodBuyerPlaceable:readStream(streamId, connection)
-    FirewoodBuyerPlaceable:superClass().readStream(self, streamId, connection)
-    --if connection:getIsServer() then
-    --    local sellingStationId = NetworkUtil.readNodeObjectId(streamId)
-    --    self.sellingStation:readStream(streamId, connection)
-    --    g_client:finishRegisterObject(self.sellingStation, sellingStationId)
-    --end
-end
-
-function FirewoodBuyerPlaceable:writeStream(streamId, connection)
-    FirewoodBuyerPlaceable:superClass().writeStream(self, streamId, connection)
-    --if not connection:getIsServer() then
-    --    NetworkUtil.writeNodeObjectId(streamId, NetworkUtil.getObjectId(self.sellingStation))
-    --    self.sellingStation:writeStream(streamId, connection)
-    --    g_server:registerObjectInStream(connection, self.sellingStation)
-    --end
-end
-
-function FirewoodBuyerPlaceable:collectPickObjects(node)
-    local foundNode = false
-    --for _, unloadTrigger in ipairs(self.sellingStation.unloadTriggers) do
-    --    if node == unloadTrigger.exactFillRootNode then
-    --        foundNode = true
-    --        break
-    --    end
-    --end
-
-    if not foundNode then
-        FirewoodBuyerPlaceable:superClass().collectPickObjects(self, node)
+    for _, dv in ipairs(self.dummyVisuals) do
+        if entityExists(dv) then
+            delete(dv)
+        end
     end
 end
 
@@ -111,24 +98,49 @@ function FirewoodBuyerPlaceable:loadFromXMLFile(xmlFile, key, resetVehicles)
         return false
     end
 
-    --if not self.sellingStation:loadFromXMLFile(xmlFile, key .. ".sellingStation") then
-    --    return false
-    --end
+    print("FirewoodBuyerPlaceable:loadFromXMLFile")
+
+    self.priceScale = getXMLFloat(xmlFile, key .. "#priceScale") or self.priceScale
+    self.storageCapacity = getXMLFloat(xmlFile, key .. "#storageCapacity") or self.storageCapacity
+    self.storedFirewood = getXMLFloat(xmlFile, key .. "#firewoodAmount") or self.storedFirewood
 
     return true
 end
 
-function FirewoodBuyerPlaceable:saveToXMLFile(xmlFile, key, usedModNames)
-    FirewoodBuyerPlaceable:superClass().saveToXMLFile(self, xmlFile, key, usedModNames)
+function FirewoodBuyerPlaceable:writeStream(streamId, connection)
+    print("FirewoodBuyerPlaceable:writeStream")
+    FirewoodBuyerPlaceable:superClass().writeStream(self, streamId, connection)
+    if not connection:getIsServer() then
+        streamWriteFloat32(streamId, self.storageCapacity)
+        streamWriteFloat32(streamId, self.storedFirewood)
+    end
+end
 
-    --self.sellingStation:saveToXMLFile(xmlFile, key .. ".sellingStation", usedModNames)
+function FirewoodBuyerPlaceable:readStream(streamId, connection)
+    print("FirewoodBuyerPlaceable:readStream")
+    FirewoodBuyerPlaceable:superClass().readStream(self, streamId, connection)
+    if connection:getIsServer() then
+        self.storageCapacity = streamReadFloat32(streamId)
+        self.storedFirewood = streamReadFloat32(streamId)
+    end
+end
+
+function FirewoodBuyerPlaceable:collectPickObjects(node)
+    local foundNode = false
+    if node == self.triggerNode then
+        foundNode = true
+    end
+    if not foundNode then
+        FirewoodBuyerPlaceable:superClass().collectPickObjects(self, node)
+    end
 end
 
 function FirewoodBuyerPlaceable:sellTriggerCallback(triggerId, otherId, onEnter, onLeave, onStay, otherShapeId)
     local object = g_currentMission:getNodeObject(otherId)
 
     if object ~= nil and onEnter then
-        DebugUtil.printTableRecursively(object, nil, nil, 0)
+        --DebugUtil.printTableRecursively(object, nil, nil, 0)
+        print(otherId)
     end
     --if object ~= nil and object.isa ~= nil and object:isa(Vehicle) and object.typeName:find("pallet") then
     --    if onEnter then
@@ -148,4 +160,12 @@ function FirewoodBuyerPlaceable:sellTriggerCallback(triggerId, otherId, onEnter,
     --        self.palletsInTrigger[object] = nil
     --    end
     --end
+end
+
+function FirewoodBuyerPlaceable:saveToXMLFile(xmlFile, key, usedModNames)
+    FirewoodBuyerPlaceable:superClass().saveToXMLFile(self, xmlFile, key, usedModNames)
+
+    setXMLFloat(xmlFile, key .. "#priceScale", self.priceScale)
+    setXMLFloat(xmlFile, key .. "#storageCapacity", self.storageCapacity)
+    setXMLFloat(xmlFile, key .. "#firewoodAmount", self.storedFirewood)
 end

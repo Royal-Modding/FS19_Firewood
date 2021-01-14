@@ -10,7 +10,7 @@
 
 
   <Materials>
-    <Material name="lambert1" materialId="4" diffuseColor="0.494118 0.494118 0.494118 1">
+    <Material name="UnnamedMaterial" materialId="19" diffuseColor="1 1 1 1">
     </Material>
   </Materials>
 
@@ -23,12 +23,15 @@
   </Dynamics>
 
   <Scene>
-    <TransformGroup name="firewoodSellPoint" static="true" compound="true" nodeId="10">
-      <Shape shapeId="1" name="tipTrigger" translation="-1.16745 1.039 0" static="true" trigger="true" collisionMask="16781312" clipDistance="300" nodeId="11" materialIds="4" castsShadows="true" receiveShadows="true" nonRenderable="true"/>
-      <TransformGroup name="posNodes" nodeId="12">
-        <TransformGroup name="posNode" translation="1 0 2.5" nodeId="13"/>
-        <TransformGroup name="posNode1" translation="-3 -0.05 2.5" nodeId="14"/>
-        <TransformGroup name="posNode2" translation="1 0 -2.5" nodeId="15"/>
+    <TransformGroup name="firewoodSellPoint" clipDistance="300" nodeId="7">
+      <Shape shapeId="1" name="tipTrigger" translation="0 1.4 0" static="true" trigger="true" collisionMask="16781312" nodeId="18" materialIds="19" nonRenderable="true" distanceBlending="false"/>
+      <TransformGroup name="clearArea" nodeId="9">
+        <TransformGroup name="start" translation="1.5 0 -1.5" nodeId="10"/>
+        <TransformGroup name="width" translation="-1.5 0 -1.5" nodeId="11"/>
+        <TransformGroup name="height" translation="1.5 0 1.5" nodeId="12"/>
+      </TransformGroup>
+      <TransformGroup name="dummyVisuals" nodeId="13">
+        <Shape shapeId="2" name="dummyVisual1" translation="0 1.4 0" scale="3 3 3" nodeId="20" materialIds="19" distanceBlending="false"/>
       </TransformGroup>
     </TransformGroup>
   </Scene>
