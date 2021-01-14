@@ -70,9 +70,9 @@ Fr description Firewood
 			<fr>Sell point for firewood</fr>
 		</text>
 		<text name="fw_name_firewoodSellPoint">
-			<en>Firewood</en>
-			<de>Firewood</de>
-			<fr>Firewood</fr>
+			<en>Firewood Sell Point</en>
+			<de>Firewood Sell Point</de>
+			<fr>Firewood Sell Point</fr>
 		</text>
 
 		<text name="input_FIREWOOD_MAKE">
@@ -95,7 +95,6 @@ Fr description Firewood
 			<de>No pallet in range!</de>
 			<fr>No pallet in range!</fr>
 		</text>
-		
 
 	</l10n>
 

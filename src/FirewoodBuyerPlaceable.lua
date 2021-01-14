@@ -169,3 +169,17 @@ function FirewoodBuyerPlaceable:saveToXMLFile(xmlFile, key, usedModNames)
     setXMLFloat(xmlFile, key .. "#storageCapacity", self.storageCapacity)
     setXMLFloat(xmlFile, key .. "#firewoodAmount", self.storedFirewood)
 end
+
+-- fix non normalized width and height of hotspot icons
+function FirewoodBuyerPlaceable:loadHotspotFromXML(xmlFile, key)
+    local hotspot = FirewoodBuyerPlaceable:superClass().loadHotspotFromXML(self, xmlFile, key)
+
+    local width = getXMLFloat(xmlFile, key .. "#width")
+    local height = getXMLFloat(xmlFile, key .. "#height")
+    if width ~= nil and height ~= nil then
+        width, height = getNormalizedScreenValues(width, height)
+        hotspot:setSize(width, height)
+    end
+
+    return hotspot
+end

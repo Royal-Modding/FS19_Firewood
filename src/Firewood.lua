@@ -154,7 +154,7 @@ function Firewood:raycastCallback(hitObjectId, _, _, _, _, _, _, _, _, _)
 end
 
 function Firewood:collectFirewood()
-    if self.foundSplitShape then
+    if self.foundSplitShape and entityExists(self.foundSplitShape.objectId) then
         local splitShapeVolume = getVolume(self.foundSplitShape.objectId) * 1000
         if splitShapeVolume < 400 then
             local pallet = self:findPalletInRange(16)
