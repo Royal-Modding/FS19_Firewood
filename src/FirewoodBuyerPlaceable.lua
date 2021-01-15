@@ -20,6 +20,8 @@ function FirewoodBuyerPlaceable:delete()
         removeTrigger(self.triggerNode)
     end
 
+    Firewood.sellPoints[self] = nil
+
     unregisterObjectClassName(self)
     FirewoodBuyerPlaceable:superClass().delete(self)
 end
@@ -91,6 +93,8 @@ function FirewoodBuyerPlaceable:finalizePlacement()
             delete(dv)
         end
     end
+    Firewood.sellPoints[self] = true
+    self.dirtyFlag = self:getNextDirtyFlag()
 end
 
 function FirewoodBuyerPlaceable:loadFromXMLFile(xmlFile, key, resetVehicles)
@@ -125,41 +129,43 @@ function FirewoodBuyerPlaceable:readStream(streamId, connection)
     end
 end
 
-function FirewoodBuyerPlaceable:collectPickObjects(node)
-    local foundNode = false
-    if node == self.triggerNode then
-        foundNode = true
+function FirewoodBuyerPlaceable:writeUpdateStream(streamId, connection, dirtyMask)
+    FirewoodBuyerPlaceable:superClass().writeUpdateStream(self, streamId, connection, dirtyMask)
+    if not connection:getIsServer() then
+        if streamWriteBool(streamId, bitAND(dirtyMask, self.dirtyFlag) ~= 0) then
+            streamWriteFloat32(streamId, self.storedFirewood)
+        end
     end
-    if not foundNode then
-        FirewoodBuyerPlaceable:superClass().collectPickObjects(self, node)
+end
+
+function FirewoodBuyerPlaceable:readUpdateStream(streamId, timestamp, connection)
+    FirewoodBuyerPlaceable:superClass().readUpdateStream(self, streamId, timestamp, connection)
+    if connection:getIsServer() then
+        if streamReadBool(streamId) then
+            self.storedFirewood = streamReadFloat32(streamId)
+        end
     end
 end
 
 function FirewoodBuyerPlaceable:sellTriggerCallback(triggerId, otherId, onEnter, onLeave, onStay, otherShapeId)
     local object = g_currentMission:getNodeObject(otherId)
+    if object ~= nil and object.isa ~= nil and object:isa(Vehicle) and object.typeName:find("pallet") then
+        if onEnter then
+            local fillUnitIndex = object:getFirstValidFillUnitToFill(FillType.FIREWOOD, true)
+            local fillUnitFillLevel = object:getFillUnitFillLevel(fillUnitIndex)
+            local freeSpace = self.storageCapacity - self.storedFirewood
 
-    if object ~= nil and onEnter then
-        --DebugUtil.printTableRecursively(object, nil, nil, 0)
-        print(otherId)
+            if fillUnitFillLevel / 2 <= freeSpace then
+                local farmId = object:getOwnerFarmId()
+                local appliedDelta = math.abs(object:addFillUnitFillLevel(farmId, fillUnitIndex, -math.huge, FillType.FIREWOOD, ToolType.UNDEFINED))
+                self.storedFirewood = self.storedFirewood + appliedDelta
+                local sellPrice = g_fillTypeManager:getFillTypeByIndex(FillType.FIREWOOD).pricePerLiter * appliedDelta * EconomyManager.getPriceMultiplier()
+                g_currentMission:addMoney(sellPrice * self.priceScale, farmId, MoneyType.SOLD_WOOD, true, true)
+                self:raiseActive()
+                self:raiseDirtyFlags(self.dirtyFlag)
+            end
+        end
     end
-    --if object ~= nil and object.isa ~= nil and object:isa(Vehicle) and object.typeName:find("pallet") then
-    --    if onEnter then
-    --        local fillUnitIndex = object:getFirstValidFillUnitToFill(FillType.STRAWPELLETS, true)
-    --        if fillUnitIndex == nil then
-    --            fillUnitIndex = object:getFirstValidFillUnitToFill(FillType.HAYPELLETS, true)
-    --        end
-
-    --        local fillType = object:getFillUnitFillType(fillUnitIndex)
-    --        if fillType ~= nil then
-    --            if self:getIsFillTypeAllowed(fillType) and object:getFillUnitFillLevel(fillUnitIndex) > 0 then
-    --                self:raiseActive()
-    --                self.palletsInTrigger[object] = fillType
-    --            end
-    --        end
-    --    elseif onLeave then
-    --        self.palletsInTrigger[object] = nil
-    --    end
-    --end
 end
 
 function FirewoodBuyerPlaceable:saveToXMLFile(xmlFile, key, usedModNames)
@@ -182,4 +188,12 @@ function FirewoodBuyerPlaceable:loadHotspotFromXML(xmlFile, key)
     end
 
     return hotspot
+end
+
+function FirewoodBuyerPlaceable:hourChanged()
+    FirewoodBuyerPlaceable:superClass().hourChanged(self)
+    if self.isServer then
+        self.storedFirewood = self.storedFirewood - (3000 / 72)
+        self:raiseDirtyFlags(self.dirtyFlag)
+    end
 end

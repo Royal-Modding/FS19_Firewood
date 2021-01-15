@@ -26,6 +26,10 @@
 
     <firewoodBuyer sellTrigger="0" minPriceScale="1.2" maxPriceScale="1.6" minStorageCapacity="3000" maxStorageCapacity="9000" usageScale="1">
         <dummyVisual node="2|0" />
+        <dummyVisual node="2|1" />
+        <dummyVisual node="2|2" />
+        <dummyVisual node="2|3" />
+        <dummyVisual node="2|4" />
     </firewoodBuyer>
 
     <hotspots>

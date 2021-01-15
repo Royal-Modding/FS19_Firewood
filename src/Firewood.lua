@@ -14,6 +14,11 @@ Firewood.scanTimer = 0
 Firewood.scanTimeout = 250
 Firewood.foundSplitShape = nil
 
+Firewood.sellPoints = {}
+Firewood.inRangeTimer = 0
+Firewood.inRangeTimeout = 500
+Firewood.inRangeSellPoint = nil
+
 function Firewood:initialize()
     Utility.overwrittenFunction(Player, "new", PlayerExtension.new)
     Utility.appendedFunction(Player, "updateActionEvents", PlayerExtension.updateActionEvents)
@@ -24,7 +29,6 @@ function Firewood:initialize()
     Utility.overwrittenFunction(SellingStation, "load", Firewood.sellingStationLoad)
 
     g_placeableTypeManager:addPlaceableType("firewoodBuyer", "FirewoodBuyerPlaceable", self.directory .. "FirewoodBuyerPlaceable.lua")
-
 end
 
 function Firewood:onValidateVehicleTypes(vehicleTypeManager, addSpecialization, addSpecializationBySpecialization, addSpecializationByVehicleType, addSpecializationByFunction)
@@ -97,12 +101,23 @@ end
 function Firewood:onUpdate(dt)
     if g_dedicatedServerInfo == nil and g_currentMission.player.isEntered then
         self.scanTimer = self.scanTimer + dt
+        self.inRangeTimer = self.inRangeTimer + dt
+
         if self.scanTimer >= self.scanTimeout then
             self.scanTimer = 0
             self.foundSplitShape = nil
             local x, y, z = localToWorld(g_currentMission.player.cameraNode, 0, 0, 1.0)
             local dx, dy, dz = localDirectionToWorld(g_currentMission.player.cameraNode, 0, 0, -1)
             raycastAll(x, y, z, dx, dy, dz, "raycastCallback", 5, self)
+        end
+
+        if self.inRangeTimer >= self.inRangeTimeout then
+            self.inRangeTimer = 0
+            self.inRangeSellPoint = self:getClosestSellPoint(g_currentMission.player, 8)
+        end
+
+        if self.inRangeSellPoint and not g_gui:getIsGuiVisible() and not g_currentMission.player:hasHandtoolEquipped() then
+            g_currentMission:addExtraPrintText(string.format("%s: %d / %d", g_i18n:convertText("$l10n_fw_fillType_firewood"), self.inRangeSellPoint.storedFirewood, self.inRangeSellPoint.storageCapacity))
         end
     end
 end
@@ -177,8 +192,8 @@ function Firewood:findPalletInRange(range)
     local px, py, pz = getWorldTranslation(g_currentMission.player.rootNode)
 
     for _, v in pairs(g_currentMission.vehicles) do
-        if v.getFillUnits then
-            local fillUnitIndex = self:canLoadFirewood(v)
+        if v.getFirstValidFillUnitToFill then
+            local fillUnitIndex = v:getFirstValidFillUnitToFill(FillType.FIREWOOD) --self:canLoadFirewood(v)
             if fillUnitIndex then
                 local vx, vy, vz = getWorldTranslation(v.rootNode)
                 local d = MathUtil.vector3Length(px - vx, py - vy, pz - vz)
@@ -193,22 +208,21 @@ function Firewood:findPalletInRange(range)
     if distance <= range then
         return pallet
     end
-
     return nil
 end
 
 function Firewood:canLoadFirewood(vehicle)
-    for _, f in pairs(vehicle:getFillUnits()) do
-        local fillUnitIndex = f.fillUnitIndex
-        if vehicle:getFillUnitSupportsFillType(fillUnitIndex, FillType.FIREWOOD) then
-            if vehicle:getFillUnitLastValidFillType(FillType.FIREWOOD) or vehicle:getFillUnitLastValidFillType(FillType.UNKNOWN) then
-                if vehicle:getFillUnitFreeCapacity(fillUnitIndex) > 0 then
-                    return fillUnitIndex
-                end
-            end
-        end
-    end
-    return nil
+    --for _, f in pairs(vehicle:getFillUnits()) do
+    --    local fillUnitIndex = f.fillUnitIndex
+    --    if vehicle:getFillUnitSupportsFillType(fillUnitIndex, FillType.FIREWOOD) then
+    --        if vehicle:getFillUnitLastValidFillType(FillType.FIREWOOD) or vehicle:getFillUnitLastValidFillType(FillType.UNKNOWN) then
+    --            if vehicle:getFillUnitFreeCapacity(fillUnitIndex) > 0 then
+    --                return fillUnitIndex
+    --            end
+    --        end
+    --    end
+    --end
+    --return nil
 end
 
 ---Add Firewood to selling stationName
@@ -225,7 +239,7 @@ function Firewood.sellingStationLoad(object, superFunc, ...)
     local aSF = object.acceptedFillTypes[FillType.SUNFLOWER]
     local aM = object.acceptedFillTypes[FillType.MAIZE]
 
-    if object.acceptedFillTypes[FillType.FIREWOOD] == nil and (aW or aB or aO or aC or aS or aSF or aM ) then
+    if object.acceptedFillTypes[FillType.FIREWOOD] == nil and (aW or aB or aO or aC or aS or aSF or aM) then
         object:addAcceptedFillType(FillType.FIREWOOD, g_fillTypeManager.fillTypes[FillType.FIREWOOD].pricePerLiter, true, false)
 
         --Re-init the pricing dynamics for the added pellets.
@@ -239,9 +253,26 @@ end
 function Firewood:loadFirewoodType()
     local hudOverlayFilename = "hud/fillTypes/hud_fill_firewood.png"
     local hudOverlayFilenameSmall = "hud/fillTypes/hud_fill_firewood_sml.png"
-    local pricePerLiter = 10
+    local pricePerLiter = 1
     local massPerLiter = 1.5 / 1000
 
     g_fillTypeManager:addFillType("FIREWOOD", g_i18n:getText("fw_fillType_firewood"), true, pricePerLiter, massPerLiter, 32, hudOverlayFilename, hudOverlayFilenameSmall, self.directory, nil, {1, 1, 1}, nil, false)
+end
 
+function Firewood:getClosestSellPoint(player, maxDistance)
+    maxDistance = maxDistance or 15
+    local sellPoint = nil
+    local sellPointDistance = math.huge
+    local px, py, pz = getWorldTranslation(player.rootNode)
+    for sp, _ in pairs(self.sellPoints) do
+        local spx, spy, spz = getWorldTranslation(sp.nodeId)
+        local distance = MathUtil.vector3Length(px - spx, py - spy, pz - spz)
+        if distance <= sellPointDistance then
+            sellPointDistance = distance
+            sellPoint = sp
+        end
+    end
+    if sellPointDistance <= maxDistance then
+        return sellPoint
+    end
 end
