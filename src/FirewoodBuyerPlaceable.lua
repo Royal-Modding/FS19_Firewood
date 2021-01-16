@@ -193,7 +193,19 @@ end
 function FirewoodBuyerPlaceable:hourChanged()
     FirewoodBuyerPlaceable:superClass().hourChanged(self)
     if self.isServer then
-        self.storedFirewood = self.storedFirewood - (3000 / 72)
-        self:raiseDirtyFlags(self.dirtyFlag)
+        local sellEnabled = true
+        local sellAmount = (3000 / 72) -- one pallet every three days
+        if g_seasons then
+            sellAmount = sellAmount * 2
+            -- sell only from mid autumnn to early spring
+            if g_seasons.environment.period >= 2 and g_seasons.environment.period <= 7 then
+                sellEnabled = false
+            end
+        end
+
+        if sellEnabled then
+            self.storedFirewood = math.max(0, self.storedFirewood - sellAmount)
+            self:raiseDirtyFlags(self.dirtyFlag)
+        end
     end
 end
