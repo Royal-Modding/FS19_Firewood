@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<handTool>
+    <storeData>
+        <name>MT 9</name>
+        <functions>
+            <function>$l10n_seasons_function_measureTool</function>
+        </functions>
+        <image>firstPerson/hatchets/smallHatchet/store_smallHatchet.png</image>
+        <price>50</price>
+        <lifetime>600</lifetime>
+        <rotation>0</rotation>
+        <brand>LIZARD</brand>
+        <category>misc</category>
+        <species>handTool</species>
+    </storeData>
+
+    <handToolType>firewoodTool</handToolType>
+    <filename>firstPerson/hatchets/smallHatchet/smallHatchet.i3d</filename>
+
+    <handNode>
+        <firstPerson position="0.15 -0.22 -0.6" rotation="60 0 0" />
+        <thirdPerson position="-0.16 0 0" rotation="20 180 270" />
+    </handNode>
+</handTool>

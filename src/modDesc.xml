@@ -28,6 +28,7 @@ Fr description Firewood
 	<storeItems>
 		<storeItem xmlFilename="objects/pallets/firewoodPallet/firewoodPallet.xml" />
 		<storeItem xmlFilename="placeables/firewoodSellPoint/firewoodSellPoint.xml" />
+		<storeItem xmlFilename="firstPerson/hatchets/smallHatchet/smallHatchet.xml" />
 	</storeItems>
 
 	<extraSourceFiles>
@@ -36,6 +37,7 @@ Fr description Firewood
 		<sourceFile filename="Firewood.lua" />
 		<sourceFile filename="playerExtension.lua" />
 		<sourceFile filename="DeleteSplitShapeEvent.lua" />
+		<sourceFile filename="FirewoodTool.lua" />
 	</extraSourceFiles>
 
 	<actions>
