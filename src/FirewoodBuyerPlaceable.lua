@@ -194,9 +194,16 @@ function FirewoodBuyerPlaceable:hourChanged()
     FirewoodBuyerPlaceable:superClass().hourChanged(self)
     if self.isServer then
         local sellEnabled = true
-        local sellAmount = (3000 / 72) -- one pallet every three days
+        local sellAmount = (3000 / 72) -- one full pallet every three days
+        local airTemp = g_currentMission.environment.weather.weatherInfo.handler.airTemperature
+        if airTemp <= 3 then 
+            sellAmount = sellAmount * 1.25
+        end
+
         if g_seasons then
             sellAmount = sellAmount * 2
+            local currentSeasonsTemperature = g_seasons.weather:getCurrentAirTemperature()
+            print(tostring(currentSeasonsTemperature))
             -- sell only from mid autumnn to early spring
             if g_seasons.environment.period >= 2 and g_seasons.environment.period <= 7 then
                 sellEnabled = false
