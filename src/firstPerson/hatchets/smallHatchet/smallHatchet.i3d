@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<i3D name="measureTool" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+<i3D name="smallHatchet" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
   <Asset>
     <Export program="GIANTS Editor 64bit" version="8.2.2"/>
   </Asset>
@@ -46,11 +46,5 @@
       </TransformGroup>
     </TransformGroup>
   </Scene>
-
-  <UserAttributes>
-    <UserAttribute nodeId="10">
-      <Attribute name="currentUVSet" type="string" value="UVmap_0"/>
-    </UserAttribute>
-  </UserAttributes>
 
 </i3D>
