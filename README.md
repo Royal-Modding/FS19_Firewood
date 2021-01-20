@@ -28,4 +28,4 @@ per i più pigri possibilità di trasformare interi alberi e/o tronchi di grosse
 
 - [ ] Ricorda di provare gli spacca legna
 - [ ] Mettere il foliage bending al pallet
-- [ ] Controllare  `Error: Running LUA method 'update'. FS19_Firewood/FirewoodBuyerPlaceable.lua:198: attempt to index field 'weatherInfo' (a nil value)`
+- [x] Controllare  `Error: Running LUA method 'update'. FS19_Firewood/FirewoodBuyerPlaceable.lua:198: attempt to index field 'weatherInfo' (a nil value)`
