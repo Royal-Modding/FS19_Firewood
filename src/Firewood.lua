@@ -7,6 +7,7 @@
 
 InitRoyalMod(Utils.getFilename("lib/rmod/", g_currentModDirectory))
 InitRoyalUtility(Utils.getFilename("lib/utility/", g_currentModDirectory))
+InitRoyalAnimation(Utils.getFilename("lib/anim/", g_currentModDirectory))
 
 ---@class Firewood
 Firewood = RoyalMod.new(r_debug_r, false)

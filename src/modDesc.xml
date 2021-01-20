@@ -34,6 +34,7 @@ Fr description Firewood
 	<extraSourceFiles>
 		<sourceFile filename="lib/rmod/Main.lua" />
 		<sourceFile filename="lib/utility/Main.lua" />
+		<sourceFile filename="lib/anim/Main.lua" />
 		<sourceFile filename="Firewood.lua" />
 		<sourceFile filename="PlayerExtension.lua" />
 		<sourceFile filename="DeleteSplitShapeEvent.lua" />

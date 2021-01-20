@@ -6,14 +6,14 @@
   </Asset>
 
   <Files>
+    <File fileId="2" filename="smallHatchet_normal.dds"/>
     <File fileId="4" filename="$data/shaders/vehicleShader.xml"/>
     <File fileId="3" filename="$data/shared/defaultPlastic_specular.dds"/>
-    <File fileId="2" filename="$data/shared/default_normal.dds"/>
   </Files>
 
 
   <Materials>
-    <Material name="hatchet_mat" materialId="12" diffuseColor="1 1 1 1" customShaderId="4" customShaderVariation="colorMask">
+    <Material name="hatchet_mat" materialId="4" diffuseColor="1 1 1 1" customShaderId="4" customShaderVariation="colorMask">
       <Normalmap fileId="2"/>
       <Glossmap fileId="3"/>
       <CustomParameter name="RDT" value="0 0 0 0"/>
@@ -38,13 +38,17 @@
   </Dynamics>
 
   <Scene>
-    <TransformGroup name="tool" nodeId="7">
-      <Shape shapeId="1" name="hatchet_01" translation="8.76757e-09 -7.58418e-09 0.2" rotation="90 -2.16644e-06 90" nodeId="15" materialIds="12" castsShadows="true" receiveShadows="true"/>
+    <TransformGroup name="tool" translation="0.05 0 0" rotation="0 0 -5" nodeId="7">
+      <TransformGroup name="animNodeRot" translation="8.74228e-09 -7.5623e-09 0.2" rotation="0 2.50448e-06 0" nodeId="8">
+        <TransformGroup name="animNodeTrans" translation="3.1881e-09 0 0" rotation="0 -2.50448e-06 0" nodeId="9">
+          <Shape shapeId="1" name="hatchet_vis" translation="2.52927e-11 0 0" rotation="90 -2.50448e-06 90" nodeId="10" materialIds="4" castsShadows="true" receiveShadows="true"/>
+        </TransformGroup>
+      </TransformGroup>
     </TransformGroup>
   </Scene>
 
   <UserAttributes>
-    <UserAttribute nodeId="15">
+    <UserAttribute nodeId="10">
       <Attribute name="currentUVSet" type="string" value="UVmap_0"/>
     </UserAttribute>
   </UserAttributes>

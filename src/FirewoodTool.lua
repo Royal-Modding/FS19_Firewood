@@ -5,18 +5,36 @@
 -- @version ${version}
 -- @date 16/01/2021
 
+---@class FirewoodTool
+---@field superClass fun(self:table):any
+---@field isClient boolean
+---@field rootNode integer
+---@field baseDirectory string
 FirewoodTool = {}
-local FirewoodTool_mt = Class(FirewoodTool, HandTool)
-FirewoodTool.treeCollisionMask = 16789504
+FirewoodTool.treeCollisionMask = 16777216
+FirewoodTool_mt = Class(FirewoodTool, HandTool)
 
 InitObjectClass(FirewoodTool, "FirewoodTool")
 
+---@return FirewoodTool
 function FirewoodTool:new(isServer, isClient, customMt)
+    ---@type FirewoodTool
     local ft = HandTool:new(isServer, isClient, customMt or FirewoodTool_mt)
     ft.isChopping = false
-    ft.cutFocusDistance = -1.0
     ft.minChopDistance = 1
     ft.maxChopDistance = 3
+    ft.choppingScale = 1
+    ft.choppingTimer = 0
+    ft.choppingMinTimeout = 500
+    ft.choppingMaxTimeout = 6000 / ft.choppingScale
+    ft.choppingMinTimeoutVolume = 25
+    ft.choppingMaxTimeoutVolume = 375
+    ft.maxChoppingVolume = 400
+    ft.maxPalletRange = 16
+
+    ft.showNotOwnedWarning = false
+    ft.showTooBigWarning = false
+    ft.showPalletNotInRangeWarning = false
     return ft
 end
 
@@ -25,24 +43,28 @@ function FirewoodTool:load(xmlFilename, player)
         return false
     end
 
-    --local xmlFile = loadXMLFile("TempXML", xmlFilename)
+    local xmlFileId = loadXMLFile("TempXML", xmlFilename)
 
-    --self.pricePerMilliSecond = Utils.getNoNil(getXMLFloat(xmlFile, "handTool.FirewoodTool.pricePerSecond"), 50) / 1000
-    --self.moveCounter = 0
+    self.minChopDistance = getXMLFloat(xmlFileId, "handTool.firewoodTool#minChopDistance") or self.minChopDistance
+    self.maxChopDistance = getXMLFloat(xmlFileId, "handTool.firewoodTool#maxChopDistance") or self.maxChopDistance
+    self.choppingScale = getXMLFloat(xmlFileId, "handTool.firewoodTool#choppingScale") or self.choppingScale
+    self.maxPalletRange = getXMLFloat(xmlFileId, "handTool.firewoodTool#maxPalletRange") or self.maxPalletRange
 
-    --if self.isClient then
-    --    self.sampleMeasure = g_soundManager:loadSampleFromXML(xmlFile, "handTool.FirewoodTool.sounds", "measure", self.baseDirectory, self.rootNode, 1, AudioGroup.VEHICLE, nil, nil)
-    --end
+    if self.isClient then
+        self.workAnimation = RoyalAnimation:new()
+        self.workAnimation:load(self.rootNode, xmlFileId, "handTool.work")
+        self.workSample = g_soundManager:loadSampleFromXML(xmlFileId, "handTool.work", "sound", self.baseDirectory, self.rootNode, 1, AudioGroup.DEFAULT, nil, nil)
+    end
 
-    --delete(xmlFile)
+    delete(xmlFileId)
 
     return true
 end
 
 function FirewoodTool:delete()
-    --if self.isClient then
-    --    g_soundManager:deleteSample(self.sampleMeasure)
-    --end
+    if self.isClient then
+        g_soundManager:deleteSample(self.workSample)
+    end
 
     FirewoodTool:superClass().delete(self)
 end
@@ -56,20 +78,82 @@ function FirewoodTool:update(dt, allowInput)
         end
 
         if self.showNotOwnedWarning then
-            g_currentMission:showBlinkingWarning(g_i18n:getText("warning_youDontHaveAccessToThisLand"), 2000)
-            self.showNotOwnedWarning = false -- reset so it can be set to true later
+            g_currentMission:showBlinkingWarning(g_i18n:getText("warning_youDontHaveAccessToThisLand"), 1500)
+            self.showNotOwnedWarning = false
+        end
+
+        if self.showTooBigWarning then
+            g_currentMission:showBlinkingWarning(g_i18n:getText("fw_warning_logtoobig"), 1500)
+            self.showTooBigWarning = false
+        end
+
+        if self.showPalletNotInRangeWarning then
+            g_currentMission:showBlinkingWarning(g_i18n:getText("fw_warning_nopallet"), 1500)
+            self.showPalletNotInRangeWarning = false
+        end
+
+        if self.activatePressed and self.choppingData ~= nil then
+            if not self.isChopping and self:checkCanBeChopped(self.choppingData) then
+                local pallet = Firewood:findPalletInRange(self.maxPalletRange)
+                if pallet ~= nil then
+                    self.choppingData.pallet = pallet
+                    self.isChopping = true
+                    self.workAnimation:playAnim(1, -1)
+                    self.choppingData.chopTime = self:getChoppingTime(self.choppingData.volume)
+                else
+                    self.showPalletNotInRangeWarning = true
+                end
+            end
+            if self.isChopping then
+                self.choppingTimer = self.choppingTimer + dt
+                if not g_soundManager:getIsSamplePlaying(self.workSample, 0) then
+                    g_soundManager:playSample(self.workSample)
+                end
+                if self.choppingTimer >= self.choppingData.chopTime then
+                    if self.choppingData.pallet ~= nil then
+                        self.chop(self.choppingData.pallet, self.choppingData.volume, self.choppingData.objectId)
+                    end
+                    self:resetChopping()
+                    if self.workAnimation:getAnimTime() < 0.5 then
+                        self.workAnimation:playAnim(-1, 1)
+                    end
+                end
+            end
+        else
+            self:resetChopping()
         end
     end
 
-    Utility.renderTable(0.15, 0.8, 0.015, self.choppingData or {"nil"})
+    self.workAnimation:update(dt)
+
+    self.activatePressed = false
+
+    --Utility.renderTable(0.25, 0.85, 0.010, self.workAnimation or {"nil"})
 end
 
-function FirewoodTool:draw()
-    FirewoodTool:superClass().draw(self)
+function FirewoodTool.chop(pallet, volume, objectId)
+    pallet.vehicle:addFillUnitFillLevel(pallet.vehicle:getOwnerFarmId(), pallet.fillUnitIndex, volume * 0.6, FillType.FIREWOOD, ToolType.UNDEFINED)
+    DeleteSplitShapeEvent.sendEvent(objectId)
 end
 
-function FirewoodTool:onDeactivate(allowInput)
-    FirewoodTool:superClass().onDeactivate(self)
+function FirewoodTool:checkCanBeChopped(choppingData, doNotWarn)
+    if not g_currentMission.accessHandler:canFarmAccessLand(self.player.farmId, choppingData.x, choppingData.z) then
+        self.showNotOwnedWarning = true and not doNotWarn
+        return false
+    end
+    if choppingData.volume > self.maxChoppingVolume then
+        self.showTooBigWarning = true and not doNotWarn
+        return false
+    end
+    return true
+end
+
+function FirewoodTool:resetChopping()
+    self.isChopping = false
+    self.choppingTimer = 0
+    self.choppingData = nil
+    self.workAnimation:stopAnim(1)
+    g_soundManager:stopSample(self.workSample)
 end
 
 function FirewoodTool:updateChopRaycast()
@@ -81,9 +165,20 @@ function FirewoodTool:updateChopRaycast()
 end
 
 function FirewoodTool:chopRaycastCallback(hitObjectId, x, y, z, distance)
-    if distance <= self.maxChopDistance and distance >= self.minChopDistance then
-        self.choppingData = {objectId = hitObjectId, x = x, y = y, z = z, distance = distance}
+    if getHasClassId(hitObjectId, ClassIds.SHAPE) then
+        local splitShapeType = getSplitType(hitObjectId)
+        if splitShapeType ~= 0 then
+            if distance <= self.maxChopDistance and distance >= self.minChopDistance then
+                self.choppingData = {objectId = hitObjectId, x = x, y = y, z = z, distance = distance, volume = getVolume(hitObjectId) * 1000}
+            end
+        end
     end
+end
+
+function FirewoodTool:getChoppingTime(volume)
+    local cVolume = Utility.clamp(self.choppingMinTimeoutVolume, volume, self.choppingMaxTimeoutVolume)
+    local nVolume = (cVolume - self.choppingMinTimeoutVolume) / (self.choppingMaxTimeoutVolume - self.choppingMinTimeoutVolume)
+    return math.ceil((self.choppingMinTimeout + nVolume * (self.choppingMaxTimeout - self.choppingMinTimeout)) / self.choppingMinTimeout) * self.choppingMinTimeout
 end
 
 registerHandTool("firewoodTool", FirewoodTool)
