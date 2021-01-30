@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="${descVersion}">
 	<author>${author}</author>
 	<version>${version}</version>
@@ -37,6 +37,7 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 	<storeItems>
 		<storeItem xmlFilename="objects/pallets/firewoodPallet/firewoodPallet.xml" />
 		<storeItem xmlFilename="placeables/firewoodSellPoint/firewoodSellPoint.xml" />
+		<storeItem xmlFilename="placeables/firewoodVisualSellPoint/firewoodVisualSellPoint.xml" />
 		<storeItem xmlFilename="firstPerson/hatchets/smallHatchet/smallHatchet.xml" />
 		<storeItem xmlFilename="firstPerson/hatchets/bigHatchet/bigHatchet.xml" />
 	</storeItems>
@@ -118,7 +119,6 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 	</l10n>
 
 </modDesc>
-
 <!--
 	<storeItems>
 		<storeItem xmlFilename="storeItem.xml" />

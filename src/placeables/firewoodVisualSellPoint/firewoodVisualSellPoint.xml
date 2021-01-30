@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<placeable>
+    <storeData>
+        <name>$l10n_fw_name_firewoodSellPoint</name>
+        <image>placeables/firewoodVisualSellPoint/store_firewoodVisualSellPoint.png</image>
+        <price>0</price>
+        <specs>
+            <fillTypes>firewood</fillTypes>
+        </specs>
+        <functions>
+            <function>$l10n_fw_function_firewoodSellPoint</function>
+        </functions>
+        <dailyUpkeep>0</dailyUpkeep>
+        <lifetime>100000</lifetime>
+        <rotation>0</rotation>
+        <brand>LIZARD</brand>
+        <species>placeable</species>
+        <category>placeableMisc</category>
+    </storeData>
+
+    <placeableType>firewoodBuyer</placeableType>
+
+    <filename>placeables/firewoodVisualSellPoint/firewoodVisualSellPoint.i3d</filename>
+
+    <placement testSizeX="0" testSizeZ="0" sizeX="3.9" sizeZ="2" sizeOffsetZ="0.25" useManualYRotation="true" />
+
+    <firewoodBuyer sellTrigger="0" minPriceScale="1.2" maxPriceScale="1.6" minStorageCapacity="3000" maxStorageCapacity="9000" usageScale="1">
+        <dummyVisual node="2|0" />
+        <fill>
+            <animation duration="1">
+                <part node="3|2">
+                    <keyFrame time="0" visibility="false" />
+                    <keyFrame time="0.25" visibility="true" />
+                </part>
+                <part node="3|3">
+                    <keyFrame time="0" visibility="false" />
+                    <keyFrame time="0.75" visibility="true" />
+                </part>
+            </animation>
+        </fill>
+    </firewoodBuyer>
+
+    <hotspots>
+        <hotspot name="Firewood" fullName="$l10n_fw_name_firewoodSellPoint" imageFilename="hud/fillTypes/hud_fill_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="1 1 1 1" category="CATEGORY_TRIGGERS" />
+    </hotspots>
+
+    <seasons>
+        <maskAreas>
+            <maskArea startNode="5|0|0|0" widthNode="5|0|0|1" heightNode="5|0|0|2" />
+        </maskAreas>
+    </seasons>
+    <tipOcclusionUpdateArea sizeX="5" sizeZ="3" />
+</placeable>

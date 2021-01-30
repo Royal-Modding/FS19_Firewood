@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="firewoodVisualSellPoint" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="8.2.2" />
+  </Asset>
+
+  <Files>
+    <File fileId="2" filename="$data/maps/textures/european/buildingsArray_diffuse.png" />
+    <File fileId="3" filename="$data/maps/textures/european/buildingsArray_normal.png" />
+    <File fileId="4" filename="$data/maps/textures/european/buildingsArray_specular.png" />
+    <File fileId="6" filename="$data/maps/textures/european/busStopSet_specular.png" />
+    <File fileId="11" filename="$data/maps/textures/european/props/firewoodStackSet_diffuse.png" />
+    <File fileId="12" filename="$data/maps/textures/european/props/firewoodStackSet_normal.png" />
+    <File fileId="13" filename="$data/maps/textures/european/props/firewoodStackSet_specular.png" />
+    <File fileId="5" filename="$data/shaders/buildingShader.xml" />
+  </Files>
+
+
+  <Materials>
+    <Material name="buildingsArray_mat" materialId="4" customShaderId="5" customShaderVariation="USE_TEXTURE_ARRAY">
+      <Texture fileId="2" />
+      <Normalmap fileId="3" />
+      <Glossmap fileId="4" />
+      <Custommap name="mMaskMap" fileId="6" />
+    </Material>
+    <Material name="default_mat" materialId="5" diffuseColor="1 1 1 1"></Material>
+    <Material name="firewoodStackSet_mat" materialId="6">
+      <Texture fileId="11" />
+      <Normalmap fileId="12" />
+      <Glossmap fileId="13" />
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="firewoodVisualSellPoint.i3d.shapes"></Shapes>
+
+
+  <Dynamics></Dynamics>
+
+  <Scene>
+    <TransformGroup name="firewoodVisualSellPoint" clipDistance="300" nodeId="16">
+      <Shape shapeId="1" name="tipTrigger" translation="0 1.4 0" visibility="false" static="true" trigger="true" collisionMask="16781312" nodeId="17" materialIds="5" nonRenderable="true" distanceBlending="false" />
+      <TransformGroup name="clearArea" nodeId="18">
+        <TransformGroup name="start" translation="1.5 0 -1.5" nodeId="19" />
+        <TransformGroup name="width" translation="-1.5 0 -1.5" nodeId="20" />
+        <TransformGroup name="height" translation="1.5 0 1.5" nodeId="21" />
+      </TransformGroup>
+      <TransformGroup name="dummyVisuals" nodeId="22">
+        <Shape shapeId="2" name="dummyVisual1" nodeId="23" materialIds="5" distanceBlending="false" />
+      </TransformGroup>
+      <TransformGroup name="visuals" nodeId="24">
+        <Shape shapeId="3" name="busStop01" clipDistance="100" nodeId="25" materialIds="4" castsShadows="true" receiveShadows="true" />
+        <Shape shapeId="4" name="firewoodstackMedium" clipDistance="50" nodeId="26" materialIds="6" castsShadows="true" receiveShadows="true" />
+        <Shape shapeId="5" name="firewoodstackMedium" visibility="false" clipDistance="50" nodeId="27" materialIds="6" castsShadows="true" receiveShadows="true" />
+        <Shape shapeId="6" name="firewoodstackMedium" visibility="false" clipDistance="50" nodeId="28" materialIds="6" castsShadows="true" receiveShadows="true" />
+      </TransformGroup>
+      <TransformGroup name="collisions" nodeId="29">
+        <Shape shapeId="7" name="col" static="true" density="0.0001" nodeId="30" materialIds="5" nonRenderable="true" distanceBlending="false" />
+        <Shape shapeId="8" name="col" static="true" density="0.0001" nodeId="31" materialIds="5" nonRenderable="true" distanceBlending="false" />
+      </TransformGroup>
+      <TransformGroup name="seasons" nodeId="32">
+        <TransformGroup name="maskAreas" nodeId="33">
+          <TransformGroup name="maskArea1" nodeId="34">
+            <TransformGroup name="start" translation="-2.25 0 -1.45" nodeId="35" />
+            <TransformGroup name="width" translation="2.25 0 -1.45" nodeId="36" />
+            <TransformGroup name="height" translation="-2.25 0 1.45" nodeId="37" />
+          </TransformGroup>
+        </TransformGroup>
+      </TransformGroup>
+    </TransformGroup>
+  </Scene>
+
+</i3D>
