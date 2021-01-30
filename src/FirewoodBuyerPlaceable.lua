@@ -80,6 +80,11 @@ function FirewoodBuyerPlaceable:load(xmlFilename, x, y, z, rx, ry, rz, initRando
         dummyVisualsIndex = dummyVisualsIndex + 1
     end
 
+    self.fillAnimation = RoyalAnimation:new()
+    self.fillAnimation:load(self.nodeId, xmlFile, baseKey .. ".fill")
+
+    self:setStoredFirewood(0)
+
     delete(xmlFile)
 
     return true
@@ -106,7 +111,7 @@ function FirewoodBuyerPlaceable:loadFromXMLFile(xmlFile, key, resetVehicles)
 
     self.priceScale = getXMLFloat(xmlFile, key .. "#priceScale") or self.priceScale
     self.storageCapacity = getXMLFloat(xmlFile, key .. "#storageCapacity") or self.storageCapacity
-    self.storedFirewood = getXMLFloat(xmlFile, key .. "#firewoodAmount") or self.storedFirewood
+    self:setStoredFirewood(getXMLFloat(xmlFile, key .. "#firewoodAmount") or self.storedFirewood)
 
     return true
 end
@@ -125,7 +130,7 @@ function FirewoodBuyerPlaceable:readStream(streamId, connection)
     FirewoodBuyerPlaceable:superClass().readStream(self, streamId, connection)
     if connection:getIsServer() then
         self.storageCapacity = streamReadFloat32(streamId)
-        self.storedFirewood = streamReadFloat32(streamId)
+        self:setStoredFirewood(streamReadFloat32(streamId))
     end
 end
 
@@ -142,7 +147,7 @@ function FirewoodBuyerPlaceable:readUpdateStream(streamId, timestamp, connection
     FirewoodBuyerPlaceable:superClass().readUpdateStream(self, streamId, timestamp, connection)
     if connection:getIsServer() then
         if streamReadBool(streamId) then
-            self.storedFirewood = streamReadFloat32(streamId)
+            self:setStoredFirewood(streamReadFloat32(streamId))
         end
     end
 end
@@ -158,7 +163,7 @@ function FirewoodBuyerPlaceable:sellTriggerCallback(triggerId, otherId, onEnter,
             if fillUnitFillLevel / 2 <= freeSpace then
                 local farmId = object:getOwnerFarmId()
                 local appliedDelta = math.abs(object:addFillUnitFillLevel(farmId, fillUnitIndex, -math.huge, FillType.FIREWOOD, ToolType.UNDEFINED))
-                self.storedFirewood = self.storedFirewood + appliedDelta
+                self:setStoredFirewood(self.storedFirewood + appliedDelta)
                 local sellPrice = g_fillTypeManager:getFillTypeByIndex(FillType.FIREWOOD).pricePerLiter * appliedDelta * EconomyManager.getPriceMultiplier()
                 g_currentMission:addMoney(sellPrice * self.priceScale, farmId, MoneyType.SOLD_WOOD, true, true)
                 self:raiseActive()
@@ -209,8 +214,16 @@ function FirewoodBuyerPlaceable:hourChanged()
         end
 
         if sellEnabled then
-            self.storedFirewood = math.max(0, self.storedFirewood - sellAmount)
+            self:setStoredFirewood(self.storedFirewood - sellAmount)
             self:raiseDirtyFlags(self.dirtyFlag)
         end
+    end
+end
+
+function FirewoodBuyerPlaceable:setStoredFirewood(storedFirewood)
+    if storedFirewood ~= self.storedFirewood then
+        self.storedFirewood = math.max(0, storedFirewood)
+        local fillPercentage = Utility.clamp(0, self.storedFirewood / self.storageCapacity, 1)
+        self.fillAnimation:setAnimTime(fillPercentage)
     end
 end

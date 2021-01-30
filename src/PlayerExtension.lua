@@ -17,7 +17,7 @@ function PlayerExtension:new(superFunc, isServer, isClient)
         triggerAlways = false,
         activeType = Player.INPUT_ACTIVE_TYPE.STARTS_DISABLED,
         callbackState = nil,
-        text = g_i18n:getText("fw_MAKE"),
+        text = "",
         textVisibility = false
     }
     return self

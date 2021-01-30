@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="${descVersion}">
 	<author>${author}</author>
 	<version>${version}</version>
@@ -28,6 +28,7 @@ Fr description Firewood
 	<storeItems>
 		<storeItem xmlFilename="objects/pallets/firewoodPallet/firewoodPallet.xml" />
 		<storeItem xmlFilename="placeables/firewoodSellPoint/firewoodSellPoint.xml" />
+		<storeItem xmlFilename="placeables/firewoodVisualSellPoint/firewoodVisualSellPoint.xml" />
 		<storeItem xmlFilename="firstPerson/hatchets/smallHatchet/smallHatchet.xml" />
 		<storeItem xmlFilename="firstPerson/hatchets/bigHatchet/bigHatchet.xml" />
 	</storeItems>
@@ -103,7 +104,6 @@ Fr description Firewood
 	</l10n>
 
 </modDesc>
-
 <!--
 	<storeItems>
 		<storeItem xmlFilename="storeItem.xml" />
