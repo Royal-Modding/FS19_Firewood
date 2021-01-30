@@ -48,7 +48,10 @@ function FirewoodTool:load(xmlFilename, player)
     self.minChopDistance = getXMLFloat(xmlFileId, "handTool.firewoodTool#minChopDistance") or self.minChopDistance
     self.maxChopDistance = getXMLFloat(xmlFileId, "handTool.firewoodTool#maxChopDistance") or self.maxChopDistance
     self.choppingScale = getXMLFloat(xmlFileId, "handTool.firewoodTool#choppingScale") or self.choppingScale
+    self.choppingMaxTimeout = self.choppingMaxTimeout / self.choppingScale
     self.maxPalletRange = getXMLFloat(xmlFileId, "handTool.firewoodTool#maxPalletRange") or self.maxPalletRange
+
+    self.equipmentUVs = StringUtil.getVectorNFromString(getXMLString(xmlFileId, "handTool.firewoodTool#equipmentUvs") or "0 0", 2)
 
     if self.isClient then
         self.workAnimation = RoyalAnimation:new()
@@ -72,7 +75,7 @@ end
 function FirewoodTool:update(dt, allowInput)
     FirewoodTool:superClass().update(self, dt, allowInput)
 
-    if self.isClient then
+    if self.isClient and self.player.isOwner then
         if not self.isChopping then
             self:updateChopRaycast()
         end
@@ -122,13 +125,11 @@ function FirewoodTool:update(dt, allowInput)
         else
             self:resetChopping()
         end
+
+        self.workAnimation:update(dt)
+
+        self.activatePressed = false
     end
-
-    self.workAnimation:update(dt)
-
-    self.activatePressed = false
-
-    --Utility.renderTable(0.25, 0.85, 0.010, self.workAnimation or {"nil"})
 end
 
 function FirewoodTool.chop(pallet, volume, objectId)
@@ -179,6 +180,21 @@ function FirewoodTool:getChoppingTime(volume)
     local cVolume = Utility.clamp(self.choppingMinTimeoutVolume, volume, self.choppingMaxTimeoutVolume)
     local nVolume = (cVolume - self.choppingMinTimeoutVolume) / (self.choppingMaxTimeoutVolume - self.choppingMinTimeoutVolume)
     return math.ceil((self.choppingMinTimeout + nVolume * (self.choppingMaxTimeout - self.choppingMinTimeout)) / self.choppingMinTimeout) * self.choppingMinTimeout
+end
+
+function FirewoodTool:onActivate(allowInput)
+    FirewoodTool:superClass().onActivate(self)
+
+    if not self.player.isOwner then
+        self.player.visualInformation:setProtectiveUV(self.equipmentUVs)
+        self.player:setWoodWorkVisibility(true)
+    end
+end
+
+function FirewoodTool:onDeactivate(allowInput)
+    FirewoodTool:superClass().onDeactivate(self)
+
+    self.player:setWoodWorkVisibility(false)
 end
 
 registerHandTool("firewoodTool", FirewoodTool)

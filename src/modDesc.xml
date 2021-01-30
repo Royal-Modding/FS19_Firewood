@@ -29,6 +29,7 @@ Fr description Firewood
 		<storeItem xmlFilename="objects/pallets/firewoodPallet/firewoodPallet.xml" />
 		<storeItem xmlFilename="placeables/firewoodSellPoint/firewoodSellPoint.xml" />
 		<storeItem xmlFilename="firstPerson/hatchets/smallHatchet/smallHatchet.xml" />
+		<storeItem xmlFilename="firstPerson/hatchets/bigHatchet/bigHatchet.xml" />
 	</storeItems>
 
 	<extraSourceFiles>

@@ -196,7 +196,7 @@ function FirewoodBuyerPlaceable:hourChanged()
         local sellEnabled = true
         local sellAmount = (3000 / 72) -- one full pallet every three days
         local airTemp = g_currentMission.environment.weather.airTemperature
-        if airTemp <= 3 then 
+        if airTemp <= 3 then
             sellAmount = sellAmount * 1.25
         end
 

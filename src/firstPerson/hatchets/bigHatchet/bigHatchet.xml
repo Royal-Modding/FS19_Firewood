@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <handTool>
     <storeData>
-        <name>Small Hatchet</name>
+        <name>Big Hatchet</name>
         <functions>
             <function>$l10n_seasons_function_measureTool</function>
         </functions>
-        <image>firstPerson/hatchets/smallHatchet/store_smallHatchet.png</image>
-        <price>50</price>
+        <image>firstPerson/hatchets/bigHatchet/store_bigHatchet.png</image>
+        <price>150</price>
         <lifetime>600</lifetime>
         <rotation>0</rotation>
         <brand>LIZARD</brand>
@@ -15,14 +15,14 @@
     </storeData>
 
     <handToolType>firewoodTool</handToolType>
-    <filename>firstPerson/hatchets/smallHatchet/smallHatchet.i3d</filename>
+    <filename>firstPerson/hatchets/bigHatchet/bigHatchet.i3d</filename>
 
     <handNode>
         <firstPerson position="0.15 -0.22 -0.6" rotation="60 0 0" />
         <thirdPerson position="-0.16 0 0" rotation="20 180 270" />
     </handNode>
 
-    <firewoodTool minChopDistance="1" maxChopDistance="3" choppingScale="1" maxPalletRange="16" equipmentUvs="0 0" />
+    <firewoodTool minChopDistance="1.5" maxChopDistance="4" choppingScale="1.5" maxPalletRange="20" equipmentUvs="0 0" />
 
     <work>
         <animation duration="1">
