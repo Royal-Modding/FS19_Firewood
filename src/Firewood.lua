@@ -33,17 +33,7 @@ function Firewood:initialize()
 end
 
 function Firewood:onValidateVehicleTypes(vehicleTypeManager, addSpecialization, addSpecializationBySpecialization, addSpecializationByVehicleType, addSpecializationByFunction)
-    -- @param specName string name of the spec to add
-    --addSpecialization("specName")
-    -- @param specName string name of the spec to add
-    -- @param requiredSpecName string name of the required spec
-    --addSpecializationBySpecialization("specName", "requiredSpecName")
-    -- @param specName string name of the spec to add
-    -- @param requiredVehicleTypeName string name of the required vehicle type
-    --addSpecializationByVehicleType("specName", "requiredVehicleTypeName")
-    -- @param specName string name of the spec to add
-    -- @param function function if return true spec will be added to the current vehicle type
-    --addSpecializationByFunction("specName", function(vehicleType) return false end)
+    addSpecializationBySpecialization("foliageBendingFix", "foliageBending")
 end
 
 function Firewood:onMissionInitialize(baseDirectory, missionCollaborators)

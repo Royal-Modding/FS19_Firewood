@@ -1231,5 +1231,11 @@
         "g_courseplay",
         "InGameMenuContractsFrame",
         "g_seasons"
-    ]
+    ],
+    "extensions.ignoreRecommendations": true,
+    "files.autoSave": "afterDelay",
+    "typescript.tsc.autoDetect": "off",
+    "npm.autoDetect": "off",
+    "debug.allowBreakpointsEverywhere": true,
+    "html.autoClosingTags": false
 }

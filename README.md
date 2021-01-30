@@ -26,6 +26,10 @@ per i più pigri possibilità di trasformare interi alberi e/o tronchi di grosse
 
 ## Cose da fare
 
-- [ ] Ricorda di provare gli spacca legna
-- [ ] Mettere il foliage bending al pallet
+- [x] Ricorda di provare gli spacca legna
+- [x] Mettere il foliage bending al pallet
+- [ ] per far funzionare il bending nei pallet va estesa la classe foliageBending perché deve essere activated e non lo è.
+      vedi parametro xml aggiunti alwaysActive="true"
+      
 - [x] Controllare  `Error: Running LUA method 'update'. FS19_Firewood/FirewoodBuyerPlaceable.lua:198: attempt to index field 'weatherInfo' (a nil value)`
+
