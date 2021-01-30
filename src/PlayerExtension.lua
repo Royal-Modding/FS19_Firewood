@@ -26,7 +26,6 @@ end
 function PlayerExtension:updateActionEvents()
     local eventId = self.inputInformation.registrationList[InputAction.FIREWOOD_MAKE].eventId
     g_inputBinding:setActionEventActive(eventId, Firewood.foundSplitShape ~= nil)
-    g_inputBinding:setActionEventTextVisibility(eventId, Firewood.foundSplitShape ~= nil)
 end
 
 function PlayerExtension:makeFirewoodActionEvent()

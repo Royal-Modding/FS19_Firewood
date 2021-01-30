@@ -133,6 +133,7 @@ function FirewoodTool:update(dt, allowInput)
 end
 
 function FirewoodTool.chop(pallet, volume, objectId)
+    -- TODO: giocando dobbiamo calcolare e capire meglio il valore giusto di conversione
     pallet.vehicle:addFillUnitFillLevel(pallet.vehicle:getOwnerFarmId(), pallet.fillUnitIndex, volume * 0.6, FillType.FIREWOOD, ToolType.UNDEFINED)
     DeleteSplitShapeEvent.sendEvent(objectId)
 end

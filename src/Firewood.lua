@@ -12,7 +12,7 @@ InitRoyalAnimation(Utils.getFilename("lib/anim/", g_currentModDirectory))
 ---@class Firewood
 Firewood = RoyalMod.new(r_debug_r, false)
 Firewood.scanTimer = 0
-Firewood.scanTimeout = 250
+Firewood.scanTimeout = 750
 Firewood.foundSplitShape = nil
 
 Firewood.sellPoints = {}
@@ -172,17 +172,11 @@ end
 function Firewood:collectFirewood()
     if self.foundSplitShape and entityExists(self.foundSplitShape.objectId) then
         local splitShapeVolume = getVolume(self.foundSplitShape.objectId) * 1000
-        if splitShapeVolume < 400 then
-            local pallet = self:findPalletInRange(16)
-            if pallet then
-                local firewoodLiters = splitShapeVolume * 0.6
-                pallet.vehicle:addFillUnitFillLevel(pallet.vehicle:getOwnerFarmId(), pallet.fillUnitIndex, firewoodLiters, FillType.FIREWOOD, ToolType.UNDEFINED)
-                DeleteSplitShapeEvent.sendEvent(self.foundSplitShape.objectId)
-            else
-                g_currentMission:showBlinkingWarning(g_i18n:getText("fw_warning_nopallet"), 1500)
-            end
-        else
-            g_currentMission:showBlinkingWarning(g_i18n:getText("fw_warning_logtoobig"), 1500)
+        local pallet = self:findPalletInRange(25)
+        if pallet then
+            -- TODO: giocando dobbiamo calcolare e capire meglio il valore giusto di "penalty" per il cheat
+            pallet.vehicle:addFillUnitFillLevel(pallet.vehicle:getOwnerFarmId(), pallet.fillUnitIndex, splitShapeVolume * 0.5, FillType.FIREWOOD, ToolType.UNDEFINED)
+            DeleteSplitShapeEvent.sendEvent(self.foundSplitShape.objectId)
         end
     end
 end
@@ -194,7 +188,7 @@ function Firewood:findPalletInRange(range)
 
     for _, v in pairs(g_currentMission.vehicles) do
         if v.getFirstValidFillUnitToFill then
-            local fillUnitIndex = v:getFirstValidFillUnitToFill(FillType.FIREWOOD) --self:canLoadFirewood(v)
+            local fillUnitIndex = v:getFirstValidFillUnitToFill(FillType.FIREWOOD)
             if fillUnitIndex then
                 local vx, vy, vz = getWorldTranslation(v.rootNode)
                 local d = MathUtil.vector3Length(px - vx, py - vy, pz - vz)
@@ -210,20 +204,6 @@ function Firewood:findPalletInRange(range)
         return pallet
     end
     return nil
-end
-
-function Firewood:canLoadFirewood(vehicle)
-    --for _, f in pairs(vehicle:getFillUnits()) do
-    --    local fillUnitIndex = f.fillUnitIndex
-    --    if vehicle:getFillUnitSupportsFillType(fillUnitIndex, FillType.FIREWOOD) then
-    --        if vehicle:getFillUnitLastValidFillType(FillType.FIREWOOD) or vehicle:getFillUnitLastValidFillType(FillType.UNKNOWN) then
-    --            if vehicle:getFillUnitFreeCapacity(fillUnitIndex) > 0 then
-    --                return fillUnitIndex
-    --            end
-    --        end
-    --    end
-    --end
-    --return nil
 end
 
 ---Add Firewood to selling stationName

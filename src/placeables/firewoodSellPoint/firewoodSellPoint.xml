@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <placeable>
     <storeData>
         <name>$l10n_fw_name_firewoodSellPoint</name>
@@ -34,10 +34,8 @@
 
     <hotspots>
         <hotspot name="Firewood" fullName="$l10n_fw_name_firewoodSellPoint" imageFilename="hud/fillTypes/hud_fill_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="1 1 1 1" category="CATEGORY_TRIGGERS" />
-        <!-- imageName="SELLING_POINT"  -->
     </hotspots>
 
-    
 
     <!--
     <sellingStation triggerNode="0" stationName="$l10n_fw_name_firewoodSellPoint" appearsOnPDA="false" storageRadius="0" litersForFullPriceDrop="100000" fullPriceRecoverHours="48">
