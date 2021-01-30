@@ -8,19 +8,28 @@
 	<description>
 		<en>
 			<![CDATA[
-En description Firewood
+Chop the wood and split it with the ax to make firewood, you need a special pallet nearby.
+You can sell the pallets of firewood at the appropriate placeable delivery points.
 ]]>
 		</en>
 		<de>
 			<![CDATA[
-De description Firewood
+Hacken Sie das Holz und teilen Sie es mit der Axt, um Brennholz herzustellen. Sie benötigen eine spezielle Palette in der Nähe.
+Sie können die Brennholzpaletten an den entsprechenden platzierbaren Lieferpunkten verkaufen.
 ]]>
 		</de>
 		<fr>
 			<![CDATA[
-Fr description Firewood
+Hachez le bois et fendez-le avec la hache pour faire du bois de chauffage, vous avez besoin d'une palette spéciale à proximité.
+Vous pouvez vendre les palettes de bois de chauffage aux points de livraison placables appropriés.
 ]]>
 		</fr>
+		<it>
+			<![CDATA[
+Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di un pallet speciale nelle vicinanze.
+È possibile vendere i pallet di legna da ardere negli appositi punti di consegna posizionabili.
+]]>
+		</it>
 	</description>
 	<multiplayer supported="true" />
 	<iconFilename>icon.png</iconFilename>
@@ -33,6 +42,10 @@ Fr description Firewood
 		<storeItem xmlFilename="firstPerson/hatchets/bigHatchet/bigHatchet.xml" />
 	</storeItems>
 
+	<specializations>
+		<specialization name="foliageBendingFix" className="FoliageBendingFix" filename="FoliageBendingFix.lua" />
+	</specializations>
+
 	<extraSourceFiles>
 		<sourceFile filename="lib/rmod/Main.lua" />
 		<sourceFile filename="lib/utility/Main.lua" />
@@ -41,6 +54,7 @@ Fr description Firewood
 		<sourceFile filename="PlayerExtension.lua" />
 		<sourceFile filename="DeleteSplitShapeEvent.lua" />
 		<sourceFile filename="FirewoodTool.lua" />
+		<sourceFile filename="FoliageBendingFix.lua" />
 	</extraSourceFiles>
 
 	<actions>
@@ -58,21 +72,25 @@ Fr description Firewood
 			<en>Firewood</en>
 			<de>Firewood</de>
 			<fr>Firewood</fr>
+			<it>Firewood</it>
 		</text>
 		<text name="fw_shopItem_firewoodPallet">
 			<en>Firewood Pallet</en>
 			<de>Firewood Pallet</de>
 			<fr>Firewood Pallet</fr>
+			<it>Firewood Pallet</it>
 		</text>
 		<text name="fw_function_firewoodPallet">
 			<en>This pallet can be used to fill with firewood ready for sell.</en>
-			<de>This pallet can be used to fill with firewood ready for sell.</de>
-			<fr>This pallet can be used to fill with firewood ready for sell.</fr>
+			<de>Mit dieser Palette kann verkaufsfertiges Brennholz gefüllt werden.</de>
+			<fr>Cette palette peut être utilisée pour remplir de bois de chauffage prêt à être vendu.</fr>
+			<it>Questo pallet può essere utilizzato per riempire con legna da ardere pronta per la vendita.</it>
 		</text>
 		<text name="fw_function_firewoodSellPoint">
 			<en>Sell point for firewood</en>
-			<de>Sell point for firewood</de>
-			<fr>Sell point for firewood</fr>
+			<de>Verkaufspunkt für Brennholz</de>
+			<fr>Point de vente pour le bois de chauffage</fr>
+			<it>Punto vendita per la legna da ardere</it>
 		</text>
 		<text name="fw_name_firewoodSellPoint">
 			<en>Firewood Sell Point</en>

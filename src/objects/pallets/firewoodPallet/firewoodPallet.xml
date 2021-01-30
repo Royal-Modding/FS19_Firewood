@@ -22,7 +22,7 @@
 
     <base>
         <filename>objects/pallets/firewoodPallet/firewoodPallet.i3d</filename>
-        <size width="2" length="1.5" lengthOffset="0" />
+        <size width="1.4" length="1.6" lengthOffset="0" />
         <canBeReset>false</canBeReset>
         <input allowed="false" />
         <components>
@@ -1293,6 +1293,11 @@
             <meshNode node="wood0395" />-->
         </meshNodes>
     </tensionBeltObject>
+
+    <foliageBending alwaysActive="true">
+        <bendingNode minX="-0.65" maxX="0.65" minZ="-0.85" maxZ="0.85" yOffset="0.5" />
+        <bendingNode minX="-0.5" maxX="0.5" minZ="-0.6" maxZ="0.6" yOffset="0.12" />
+    </foliageBending>
 
     <i3dMappings>
         <i3dMapping id="dynamicMountTrigger" node="0>0" />
