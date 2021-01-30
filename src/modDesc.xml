@@ -88,15 +88,15 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 		</text>
 		<text name="fw_function_firewoodSellPoint">
 			<en>Sell point for firewood</en>
-			<de>Verkaufspunkt für Brennholz</de>
+			<de>Verkauf für Brennholz</de>
 			<fr>Point de vente pour le bois de chauffage</fr>
 			<it>Punto vendita per la legna da ardere</it>
 		</text>
 		<text name="fw_name_firewoodSellPoint">
-			<en>Firewood</en>
-			<de>Brennholz</de>
-			<fr>Bois de chauffage</fr>
-			<it>Legna da ardere</it>
+			<en>Firewood Sell</en>
+			<de>Verkauf Brennholz</de>
+			<fr>Vente Bois</fr>
+			<it>Vendita Legna</it>
 		</text>
 
 		<text name="input_FIREWOOD_MAKE">
