@@ -92,32 +92,29 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 			<it>Punto vendita per la legna da ardere</it>
 		</text>
 		<text name="fw_name_firewoodSellPoint">
-			<en>Firewood Sell Point</en>
-			<de>Firewood Sell Point</de>
-			<fr>Firewood Sell Point</fr>
+			<en>Firewood</en>
+			<de>Brennholz</de>
+			<fr>Bois de chauffage</fr>
+			<it>Legna da ardere</it>
 		</text>
 
 		<text name="input_FIREWOOD_MAKE">
-			<en>Make firewood</en>
-			<de>Make firewood</de>
-			<fr>Make firewood</fr>
-		</text>
-		<text name="fw_MAKE">
-			<en>Make firewood</en>
-			<de>Make firewood</de>
-			<fr>Make firewood</fr>
+			<en>Make firewood fast</en>
+			<de>Make firewood fast</de>
+			<fr>Make firewood fast</fr>
 		</text>
 		<text name="fw_warning_logtoobig">
-			<en>log too big! Taglia ancora!!</en>
-			<de>log too big! Taglia ancora!!</de>
-			<fr>log too big! Taglia ancora!!</fr>
+			<en>Log too big! still cuts!!</en>
+			<de>Zu großes Stück Holz noch Schnitte</de>
+			<fr>bois trop gros! coupe encore !!</fr>
+			<it>Legno troppo grande, taglia ancora!</it>
 		</text>
 		<text name="fw_warning_nopallet">
-			<en>No pallet in range!</en>
-			<de>No pallet in range!</de>
-			<fr>No pallet in range!</fr>
+			<en>No Firewood pallets nearby!</en>
+			<de>Keine Firewood paletten in der Nähe!</de>
+			<fr>Pas de palettes de Firewood à proximité!</fr>
+			<it>Nessun pallet Firewood nelle vicinanze!</it>
 		</text>
-
 	</l10n>
 
 </modDesc>
