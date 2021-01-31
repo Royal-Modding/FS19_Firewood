@@ -2,51 +2,54 @@
 
 <i3D name="firewoodSellPoint" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
   <Asset>
-    <Export program="GIANTS Editor 64bit" version="8.2.2" />
+    <Export program="GIANTS Editor 64bit" version="8.2.2"/>
   </Asset>
 
   <Files>
-    <File fileId="2" filename="$data/maps/textures/european/props/firewoodStackSet_diffuse.dds" />
-    <File fileId="3" filename="$data/maps/textures/european/props/firewoodStackSet_normal.dds" />
-    <File fileId="4" filename="$data/maps/textures/european/props/firewoodStackSet_specular.dds" />
+    <File fileId="2" filename="$data/maps/textures/european/props/firewoodStackSet_diffuse.dds"/>
+    <File fileId="3" filename="$data/maps/textures/european/props/firewoodStackSet_normal.dds"/>
+    <File fileId="4" filename="$data/maps/textures/european/props/firewoodStackSet_specular.dds"/>
   </Files>
 
 
   <Materials>
-    <Material name="default_mat" materialId="4" diffuseColor="1 1 1 1"></Material>
+    <Material name="default_mat" materialId="4" diffuseColor="1 1 1 1">
+    </Material>
     <Material name="wood_mat" materialId="5">
-      <Texture fileId="2" />
-      <Normalmap fileId="3" />
-      <Glossmap fileId="4" />
+      <Texture fileId="2"/>
+      <Normalmap fileId="3"/>
+      <Glossmap fileId="4"/>
     </Material>
   </Materials>
 
 
-  <Shapes externalShapesFile="firewoodSellPoint.i3d.shapes"></Shapes>
+  <Shapes externalShapesFile="firewoodSellPoint.i3d.shapes">
+  </Shapes>
 
 
-  <Dynamics></Dynamics>
+  <Dynamics>
+  </Dynamics>
 
   <Scene>
     <TransformGroup name="firewoodSellPoint" clipDistance="300" nodeId="11">
-      <Shape shapeId="1" name="tipTrigger" translation="0 1.4 0" static="true" trigger="true" collisionMask="16781312" nodeId="12" materialIds="4" nonRenderable="true" distanceBlending="false" />
+      <Shape shapeId="1" name="tipTrigger" translation="0 1.4 0" static="true" trigger="true" collisionMask="16781312" nodeId="12" materialIds="4" nonRenderable="true" distanceBlending="false"/>
       <TransformGroup name="clearArea" nodeId="13">
-        <TransformGroup name="start" translation="1.5 0 -1.5" nodeId="14" />
-        <TransformGroup name="width" translation="-1.5 0 -1.5" nodeId="15" />
-        <TransformGroup name="height" translation="1.5 0 1.5" nodeId="16" />
+        <TransformGroup name="start" translation="1.5 0 -1.5" nodeId="14"/>
+        <TransformGroup name="width" translation="-1.5 0 -1.5" nodeId="15"/>
+        <TransformGroup name="height" translation="1.5 0 1.5" nodeId="16"/>
       </TransformGroup>
       <TransformGroup name="dummyVisuals" nodeId="17">
-        <Shape shapeId="2" name="dummyVisual1" translation="0 1.05 0" scale="3 3 3" visibility="false" nodeId="18" materialIds="4" distanceBlending="false" />
-        <Shape shapeId="2" name="dummyVisual2" translation="1.5 -0.35 0" scale="0.01 2 3" nodeId="19" materialIds="4" distanceBlending="false" />
-        <Shape shapeId="2" name="dummyVisual3" translation="-1.5 -0.35 0" scale="0.01 2 3" nodeId="20" materialIds="4" distanceBlending="false" />
-        <Shape shapeId="2" name="dummyVisual4" translation="0 -0.35 1.5" scale="3 2 0.01" nodeId="21" materialIds="4" distanceBlending="false" />
-        <Shape shapeId="2" name="dummyVisual5" translation="0 -0.35 -1.5" scale="3 2 0.01" nodeId="22" materialIds="4" distanceBlending="false" />
+        <Shape shapeId="2" name="dummyVisual1" translation="0 3 0" scale="0.2 6 0.2" nodeId="29" materialIds="4" distanceBlending="false"/>
+        <Shape shapeId="2" name="dummyVisual2" translation="4.5 -0.35 0" scale="0.01 2 9" nodeId="18" materialIds="4" distanceBlending="false"/>
+        <Shape shapeId="2" name="dummyVisual3" translation="-4.5 -0.35 0" scale="0.01 2 9" nodeId="19" materialIds="4" distanceBlending="false"/>
+        <Shape shapeId="2" name="dummyVisual4" translation="0 -0.35 4.5" scale="9 2 0.01" nodeId="20" materialIds="4" distanceBlending="false"/>
+        <Shape shapeId="2" name="dummyVisual5" translation="0 -0.35 -4.5" scale="9 2 0.01" nodeId="21" materialIds="4" distanceBlending="false"/>
       </TransformGroup>
-      <TransformGroup name="woods_vis" nodeId="23">
-        <Shape shapeId="3" name="wood0394" translation="-0.310505 1.20915e-07 0.301087" rotation="90 -44.1177 180" nodeId="24" materialIds="5" castsShadows="true" receiveShadows="true" />
-        <Shape shapeId="3" name="wood0395" translation="0.319594 -4.82573e-08 0" rotation="90 28.6256 180" nodeId="25" materialIds="5" castsShadows="true" receiveShadows="true" />
-        <Shape shapeId="4" name="wood0357" translation="9.36019e-09 4.09147e-16 0.214136" rotation="90 0 90" nodeId="26" materialIds="5" castsShadows="true" receiveShadows="true" />
-        <Shape shapeId="4" name="wood0358" translation="-0.140224 -6.12937e-09 -0.105609" rotation="-126.985 -0 90" nodeId="27" materialIds="5" castsShadows="true" receiveShadows="true" />
+      <TransformGroup name="woods_vis" nodeId="22">
+        <Shape shapeId="3" name="wood0394" translation="-0.310505 1.20915e-07 0.301087" rotation="90 -44.1177 180" nodeId="23" materialIds="5" castsShadows="true" receiveShadows="true"/>
+        <Shape shapeId="3" name="wood0395" translation="0.319594 -4.82573e-08 0" rotation="90 28.6256 180" nodeId="24" materialIds="5" castsShadows="true" receiveShadows="true"/>
+        <Shape shapeId="4" name="wood0357" translation="9.36019e-09 4.09147e-16 0.214136" rotation="90 0 90" nodeId="25" materialIds="5" castsShadows="true" receiveShadows="true"/>
+        <Shape shapeId="4" name="wood0358" translation="-0.140224 -6.12937e-09 -0.105609" rotation="-126.985 -0 90" nodeId="26" materialIds="5" castsShadows="true" receiveShadows="true"/>
       </TransformGroup>
     </TransformGroup>
   </Scene>
