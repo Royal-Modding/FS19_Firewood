@@ -35,6 +35,9 @@ function FirewoodTool:new(isServer, isClient, customMt)
     ft.showNotOwnedWarning = false
     ft.showTooBigWarning = false
     ft.showPalletNotInRangeWarning = false
+
+    ft.pauseTimer = 0
+    ft.pauseTimeout = 100
     return ft
 end
 
@@ -95,8 +98,13 @@ function FirewoodTool:update(dt, allowInput)
             self.showPalletNotInRangeWarning = false
         end
 
-        if self.activatePressed and self.choppingData ~= nil then
+        if self.pauseTimer > 0 then
+            self.pauseTimer = self.pauseTimer - dt
+        end
+
+        if self.activatePressed and self.choppingData ~= nil and self.pauseTimer <= 0 then
             if not self.isChopping and self:checkCanBeChopped(self.choppingData) then
+                print(string.format("Firewood volume = %d", self:getChoppingVolume(self.choppingData)))
                 local pallet = Firewood:findPalletInRange(self.maxPalletRange)
                 if pallet ~= nil then
                     self.choppingData.pallet = pallet
@@ -111,7 +119,8 @@ function FirewoodTool:update(dt, allowInput)
                 self.choppingTimer = self.choppingTimer + dt
                 if self.choppingTimer >= self.choppingData.chopTime then
                     if self.choppingData.pallet ~= nil then
-                        self.chop(self.choppingData.pallet, self.choppingData.volume, self.choppingData.objectId)
+                        self.chop(self.choppingData.pallet, self:getChoppingVolume(self.choppingData), self.choppingData.objectId)
+                        self.pauseTimer = self.pauseTimeout
                     end
                     self:resetChopping()
                 end
@@ -136,9 +145,8 @@ function FirewoodTool:update(dt, allowInput)
 end
 
 function FirewoodTool.chop(pallet, volume, objectId)
-    -- TODO: giocando dobbiamo calcolare e capire meglio il valore giusto di conversione
-    pallet.vehicle:addFillUnitFillLevel(pallet.vehicle:getOwnerFarmId(), pallet.fillUnitIndex, volume * 0.6, FillType.FIREWOOD, ToolType.UNDEFINED)
     DeleteSplitShapeEvent.sendEvent(objectId)
+    MakeFirewoodEvent.sendEvent(pallet.vehicle, pallet.fillUnitIndex, volume)
 end
 
 function FirewoodTool:checkCanBeChopped(choppingData, doNotWarn)
@@ -185,6 +193,25 @@ function FirewoodTool:getChoppingTime(volume)
     local steps = math.ceil(self.choppingMaxTimeout / 1000)
     local time = (math.ceil(steps * normalizedVolume) * 1000) + self.choppingMinTimeout
     return time
+end
+
+function FirewoodTool:getChoppingVolume(choppingData)
+    -- TODO: giocando dobbiamo calcolare e capire meglio il valore giusto di conversione
+    -- maxGain if volume <= maxGainVolume otherwise gain drops progressively to minGain untill minGainVolume
+    local maxGain = 1.5
+    local maxGainVolume = 100
+    local minGain = 0.5
+    local minGainVolume = 350
+    local gain = 1
+    if choppingData.volume <= maxGainVolume then
+        gain = maxGain
+    elseif choppingData.volume >= minGainVolume then
+        gain = minGain
+    else
+        local normalizedInvertedVolume = 1 - (choppingData.volume - maxGainVolume) / (minGainVolume - maxGainVolume)
+        gain = minGain + (maxGain - minGain) * normalizedInvertedVolume
+    end
+    return choppingData.volume * gain
 end
 
 function FirewoodTool:onActivate(allowInput)

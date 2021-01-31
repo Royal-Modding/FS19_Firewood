@@ -31,8 +31,6 @@ function FirewoodBuyerPlaceable:load(xmlFilename, x, y, z, rx, ry, rz, initRando
         return false
     end
 
-    print("FirewoodBuyerPlaceable:load")
-
     local xmlFile = loadXMLFile("TempXML", xmlFilename)
 
     local baseKey = "placeable.firewoodBuyer"
@@ -91,7 +89,6 @@ function FirewoodBuyerPlaceable:load(xmlFilename, x, y, z, rx, ry, rz, initRando
 end
 
 function FirewoodBuyerPlaceable:finalizePlacement()
-    print("FirewoodBuyerPlaceable:finalizePlacement")
     FirewoodBuyerPlaceable:superClass().finalizePlacement(self)
     for _, dv in ipairs(self.dummyVisuals) do
         if entityExists(dv) then
@@ -107,8 +104,6 @@ function FirewoodBuyerPlaceable:loadFromXMLFile(xmlFile, key, resetVehicles)
         return false
     end
 
-    print("FirewoodBuyerPlaceable:loadFromXMLFile")
-
     self.priceScale = getXMLFloat(xmlFile, key .. "#priceScale") or self.priceScale
     self.storageCapacity = getXMLFloat(xmlFile, key .. "#storageCapacity") or self.storageCapacity
     self:setStoredFirewood(getXMLFloat(xmlFile, key .. "#firewoodAmount") or self.storedFirewood)
@@ -117,7 +112,6 @@ function FirewoodBuyerPlaceable:loadFromXMLFile(xmlFile, key, resetVehicles)
 end
 
 function FirewoodBuyerPlaceable:writeStream(streamId, connection)
-    print("FirewoodBuyerPlaceable:writeStream")
     FirewoodBuyerPlaceable:superClass().writeStream(self, streamId, connection)
     if not connection:getIsServer() then
         streamWriteFloat32(streamId, self.storageCapacity)
@@ -126,7 +120,6 @@ function FirewoodBuyerPlaceable:writeStream(streamId, connection)
 end
 
 function FirewoodBuyerPlaceable:readStream(streamId, connection)
-    print("FirewoodBuyerPlaceable:readStream")
     FirewoodBuyerPlaceable:superClass().readStream(self, streamId, connection)
     if connection:getIsServer() then
         self.storageCapacity = streamReadFloat32(streamId)
