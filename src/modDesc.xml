@@ -105,8 +105,8 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 			<fr>Make firewood fast</fr>
 		</text>
 		<text name="fw_warning_logtoobig">
-			<en>Log too big! still cuts!!</en>
-			<de>Zu großes Stück Holz noch Schnitte</de>
+			<en>Log too big! keep cutting !!</en>
+			<de>Holz zu groß! schneide weiter !!</de>
 			<fr>bois trop gros! coupe encore !!</fr>
 			<it>Legno troppo grande, taglia ancora!</it>
 		</text>

@@ -26,6 +26,9 @@ per i più pigri possibilità di trasformare interi alberi e/o tronchi di grosse
 
 ## Cose da fare
 
+
+- [ ] ingrandire il trigger del sellPoint piccolo (scale ok ?)
+- [x] punto di spawn quando si visita il punto vendita VisualSellPoint (linkNode in xml)
 - [x] Ricorda di provare gli spacca legna
 - [x] Mettere il foliage bending al pallet
 - [ ] per far funzionare il bending nei pallet va estesa la classe foliageBending perché deve essere activated e non lo è.
