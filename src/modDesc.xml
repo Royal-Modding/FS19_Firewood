@@ -53,6 +53,7 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 		<sourceFile filename="Firewood.lua" />
 		<sourceFile filename="PlayerExtension.lua" />
 		<sourceFile filename="DeleteSplitShapeEvent.lua" />
+		<sourceFile filename="MakeFirewoodEvent.lua" />
 		<sourceFile filename="FirewoodTool.lua" />
 		<sourceFile filename="FoliageBendingFix.lua" />
 	</extraSourceFiles>

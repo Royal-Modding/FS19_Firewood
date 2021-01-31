@@ -1,3 +1,10 @@
+--
+-- ${title}
+--
+-- @author ${author}
+-- @version ${version}
+-- @date 09/01/2021
+
 DeleteSplitShapeEvent = {}
 DeleteSplitShapeEvent_mt = Class(DeleteSplitShapeEvent, Event)
 
