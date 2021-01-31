@@ -25,10 +25,10 @@ function FirewoodTool:new(isServer, isClient, customMt)
     ft.maxChopDistance = 3
     ft.choppingScale = 1
     ft.choppingTimer = 0
-    ft.choppingMinTimeout = 500
+    ft.choppingMinTimeout = 700
     ft.choppingMaxTimeout = 6000 / ft.choppingScale
-    ft.choppingMinTimeoutVolume = 25
-    ft.choppingMaxTimeoutVolume = 375
+    ft.choppingMinTimeoutVolume = 75
+    ft.choppingMaxTimeoutVolume = 350
     ft.maxChoppingVolume = 400
     ft.maxPalletRange = 16
 
@@ -109,17 +109,11 @@ function FirewoodTool:update(dt, allowInput)
             end
             if self.isChopping then
                 self.choppingTimer = self.choppingTimer + dt
-                if not g_soundManager:getIsSamplePlaying(self.workSample, 0) then
-                    g_soundManager:playSample(self.workSample)
-                end
                 if self.choppingTimer >= self.choppingData.chopTime then
                     if self.choppingData.pallet ~= nil then
                         self.chop(self.choppingData.pallet, self.choppingData.volume, self.choppingData.objectId)
                     end
                     self:resetChopping()
-                    if self.workAnimation:getAnimTime() < 0.5 then
-                        self.workAnimation:playAnim(-1, 1)
-                    end
                 end
             end
         else
@@ -128,6 +122,15 @@ function FirewoodTool:update(dt, allowInput)
 
         self.workAnimation:update(dt)
 
+        if self.workAnimation:getIsPlaying() then
+            if not g_soundManager:getIsSamplePlaying(self.workSample, 0) then
+                g_soundManager:playSample(self.workSample)
+            end
+        else
+            if g_soundManager:getIsSamplePlaying(self.workSample, 0) then
+                g_soundManager:stopSample(self.workSample)
+            end
+        end
         self.activatePressed = false
     end
 end
@@ -155,7 +158,6 @@ function FirewoodTool:resetChopping()
     self.choppingTimer = 0
     self.choppingData = nil
     self.workAnimation:stopAnim(1)
-    g_soundManager:stopSample(self.workSample)
 end
 
 function FirewoodTool:updateChopRaycast()
@@ -178,9 +180,11 @@ function FirewoodTool:chopRaycastCallback(hitObjectId, x, y, z, distance)
 end
 
 function FirewoodTool:getChoppingTime(volume)
-    local cVolume = Utility.clamp(self.choppingMinTimeoutVolume, volume, self.choppingMaxTimeoutVolume)
-    local nVolume = (cVolume - self.choppingMinTimeoutVolume) / (self.choppingMaxTimeoutVolume - self.choppingMinTimeoutVolume)
-    return math.ceil((self.choppingMinTimeout + nVolume * (self.choppingMaxTimeout - self.choppingMinTimeout)) / self.choppingMinTimeout) * self.choppingMinTimeout
+    local clampedVolume = Utility.clamp(self.choppingMinTimeoutVolume, volume, self.choppingMaxTimeoutVolume)
+    local normalizedVolume = (clampedVolume - self.choppingMinTimeoutVolume) / (self.choppingMaxTimeoutVolume - self.choppingMinTimeoutVolume)
+    local steps = math.ceil(self.choppingMaxTimeout / 1000)
+    local time = (math.ceil(steps * normalizedVolume) * 1000) + self.choppingMinTimeout
+    return time
 end
 
 function FirewoodTool:onActivate(allowInput)

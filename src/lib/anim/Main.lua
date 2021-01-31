@@ -2,7 +2,7 @@
 -- Royal Animation
 --
 -- @author Royal Modding
--- @version 1.0.0.0
+-- @version 1.1.0.0
 -- @date 19/01/2021
 
 --- Initialize RoyalAnimation

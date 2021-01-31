@@ -2,7 +2,7 @@
 -- Royal Animation
 --
 -- @author Royal Modding
--- @version 1.0.0.0
+-- @version 1.1.0.0
 -- @date 19/01/2021
 
 ---@class RoyalAnimation
@@ -27,14 +27,13 @@ function RoyalAnimation:load(nodeId, xmlFile, key)
 
     local animKey = key .. ".animation"
 
-    self.animation = {}
-    self.animation.parts = {}
-    self.animation.speed = 0
-    self.animation.repeats = 0
-    self.animation.time = 0
-    self.animation.duration = Utils.getNoNil(getXMLFloat(xmlFile, animKey .. "#duration"), 3) * 1000
-    if self.animation.duration == 0 then
-        self.animation.duration = 1000
+    self.parts = {}
+    self.speed = 0
+    self.repeats = 0
+    self.time = 0
+    self.duration = Utils.getNoNil(getXMLFloat(xmlFile, animKey .. "#duration"), 3) * 1000
+    if self.duration == 0 then
+        self.duration = 1000
     end
 
     local i = 0
@@ -57,7 +56,7 @@ function RoyalAnimation:load(nodeId, xmlFile, key)
                 end
                 local keyTime = getXMLFloat(xmlFile, frameKey .. "#time")
                 if keyTime == nil then
-                    keyTime = (getXMLFloat(xmlFile, frameKey .. "#timeSeconds") or self.animation.duration) / self.animation.duration
+                    keyTime = (getXMLFloat(xmlFile, frameKey .. "#timeSeconds") or self.duration) / self.duration
                 end
                 local keyframe = {self:loadFrameValues(xmlFile, frameKey, node)}
                 keyframe.time = keyTime
@@ -66,7 +65,7 @@ function RoyalAnimation:load(nodeId, xmlFile, key)
                 j = j + 1
             end
             if hasFrames then
-                table.insert(self.animation.parts, part)
+                table.insert(self.parts, part)
             end
         end
         i = i + 1
@@ -103,14 +102,14 @@ end
 
 ---@param dt number delta time
 function RoyalAnimation:update(dt)
-    if self.animation.speed ~= 0 then
-        local newAnimTime = MathUtil.clamp(self.animation.time + (self.animation.speed * dt) / self.animation.duration, 0, 1)
+    if self.speed ~= 0 then
+        local newAnimTime = MathUtil.clamp(self.time + (self.speed * dt) / self.duration, 0, 1)
 
         if newAnimTime == 0 or newAnimTime == 1 then
-            self.animation.repeats = math.max(self.animation.repeats - 1, -1)
-            if self.animation.repeats == 0 then
+            self.repeats = math.max(self.repeats - 1, -1)
+            if self.repeats == 0 then
                 -- anim finished
-                self.animation.speed = 0
+                self.speed = 0
                 newAnimTime = 0
             else
                 -- restart loop
@@ -130,11 +129,11 @@ end
 function RoyalAnimation:setAnimTime(time)
     time = MathUtil.clamp(time, 0, 1)
 
-    for _, part in pairs(self.animation.parts) do
+    for _, part in pairs(self.parts) do
         self:setFrameValues(part.node, part.animCurve:get(time))
     end
 
-    self.animation.time = time
+    self.time = time
     return time
 end
 
@@ -148,23 +147,34 @@ end
 ---@param speed number anim speed (use negative numbers for reverse)
 ---@param repeats integer number of repetitions (use -1 for endless looping)
 function RoyalAnimation:playAnim(speed, repeats)
-    self.animation.speed = speed
-    self.animation.repeats = repeats
+    self.speed = speed
+    self.repeats = repeats
 end
 
 ---@param repeats integer number of repetitions before stopping
 ---@param force boolean stop now at the current anim time
 function RoyalAnimation:stopAnim(repeats, force)
     if force then
-        self.animation.speed = 0
-        self.animation.repeats = 0
+        self.speed = 0
+        self.repeats = 0
     else
-        self.animation.repeats = math.max(repeats, 1)
+        self.repeats = math.max(repeats, 1)
     end
 end
 
 ---@return number animTime normalized animation time
 ---@return number animTimeSec animation time in seconds
 function RoyalAnimation:getAnimTime()
-    return self.animation.time, self.animation.duration * self.animation.time
+    return self.time, self.duration * self.time
+end
+
+---@return boolean
+function RoyalAnimation:getIsPlaying()
+    return self.speed ~= 0
+end
+
+---@param direction number 1 for forward and -1 for backward
+---@return boolean
+function RoyalAnimation:getIsPlayingInDirection(direction)
+    return self.speed == (direction or 1)
 end
