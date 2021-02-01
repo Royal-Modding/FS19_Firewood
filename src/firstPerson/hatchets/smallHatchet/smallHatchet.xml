@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <handTool>
     <storeData>
-        <name>Small Hatchet</name>
+        <name>$l10n_fw_shopItem_smallHatchet</name>
         <functions>
-            <function>$l10n_seasons_function_measureTool</function>
+            <function>$l10n_fw_function_firewoodTool</function>
         </functions>
         <image>firstPerson/hatchets/smallHatchet/store_smallHatchet.png</image>
         <price>50</price>

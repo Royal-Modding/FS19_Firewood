@@ -8,8 +8,8 @@
 	<description>
 		<en>
 			<![CDATA[
-Chop the wood and split it with the ax to make firewood, you need a special pallet nearby.
-You can sell the pallets of firewood at the appropriate placeable delivery points.
+Chop the wood and split it with the axe to make firewood, you need a pallet nearby.
+You can sell the firewood pallets at the placeable sell points and in many common sell points.
 ]]>
 		</en>
 		<de>
@@ -24,12 +24,12 @@ Hachez le bois et fendez-le avec la hache pour faire du bois de chauffage, vous 
 Vous pouvez vendre les palettes de bois de chauffage aux points de livraison placables appropriés.
 ]]>
 		</fr>
-		<it>
+		<!--<it> penso si possa anche togliere tanto non c'è modo che questo testo sia visibile in lingue diverse da: en, fr e de
 			<![CDATA[
 Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di un pallet speciale nelle vicinanze.
 È possibile vendere i pallet di legna da ardere negli appositi punti di consegna posizionabili.
 ]]>
-		</it>
+		</it>-->
 	</description>
 	<multiplayer supported="true" />
 	<iconFilename>icon.png</iconFilename>
@@ -69,17 +69,14 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 	</inputBinding>
 
 	<l10n>
+		<text name="input_FIREWOOD_MAKE">
+			<en>Make firewood quickly</en>
+		</text>
 		<text name="fw_fillType_firewood">
 			<en>Firewood</en>
 			<de>Firewood</de>
 			<fr>Firewood</fr>
 			<it>Firewood</it>
-		</text>
-		<text name="fw_shopItem_firewoodPallet">
-			<en>Firewood Pallet</en>
-			<de>Firewood Pallet</de>
-			<fr>Firewood Pallet</fr>
-			<it>Firewood Pallet</it>
 		</text>
 		<text name="fw_function_firewoodPallet">
 			<en>This pallet can be used to fill with firewood ready for sell.</en>
@@ -87,23 +84,41 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 			<fr>Cette palette peut être utilisée pour remplir de bois de chauffage prêt à être vendu.</fr>
 			<it>Questo pallet può essere utilizzato per riempire con legna da ardere pronta per la vendita.</it>
 		</text>
+		<text name="fw_function_firewoodTool">
+			<en></en>
+			<de></de>
+			<fr></fr>
+			<it></it>
+		</text>
 		<text name="fw_function_firewoodSellPoint">
 			<en>Sell point for firewood</en>
 			<de>Verkauf für Brennholz</de>
 			<fr>Point de vente pour le bois de chauffage</fr>
 			<it>Punto vendita per la legna da ardere</it>
 		</text>
-		<text name="fw_name_firewoodSellPoint">
+		<text name="fw_shopItem_firewoodPallet">
+			<en>Firewood Pallet</en>
+			<de>Firewood Pallet</de>
+			<fr>Firewood Pallet</fr>
+			<it>Firewood Pallet</it>
+		</text>
+		<text name="fw_shopItem_firewoodSellPoint">
 			<en>Firewood Sell</en>
 			<de>Verkauf Brennholz</de>
 			<fr>Vente Bois</fr>
 			<it>Vendita Legna</it>
 		</text>
-
-		<text name="input_FIREWOOD_MAKE">
-			<en>Make firewood fast</en>
-			<de>Make firewood fast</de>
-			<fr>Make firewood fast</fr>
+		<text name="fw_shopItem_smallHatchet">
+			<en>Hatchet</en>
+			<de></de>
+			<fr></fr>
+			<it>Accetta</it>
+		</text>
+		<text name="fw_shopItem_bigHatchet">
+			<en>Axe</en>
+			<de></de>
+			<fr></fr>
+			<it>Ascia</it>
 		</text>
 		<text name="fw_warning_logtoobig">
 			<en>Log too big! keep cutting !!</en>
@@ -119,8 +134,7 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 		</text>
 	</l10n>
 
-</modDesc>
-<!--
+</modDesc> <!--
 	<storeItems>
 		<storeItem xmlFilename="storeItem.xml" />
 	</storeItems>

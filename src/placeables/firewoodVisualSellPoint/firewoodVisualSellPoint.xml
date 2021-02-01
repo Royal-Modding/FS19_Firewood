@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <placeable>
     <storeData>
-        <name>$l10n_fw_name_firewoodSellPoint</name>
+        <name>$l10n_fw_shopItem_firewoodSellPoint</name>
         <image>placeables/firewoodVisualSellPoint/store_firewoodVisualSellPoint.png</image>
         <price>0</price>
         <specs>
