@@ -165,7 +165,7 @@ function Firewood:collectFirewood()
         local pallet = self:findPalletInRange(25)
         if pallet then
             -- TODO: giocando dobbiamo calcolare e capire meglio il valore giusto di "penalty" per il cheat
-            pallet.vehicle:addFillUnitFillLevel(pallet.vehicle:getOwnerFarmId(), pallet.fillUnitIndex, splitShapeVolume * 0.5, FillType.FIREWOOD, ToolType.UNDEFINED)
+            MakeFirewoodEvent.sendEvent(pallet.vehicle, pallet.fillUnitIndex, splitShapeVolume * 0.25)
             DeleteSplitShapeEvent.sendEvent(self.foundSplitShape.objectId)
         end
     end
