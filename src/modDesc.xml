@@ -85,10 +85,10 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 			<it>Questo pallet può essere utilizzato per riempire con legna da ardere pronta per la vendita.</it>
 		</text>
 		<text name="fw_function_firewoodTool">
-			<en></en>
-			<de></de>
-			<fr></fr>
-			<it></it>
+			<en>Tool for splitting wood</en>
+			<de>Werkzeug zum Spalten von Holz</de>
+			<fr>Outil de fendage du bois</fr>
+			<it>Attrezzo per spaccare la legna</it>
 		</text>
 		<text name="fw_function_firewoodSellPoint">
 			<en>Sell point for firewood</en>
@@ -110,14 +110,14 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 		</text>
 		<text name="fw_shopItem_smallHatchet">
 			<en>Hatchet</en>
-			<de></de>
-			<fr></fr>
+			<de>Beil</de>
+			<fr>Hache</fr>
 			<it>Accetta</it>
 		</text>
 		<text name="fw_shopItem_bigHatchet">
 			<en>Axe</en>
-			<de></de>
-			<fr></fr>
+			<de>Axt</de>
+			<fr>Hache</fr>
 			<it>Ascia</it>
 		</text>
 		<text name="fw_warning_logtoobig">
