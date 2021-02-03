@@ -1,9 +1,8 @@
---
--- ${title}
---
--- @author ${author}
--- @version ${version}
--- @date 16/01/2021
+---${title}
+
+---@author ${author}
+---@version r_version_r
+---@date 16/01/2021
 
 ---@class FirewoodTool
 ---@field superClass fun(self:table):any

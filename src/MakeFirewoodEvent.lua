@@ -1,9 +1,8 @@
---
--- ${title}
---
--- @author ${author}
--- @version ${version}
--- @date 31/01/2021
+---${title}
+
+---@author ${author}
+---@version r_version_r
+---@date 31/01/2021
 
 MakeFirewoodEvent = {}
 MakeFirewoodEvent_mt = Class(MakeFirewoodEvent, Event)

@@ -1,9 +1,8 @@
---
--- Royal Animation
---
--- @author Royal Modding
--- @version 1.1.0.0
--- @date 19/01/2021
+--- Royal Animation
+
+---@author Royal Modding
+---@version 1.2.0.0
+---@date 19/01/2021
 
 ---@class RoyalAnimation
 RoyalAnimation = {}
