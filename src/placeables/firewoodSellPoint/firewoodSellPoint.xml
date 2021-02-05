@@ -33,15 +33,8 @@
     </firewoodBuyer>
 
     <hotspots>
-        <hotspot name="Firewood" fullName="$l10n_fw_name_firewoodSellPoint" imageFilename="hud/fillTypes/hud_hotspot_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="1 0.415 0 1" category="CATEGORY_TRIGGERS" />
+        <hotspot name="Firewood" fullName="$l10n_fw_shopItem_firewoodSellPoint" imageFilename="hud/fillTypes/hud_hotspot_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="1 0.415 0 1" category="CATEGORY_TRIGGERS" />
     </hotspots>
-
-
-    <!--
-    <sellingStation triggerNode="0" stationName="$l10n_fw_name_firewoodSellPoint" appearsOnPDA="false" storageRadius="0" litersForFullPriceDrop="100000" fullPriceRecoverHours="48">
-        <fillType name="firewood" priceScale="1.5" supportsGreatDemand="false" disablePriceDrop="true" />
-    </sellingStation>
-    -->
 
     <!--
     <seasons>
@@ -49,12 +42,6 @@
             <maskArea startNode="1|0" widthNode="1|1" heightNode="1|2"/>
         </maskAreas>
     </seasons>
-    -->
-
-    <!-- 
-    <triggerMarkers>
-        <triggerMarker node="2" />
-    </triggerMarkers>
     -->
 
     <!--<tipOcclusionUpdateArea sizeX="3" sizeZ="3" />-->

@@ -197,10 +197,10 @@ end
 function FirewoodTool:getChoppingVolume(choppingData)
     -- TODO: giocando dobbiamo calcolare e capire meglio il valore giusto di conversione
     -- maxGain if volume <= maxGainVolume otherwise gain drops progressively to minGain untill minGainVolume
-    local maxGain = 1.4
-    local maxGainVolume = 80
+    local maxGain = 1.3
+    local maxGainVolume = 30
     local minGain = 0.35
-    local minGainVolume = 330
+    local minGainVolume = 280
     local gain = 1
     if choppingData.volume <= maxGainVolume then
         gain = maxGain

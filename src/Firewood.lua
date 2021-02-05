@@ -223,7 +223,7 @@ end
 function Firewood:loadFirewoodType()
     local hudOverlayFilename = "hud/fillTypes/hud_fill_firewood.png"
     local hudOverlayFilenameSmall = "hud/fillTypes/hud_fill_firewood_sml.png"
-    local pricePerLiter = 1
+    local pricePerLiter = 1.1
     local massPerLiter = 1.5 / 1000
 
     g_fillTypeManager:addFillType("FIREWOOD", g_i18n:getText("fw_fillType_firewood"), true, pricePerLiter, massPerLiter, 32, hudOverlayFilename, hudOverlayFilenameSmall, self.directory, nil, {1, 1, 1}, nil, false)

@@ -41,7 +41,7 @@
     </firewoodBuyer>
 
     <hotspots>
-        <hotspot name="Firewood" fullName="$l10n_fw_name_firewoodSellPoint" imageFilename="hud/fillTypes/hud_fill_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="1 0.415 0 1" category="CATEGORY_TRIGGERS" linkNode="6"/>
+        <hotspot name="Firewood" fullName="$l10n_fw_shopItem_firewoodSellPoint" imageFilename="hud/fillTypes/hud_fill_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="1 0.415 0 1" category="CATEGORY_TRIGGERS" linkNode="6" />
     </hotspots>
 
     <seasons>
