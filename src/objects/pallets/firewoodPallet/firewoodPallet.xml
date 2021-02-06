@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<vehicle type="pallet">
+<vehicle type="fwPallet">
     <storeData>
         <name>$l10n_fw_shopItem_firewoodPallet</name>
         <functions>
@@ -33,7 +33,7 @@
     </base>
 
     <animations>
-        <animation name="firewoodFillAnimation">
+        <animation name="firewoodFillAnimation" isVeryLight="true">
             <part node="wood01" startTime="0" endTime="1" visibility="false" />
             <part node="wood01" startTime="1" endTime="392" visibility="true" />
 

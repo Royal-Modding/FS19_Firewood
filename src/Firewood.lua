@@ -8,7 +8,7 @@ InitRoyalMod(Utils.getFilename("lib/rmod/", g_currentModDirectory))
 InitRoyalUtility(Utils.getFilename("lib/utility/", g_currentModDirectory))
 InitRoyalAnimation(Utils.getFilename("lib/anim/", g_currentModDirectory))
 
----@class Firewood
+---@class Firewood : RoyalMod
 Firewood = RoyalMod.new(r_debug_r, false)
 Firewood.scanTimer = 0
 Firewood.scanTimeout = 750
@@ -29,10 +29,16 @@ function Firewood:initialize()
     Utility.overwrittenFunction(SellingStation, "load", Firewood.sellingStationLoad)
 
     g_placeableTypeManager:addPlaceableType("firewoodBuyer", "FirewoodBuyerPlaceable", self.directory .. "FirewoodBuyerPlaceable.lua")
+
+    Utility.getLoadingSpeedMeter().addFilter(
+        function(vehicleData)
+            return string.find(vehicleData.filename, "firewoodPallet.xml"), "Firewood Pallet"
+        end
+    )
 end
 
 function Firewood:onValidateVehicleTypes(vehicleTypeManager, addSpecialization, addSpecializationBySpecialization, addSpecializationByVehicleType, addSpecializationByFunction)
-    addSpecializationBySpecialization("foliageBendingFix", "foliageBending")
+    --addSpecializationBySpecialization("foliageBendingFix", "foliageBending")
 end
 
 function Firewood:onMissionInitialize(baseDirectory, missionCollaborators)
@@ -110,6 +116,8 @@ function Firewood:onUpdate(dt)
             g_currentMission:addExtraPrintText(string.format("%s: %d / %d", g_i18n:convertText("$l10n_fw_fillType_firewood"), self.inRangeSellPoint.storedFirewood, self.inRangeSellPoint.storageCapacity))
         end
     end
+
+    --Utility.renderTable(0.2, 0.8, 0.02, {time = getTime(), timeSec = getTimeSec(), netTime = netGetTime(), g_time = g_time, g_networkTime = g_networkTime})
 end
 
 function Firewood:onUpdateTick(dt)

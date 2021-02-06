@@ -44,6 +44,7 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 
 	<specializations>
 		<specialization name="foliageBendingFix" className="FoliageBendingFix" filename="FoliageBendingFix.lua" />
+		<specialization name="lightAnimatedVehicle" className="LightAnimatedVehicle" filename="LightAnimatedVehicle.lua" />
 	</specializations>
 
 	<extraSourceFiles>
@@ -57,6 +58,13 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 		<sourceFile filename="FirewoodTool.lua" />
 		<sourceFile filename="FoliageBendingFix.lua" />
 	</extraSourceFiles>
+
+	<vehicleTypes>
+		<type name="fwPallet" parent="pallet" className="Vehicle" filename="$dataS/scripts/vehicles/Vehicle.lua">
+			<specialization name="lightAnimatedVehicle" />
+			<specialization name="foliageBendingFix" />
+		</type>
+	</vehicleTypes>
 
 	<actions>
 		<action name="FIREWOOD_MAKE" axisType="HALF" />
@@ -135,30 +143,6 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 	</l10n>
 
 </modDesc> <!--
-	<storeItems>
-		<storeItem xmlFilename="storeItem.xml" />
-	</storeItems>
-
-	<specializations>
-		<specialization name="specName" className="SpecClass" filename="specName.lua" />
-	</specializations>
-
-	<vehicleTypes>
-		<type name="typeName" parent="baseDrivable" className="Vehicle" filename="$dataS/scripts/vehicles/Vehicle.lua">
-			<specialization name="specName" />
-		</type>
-	</vehicleTypes>
-
-	<actions>
-		<action name="ACTION_NAME" axisType="HALF" />
-	</actions>
-
-	<inputBinding>
-		<actionBinding action="ACTION_NAME">
-			<binding device="KB_MOUSE_DEFAULT" input="KEY_f" />
-		</actionBinding>
-	</inputBinding>
-
 	<jointTypes>
 		<jointType name="jointTypeName" />
 	</jointTypes>
@@ -192,10 +176,4 @@ Taglia la legna e spaccala con l'ascia per fare legna da ardere, hai bisogno di 
 
 	l10n/l10n_en.xml, l10n/l10n_de.xml, l10n/l10n_it.xml, ...
 	<l10n filenamePrefix="l10n/l10n" />
-
-	<l10n>
-		<text name="text_key">
-			<en>Text</en>
-		</text>
-	</l10n>
 -->
