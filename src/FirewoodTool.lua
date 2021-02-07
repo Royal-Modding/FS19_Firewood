@@ -105,7 +105,6 @@ function FirewoodTool:update(dt, allowInput)
 
         if self.activatePressed and self.choppingData ~= nil and self.pauseTimer <= 0 then
             if not self.isChopping and self:checkCanBeChopped(self.choppingData) then
-                --print(string.format("Firewood volume = %d", self:getChoppingVolume(self.choppingData)))
                 local pallet = Firewood:findPalletInRange(self.maxPalletRange)
                 if pallet ~= nil then
                     self.choppingData.pallet = pallet
@@ -198,7 +197,6 @@ function FirewoodTool:getChoppingTime(volume)
 end
 
 function FirewoodTool:getChoppingVolume(choppingData)
-    -- TODO: giocando dobbiamo calcolare e capire meglio il valore giusto di conversione
     -- maxGain if volume <= maxGainVolume otherwise gain drops progressively to minGain untill minGainVolume
     local maxGain = 1.3
     local maxGainVolume = 30
