@@ -62,7 +62,6 @@ end
 function Firewood:onPostLoadMap(mapNode, mapFile)
     -- Load Firewood types before the height map system gets initialized
     self:loadFirewoodType()
-
     -- The HUD cached a list of filltypes. We added a new one so need to refresh that list to prevent errors
     g_currentMission.hud.fillLevelsDisplay:refreshFillTypes(g_fillTypeManager)
 end
@@ -116,8 +115,6 @@ function Firewood:onUpdate(dt)
             g_currentMission:addExtraPrintText(string.format("%s: %d / %d", g_i18n:convertText("$l10n_fw_fillType_firewood"), self.inRangeSellPoint.storedFirewood, self.inRangeSellPoint.storageCapacity))
         end
     end
-
-    --Utility.renderTable(0.2, 0.8, 0.02, {time = getTime(), timeSec = getTimeSec(), netTime = netGetTime(), g_time = g_time, g_networkTime = g_networkTime})
 end
 
 function Firewood:onUpdateTick(dt)
@@ -171,7 +168,6 @@ function Firewood:collectFirewood()
         local splitShapeVolume = getVolume(self.foundSplitShape.objectId) * 1000
         local pallet = self:findPalletInRange(25)
         if pallet then
-            -- TODO: giocando dobbiamo calcolare e capire meglio il valore giusto di "penalty" per il cheat
             MakeFirewoodEvent.sendEvent(pallet.vehicle, pallet.fillUnitIndex, splitShapeVolume * 0.25)
             DeleteSplitShapeEvent.sendEvent(self.foundSplitShape.objectId)
         end
@@ -219,7 +215,6 @@ function Firewood.sellingStationLoad(object, superFunc, ...)
 
     if object.acceptedFillTypes[FillType.FIREWOOD] == nil and (aW or aB or aO or aC or aS or aSF or aM) then
         object:addAcceptedFillType(FillType.FIREWOOD, g_fillTypeManager.fillTypes[FillType.FIREWOOD].pricePerLiter, true, false)
-
         --Re-init the pricing dynamics for the added pellets.
         object:initPricingDynamics()
     end
