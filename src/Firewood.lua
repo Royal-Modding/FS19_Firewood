@@ -30,11 +30,11 @@ function Firewood:initialize()
 
     g_placeableTypeManager:addPlaceableType("firewoodBuyer", "FirewoodBuyerPlaceable", self.directory .. "FirewoodBuyerPlaceable.lua")
 
-    Utility.getLoadingSpeedMeter().addFilter(
-        function(vehicleData)
-            return string.find(vehicleData.filename, "firewoodPallet.xml"), "Firewood Pallet"
-        end
-    )
+    --Utility.getVehicleLoadingSpeedMeter().addFilter(
+    --    function(vehicleData)
+    --        return string.find(vehicleData.filename, "firewoodPallet.xml"), "Firewood Pallet"
+    --    end
+    --)
 end
 
 function Firewood:onValidateVehicleTypes(vehicleTypeManager, addSpecialization, addSpecializationBySpecialization, addSpecializationByVehicleType, addSpecializationByFunction)

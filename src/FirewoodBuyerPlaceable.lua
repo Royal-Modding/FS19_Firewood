@@ -192,10 +192,10 @@ end
 
 function FirewoodBuyerPlaceable:hourChanged()
     FirewoodBuyerPlaceable:superClass().hourChanged(self)
-    if self.isServer then
+    if self.isServer and self.storedFirewood > 0 then
         local sellEnabled = true
         local sellAmount = (3000 / 72) -- one full pallet every three days
-        local airTemp = g_currentMission.environment.weather.airTemperature
+        local airTemp = g_currentMission.environment.weather.airTemperature or 10
         if airTemp <= 3 then
             sellAmount = sellAmount * 1.25
         end

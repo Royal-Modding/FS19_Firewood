@@ -19,7 +19,7 @@
 
     <handNode>
         <firstPerson position="0.15 -0.22 -0.6" rotation="60 0 0" />
-        <thirdPerson position="-0.16 0 0" rotation="20 180 270" />
+        <thirdPerson position="-0.16 -0.05 0" rotation="20 180 270" />
     </handNode>
 
     <firewoodTool minChopDistance="1.5" maxChopDistance="4" choppingScale="1.5" maxPalletRange="20" equipmentUvs="0 0" />

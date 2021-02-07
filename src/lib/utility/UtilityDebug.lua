@@ -261,7 +261,7 @@ end
 
 --- Get the loading speed meter object
 ---@return LoadingSpeedMeter loadingSpeedMeter
-function Utility.getLoadingSpeedMeter()
+function Utility.getVehicleLoadingSpeedMeter()
     if Utility.loadingSpeedMeter == nil then
         ---@class LoadingSpeedMeter
         Utility.loadingSpeedMeter = {}
@@ -295,13 +295,12 @@ function Utility.getLoadingSpeedMeter()
 
                 if smEnabled then
                     Utility.loadingSpeedMeter.vehicles[self].totalTime = getTimeSec() - Utility.loadingSpeedMeter.vehicles[self].totalStartTime
-                    print(string.format("[%s] Pre Load  time : %.4f ms", Utility.loadingSpeedMeter.vehicles[self].smName, (Utility.loadingSpeedMeter.vehicles[self].preLoadTime or 0) * 1000))
-                    print(string.format("[%s] Load      time : %.4f ms", Utility.loadingSpeedMeter.vehicles[self].smName, (Utility.loadingSpeedMeter.vehicles[self].loadTime or 0) * 1000))
-                    print(string.format("[%s] Post Load time : %.4f ms", Utility.loadingSpeedMeter.vehicles[self].smName, (Utility.loadingSpeedMeter.vehicles[self].postLoadTime or 0) * 1000))
-                    print(string.format("[%s] Total     time : %.4f ms", Utility.loadingSpeedMeter.vehicles[self].smName, (Utility.loadingSpeedMeter.vehicles[self].totalTime or 0) * 1000))
+                    print(string.format("[%s] Pre   time: %.4f ms", Utility.loadingSpeedMeter.vehicles[self].smName, (Utility.loadingSpeedMeter.vehicles[self].preLoadTime or 0) * 1000))
+                    print(string.format("[%s] Load  time: %.4f ms", Utility.loadingSpeedMeter.vehicles[self].smName, (Utility.loadingSpeedMeter.vehicles[self].loadTime or 0) * 1000))
+                    print(string.format("[%s] Post  time: %.4f ms", Utility.loadingSpeedMeter.vehicles[self].smName, (Utility.loadingSpeedMeter.vehicles[self].postLoadTime or 0) * 1000))
+                    print(string.format("[%s] Total time: %.4f ms", Utility.loadingSpeedMeter.vehicles[self].smName, (Utility.loadingSpeedMeter.vehicles[self].totalTime or 0) * 1000))
                     Utility.loadingSpeedMeter.vehicles[self] = nil
                 end
-
                 return state
             end
         )
