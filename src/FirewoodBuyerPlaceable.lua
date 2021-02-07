@@ -57,6 +57,9 @@ function FirewoodBuyerPlaceable:load(xmlFilename, x, y, z, rx, ry, rz, initRando
                 addTrigger(self.triggerNode, "sellTriggerCallback", self)
             end
         end
+
+        self.baseHotspotColor = StringUtil.getVectorNFromString(getXMLString(xmlFile, "placeable.hotspots#baseColor"), 4)
+        self.activeHotspotColor = StringUtil.getVectorNFromString(getXMLString(xmlFile, "placeable.hotspots#activeColor"), 4)
     end
 
     self.dummyVisuals = {}
@@ -146,7 +149,7 @@ end
 
 function FirewoodBuyerPlaceable:sellTriggerCallback(triggerId, otherId, onEnter, onLeave, onStay, otherShapeId)
     local object = g_currentMission:getNodeObject(otherId)
-    if object ~= nil and object.isa ~= nil and object:isa(Vehicle) and object.typeName:find("pallet") then
+    if object ~= nil and object.isa ~= nil and object:isa(Vehicle) and (object.typeName:find("pallet") or object.typeName:find("fwPallet")) then
         if onEnter then
             local fillUnitIndex = object:getFirstValidFillUnitToFill(FillType.FIREWOOD, true)
             local fillUnitFillLevel = object:getFillUnitFillLevel(fillUnitIndex)
@@ -217,5 +220,15 @@ function FirewoodBuyerPlaceable:setStoredFirewood(storedFirewood)
         self.storedFirewood = math.max(0, storedFirewood)
         local fillPercentage = Utility.clamp(0, self.storedFirewood / self.storageCapacity, 1)
         self.fillAnimation:setAnimTime(fillPercentage)
+
+        if self.activeHotspotColor and self.baseHotspotColor then
+            local color = self.baseHotspotColor
+            if fillPercentage < 0.3 then
+                color = self.activeHotspotColor
+            end
+            for _, hotspot in pairs(self.mapHotspots) do
+                hotspot:setColor(color)
+            end
+        end
     end
 end

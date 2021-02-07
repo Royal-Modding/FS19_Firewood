@@ -32,8 +32,8 @@
         <dummyVisual node="2|4" />
     </firewoodBuyer>
 
-    <hotspots>
-        <hotspot name="Firewood" fullName="$l10n_fw_shopItem_firewoodSellPoint" imageFilename="hud/fillTypes/hud_hotspot_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="1 0.415 0 1" category="CATEGORY_TRIGGERS" />
+    <hotspots baseColor="1 0.415 0 1" activeColor="0 1 0.2 1">
+        <hotspot name="Firewood" fullName="$l10n_fw_shopItem_firewoodSellPoint" imageFilename="hud/fillTypes/hud_hotspot_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="0 1 0.2 1" category="CATEGORY_TRIGGERS" />
     </hotspots>
 
     <!--
