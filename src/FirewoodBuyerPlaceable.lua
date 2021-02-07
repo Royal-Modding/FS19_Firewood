@@ -34,7 +34,7 @@ function FirewoodBuyerPlaceable:load(xmlFilename, x, y, z, rx, ry, rz, initRando
 
     local baseKey = "placeable.firewoodBuyer"
 
-    self.storedFirewood = 0
+    self.storedFirewood = nil
     self.storageCapacity = 0
 
     if self.isServer and not self.isInPreviewMode then
