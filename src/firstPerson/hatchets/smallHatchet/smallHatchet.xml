@@ -19,7 +19,7 @@
 
     <handNode>
         <firstPerson position="0.15 -0.22 -0.6" rotation="60 0 0" />
-        <thirdPerson position="-0.16 0 0" rotation="20 180 270" />
+        <thirdPerson position="-0.1 0 0.12" rotation="20 180 270" />
     </handNode>
 
     <firewoodTool minChopDistance="1" maxChopDistance="3" choppingScale="1" maxPalletRange="16" equipmentUvs="0 0" />
@@ -114,5 +114,10 @@
             <pitch indoor="1.00" outdoor="1.00" />
             <lowpassGain indoor="0.80" outdoor="1.00" />
         </sound>
+        <splitSound file="shared/sounds/splitEffect.wav" linkNode="0>" innerRadius="2.0" outerRadius="5.0">
+            <volume indoor="1.00" outdoor="1.00" />
+            <pitch indoor="1.00" outdoor="1.00" />
+            <lowpassGain indoor="0.80" outdoor="1.00" />
+        </splitSound>
     </work>
 </handTool>

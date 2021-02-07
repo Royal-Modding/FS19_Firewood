@@ -59,6 +59,7 @@ function FirewoodTool:load(xmlFilename, player)
         self.workAnimation = RoyalAnimation:new()
         self.workAnimation:load(self.rootNode, xmlFileId, "handTool.work")
         self.workSample = g_soundManager:loadSampleFromXML(xmlFileId, "handTool.work", "sound", self.baseDirectory, self.rootNode, 1, AudioGroup.DEFAULT, nil, nil)
+        self.splitSample = g_soundManager:loadSampleFromXML(xmlFileId, "handTool.work", "splitSound", self.baseDirectory, self.rootNode, 1, AudioGroup.DEFAULT, nil, nil)
     end
 
     delete(xmlFileId)
@@ -69,6 +70,7 @@ end
 function FirewoodTool:delete()
     if self.isClient then
         g_soundManager:deleteSample(self.workSample)
+        g_soundManager:deleteSample(self.splitSample)
     end
 
     FirewoodTool:superClass().delete(self)
@@ -119,6 +121,7 @@ function FirewoodTool:update(dt, allowInput)
                 if self.choppingTimer >= self.choppingData.chopTime then
                     if self.choppingData.pallet ~= nil then
                         self.chop(self.choppingData.pallet, self:getChoppingVolume(self.choppingData), self.choppingData.objectId)
+                        g_soundManager:playSample(self.splitSample)
                         self.pauseTimer = self.pauseTimeout
                     end
                     self:resetChopping()
