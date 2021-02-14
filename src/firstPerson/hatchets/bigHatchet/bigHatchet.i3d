@@ -2,35 +2,37 @@
 
 <i3D name="bigHatchet" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
   <Asset>
-    <Export program="GIANTS Editor 64bit" version="8.2.2" />
+    <Export program="GIANTS Editor 64bit" version="8.2.2"/>
   </Asset>
 
   <Files>
-    <File fileId="1" filename="axe_diffuse.dds" />
-    <File fileId="2" filename="axe_normal.dds" />
-    <File fileId="3" filename="axe_specular.dds" />
+    <File fileId="1" filename="axe_diffuse.dds"/>
+    <File fileId="2" filename="axe_normal.dds"/>
+    <File fileId="3" filename="axe_specular.dds"/>
   </Files>
 
 
   <Materials>
-    <Material name="axe_mat" materialId="4">
-      <Texture fileId="1" />
-      <Normalmap fileId="2" />
-      <Glossmap fileId="3" />
+    <Material name="axe_mat" materialId="24">
+      <Texture fileId="1"/>
+      <Normalmap fileId="2"/>
+      <Glossmap fileId="3"/>
     </Material>
   </Materials>
 
 
-  <Shapes externalShapesFile="bigHatchet.i3d.shapes"></Shapes>
+  <Shapes externalShapesFile="bigHatchet.i3d.shapes">
+  </Shapes>
 
 
-  <Dynamics></Dynamics>
+  <Dynamics>
+  </Dynamics>
 
   <Scene>
     <TransformGroup name="tool" translation="0.05 0 0" rotation="0 0 -5" nodeId="7">
       <TransformGroup name="animNodeRot" translation="8.74228e-09 -7.5623e-09 0.2" rotation="0 2.50448e-06 0" nodeId="8">
         <TransformGroup name="animNodeTrans" translation="3.1881e-09 0 0" rotation="0 -2.50448e-06 0" nodeId="9">
-          <Shape shapeId="1" name="axe_vis" translation="0.012507 -0.0131254 -0.259172" rotation="-179.912 -1.39539 91.3847" nodeId="10" materialIds="4" castsShadows="true" receiveShadows="true" distanceBlending="false" />
+          <Shape shapeId="1" name="axe_vis" translation="0.009 -0.00923398 -0.27078" rotation="90.142 -1.39539 91.385" nodeId="27" materialIds="24" castsShadows="true" receiveShadows="true"/>
         </TransformGroup>
       </TransformGroup>
     </TransformGroup>
