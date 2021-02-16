@@ -16,8 +16,8 @@ Multiplayer ready.
 
 ## Cose da fare
 
-- [ ] da fare icons per accetta ed ascia
-- [ ] Ascia verificare bake e normal
-- [ ] scheggie da fare
-- [ ] implementare helpline
-- [ ] 
+- [x] da fare icons per accetta ed ascia
+- [x] Ascia verificare bake e normal
+- [x] scheggie da fare
+- [x] implementare helpline
+- [ ] scrivere helpline 
