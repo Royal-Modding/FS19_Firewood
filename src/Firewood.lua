@@ -147,6 +147,10 @@ end
 function Firewood:onDeleteMap()
 end
 
+function Firewood:onLoadHelpLine()
+    return self.directory .. "gui/helpLine.xml"
+end
+
 function Firewood:raycastCallback(hitObjectId, _, _, _, _, _, _, _, _, _)
     if hitObjectId ~= g_currentMission.player.rootNode then
         if getHasClassId(hitObjectId, ClassIds.SHAPE) then

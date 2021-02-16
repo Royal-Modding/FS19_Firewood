@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<helpLines>
+    <category title="$l10n_fw_helpHeader">
+        <page title="$l10n_fw_helpTitle_01">
+            <item type="text" value="$l10n_fw_helpText_01_p1" />
+        </page>
+    </category>
+</helpLines>
