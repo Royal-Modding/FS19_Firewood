@@ -38,7 +38,7 @@
     <TransformGroup name="tool" translation="0.05 0 0" rotation="0 0 -5" nodeId="10">
       <TransformGroup name="animNodeRot" translation="8.74228e-09 -7.5623e-09 0.2" rotation="0 2.50448e-06 0" nodeId="11">
         <TransformGroup name="animNodeTrans" translation="3.1881e-09 0 0" rotation="0 -2.50448e-06 0" nodeId="12">
-          <Shape shapeId="1" name="axe_vis" translation="0.009 -0.00923398 -0.27078" rotation="90.142 -1.39539 91.385" nodeId="13" materialIds="4" castsShadows="true" receiveShadows="true" />
+          <Shape shapeId="1" name="axe_vis" translation="0.009 -0.00923398 -0.27078" rotation="90.142 -1.39539 91.385" nodeId="13" materialIds="4" receiveShadows="true" />
           <TransformGroup name="effect" translation="0.0548153 -0.384785 -1.04189" rotation="-90 -74.1466 95" scale="1.2 1.2 1.2" nodeId="14">
             <Shape shapeId="2" name="chipT1" rotation="1.87691e-08 0 0" visibility="false" clipDistance="50" nodeId="15" materialIds="5" />
             <Shape shapeId="2" name="chipT1" visibility="false" clipDistance="50" nodeId="16" materialIds="5" />

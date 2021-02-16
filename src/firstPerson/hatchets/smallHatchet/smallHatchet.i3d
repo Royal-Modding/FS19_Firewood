@@ -30,7 +30,7 @@
       <CustomParameter name="colorMat6" value="1 0.1 1 1" />
       <CustomParameter name="colorMat7" value="0.1 1 1 1" />
     </Material>
-    <Material name="lambert1" materialId="26">
+    <Material name="lambert1" materialId="5">
       <Texture fileId="8" />
       <Normalmap fileId="9" />
       <Glossmap fileId="10" />
@@ -44,16 +44,16 @@
   <Dynamics></Dynamics>
 
   <Scene>
-    <TransformGroup name="tool" translation="0.05 0 0" rotation="0 0 -5" nodeId="9">
-      <TransformGroup name="animNodeRot" translation="8.74228e-09 -7.5623e-09 0.2" rotation="0 2.50448e-06 0" nodeId="10">
-        <TransformGroup name="animNodeTrans" translation="3.1881e-09 0 0" rotation="0 -2.50448e-06 0" nodeId="11">
-          <Shape shapeId="1" name="hatchet_vis" translation="2.52927e-11 0 0" rotation="90 -2.50448e-06 90" nodeId="12" materialIds="4" castsShadows="true" receiveShadows="true" />
-          <TransformGroup name="effect" translation="0.0549245 -0.388098 -0.841888" rotation="-90 -74.1466 90" scale="1.2 1.2 1.2" nodeId="13">
-            <Shape shapeId="2" name="chipT1" rotation="1.87691e-08 0 0" visibility="false" clipDistance="50" nodeId="31" materialIds="26" />
-            <Shape shapeId="3" name="chipT2" visibility="false" clipDistance="50" nodeId="32" materialIds="26" />
-            <Shape shapeId="2" name="chipT1" visibility="false" clipDistance="50" nodeId="34" materialIds="26" />
-            <Shape shapeId="3" name="chipT2" visibility="false" clipDistance="50" nodeId="35" materialIds="26" />
-            <Shape shapeId="2" name="chipT1" visibility="false" clipDistance="50" nodeId="41" materialIds="26" />
+    <TransformGroup name="tool" translation="0.05 0 0" rotation="0 0 -5" nodeId="10">
+      <TransformGroup name="animNodeRot" translation="8.74228e-09 -7.5623e-09 0.2" rotation="0 2.50448e-06 0" nodeId="11">
+        <TransformGroup name="animNodeTrans" translation="3.1881e-09 0 0" rotation="0 -2.50448e-06 0" nodeId="12">
+          <Shape shapeId="1" name="hatchet_vis" translation="2.52927e-11 0 0" rotation="90 -2.50448e-06 90" nodeId="13" materialIds="4" receiveShadows="true" />
+          <TransformGroup name="effect" translation="0.0549245 -0.388098 -0.841888" rotation="-90 -74.1466 90" scale="1.2 1.2 1.2" nodeId="14">
+            <Shape shapeId="2" name="chipT1" rotation="1.87691e-08 0 0" visibility="false" clipDistance="50" nodeId="15" materialIds="5" />
+            <Shape shapeId="3" name="chipT2" visibility="false" clipDistance="50" nodeId="16" materialIds="5" />
+            <Shape shapeId="2" name="chipT1" visibility="false" clipDistance="50" nodeId="17" materialIds="5" />
+            <Shape shapeId="3" name="chipT2" visibility="false" clipDistance="50" nodeId="18" materialIds="5" />
+            <Shape shapeId="2" name="chipT1" visibility="false" clipDistance="50" nodeId="19" materialIds="5" />
           </TransformGroup>
         </TransformGroup>
       </TransformGroup>
