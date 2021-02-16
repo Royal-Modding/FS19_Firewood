@@ -7,6 +7,9 @@
 
   <Files>
     <File fileId="2" filename="smallHatchet_normal.dds" />
+    <File fileId="8" filename="$data/maps/textures/european/props/firewoodStackSet_diffuse.dds" />
+    <File fileId="9" filename="$data/maps/textures/european/props/firewoodStackSet_normal.dds" />
+    <File fileId="10" filename="$data/maps/textures/european/props/firewoodStackSet_specular.dds" />
     <File fileId="4" filename="$data/shaders/vehicleShader.xml" />
     <File fileId="3" filename="$data/shared/defaultPlastic_specular.dds" />
   </Files>
@@ -27,7 +30,11 @@
       <CustomParameter name="colorMat6" value="1 0.1 1 1" />
       <CustomParameter name="colorMat7" value="0.1 1 1 1" />
     </Material>
-    <Material name="UnnamedMaterial" materialId="16" diffuseColor="1 1 1 1"></Material>
+    <Material name="lambert1" materialId="26">
+      <Texture fileId="8" />
+      <Normalmap fileId="9" />
+      <Glossmap fileId="10" />
+    </Material>
   </Materials>
 
 
@@ -37,21 +44,16 @@
   <Dynamics></Dynamics>
 
   <Scene>
-    <TransformGroup name="tool" translation="0.05 0 0" rotation="0 0 -5" nodeId="7">
-      <TransformGroup name="animNodeRot" translation="8.74228e-09 -7.5623e-09 0.2" rotation="0 2.50448e-06 0" nodeId="8">
-        <TransformGroup name="animNodeTrans" translation="3.1881e-09 0 0" rotation="0 -2.50448e-06 0" nodeId="9">
-          <Shape shapeId="1" name="hatchet_vis" translation="2.52927e-11 0 0" rotation="90 -2.50448e-06 90" nodeId="10" materialIds="4" castsShadows="true" receiveShadows="true" />
-          <TransformGroup name="effect" translation="0 -0.14 -0.66" rotation="-6.5 -0 0" nodeId="13">
-            <Shape shapeId="2" name="particle" translation="0.17 0.49 0" visibility="false" nodeId="15" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="0 0.479861 0.17" visibility="false" nodeId="17" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="0 0.5 -0.22" visibility="false" nodeId="18" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="-0.2 0.53 0" visibility="false" nodeId="19" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="0.12 0.7 -0.09" visibility="false" nodeId="20" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="-0.055 0.7 0.08" visibility="false" nodeId="21" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="0.05 0.5 0" visibility="false" nodeId="22" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="-0.14 0.53 0.17" visibility="false" nodeId="23" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="-0.16 0.5 -0.22" visibility="false" nodeId="24" materialIds="16" distanceBlending="false" />
-            <Shape shapeId="2" name="particle" translation="-0.068 0.53 0" visibility="false" nodeId="25" materialIds="16" distanceBlending="false" />
+    <TransformGroup name="tool" translation="0.05 0 0" rotation="0 0 -5" nodeId="9">
+      <TransformGroup name="animNodeRot" translation="8.74228e-09 -7.5623e-09 0.2" rotation="0 2.50448e-06 0" nodeId="10">
+        <TransformGroup name="animNodeTrans" translation="3.1881e-09 0 0" rotation="0 -2.50448e-06 0" nodeId="11">
+          <Shape shapeId="1" name="hatchet_vis" translation="2.52927e-11 0 0" rotation="90 -2.50448e-06 90" nodeId="12" materialIds="4" castsShadows="true" receiveShadows="true" />
+          <TransformGroup name="effect" translation="0.0549245 -0.388098 -0.841888" rotation="-90 -74.1466 90" scale="1.2 1.2 1.2" nodeId="13">
+            <Shape shapeId="2" name="chipT1" rotation="1.87691e-08 0 0" visibility="false" clipDistance="50" nodeId="31" materialIds="26" />
+            <Shape shapeId="3" name="chipT2" visibility="false" clipDistance="50" nodeId="32" materialIds="26" />
+            <Shape shapeId="2" name="chipT1" visibility="false" clipDistance="50" nodeId="34" materialIds="26" />
+            <Shape shapeId="3" name="chipT2" visibility="false" clipDistance="50" nodeId="35" materialIds="26" />
+            <Shape shapeId="2" name="chipT1" visibility="false" clipDistance="50" nodeId="41" materialIds="26" />
           </TransformGroup>
         </TransformGroup>
       </TransformGroup>
