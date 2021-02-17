@@ -155,7 +155,7 @@ function FirewoodBuyerPlaceable:sellTriggerCallback(triggerId, otherId, onEnter,
             local fillUnitFillLevel = object:getFillUnitFillLevel(fillUnitIndex)
             local freeSpace = self.storageCapacity - self.storedFirewood
 
-            if fillUnitFillLevel / 2 <= freeSpace then
+            if fillUnitFillLevel / 2 <= freeSpace and fillUnitFillLevel > 1500 then
                 local farmId = object:getOwnerFarmId()
                 local appliedDelta = math.abs(object:addFillUnitFillLevel(farmId, fillUnitIndex, -math.huge, FillType.FIREWOOD, ToolType.UNDEFINED))
                 self:setStoredFirewood(self.storedFirewood + appliedDelta)

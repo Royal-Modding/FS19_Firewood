@@ -10,18 +10,22 @@
 			<![CDATA[
 Chop the wood and split it with the axe to make firewood, you need a pallet nearby.
 You can sell the firewood pallets at the placeable sell points and in many common sell points.
+Have fun with your friends in multiplayer!
 ]]>
 		</en>
 		<de>
 			<![CDATA[
 Hacken Sie das Holz und teilen Sie es mit der Axt, um Brennholz herzustellen. Sie benötigen eine spezielle Palette in der Nähe.
 Sie können die Brennholzpaletten an den entsprechenden platzierbaren Lieferpunkten verkaufen.
+Have fun with your friends in multiplayer!
+
 ]]>
 		</de>
 		<fr>
 			<![CDATA[
 Hachez le bois et fendez-le avec la hache pour faire du bois de chauffage, vous avez besoin d'une palette spéciale à proximité.
 Vous pouvez vendre les palettes de bois de chauffage aux points de livraison placables appropriés.
+Have fun with your friends in multiplayer!
 ]]>
 		</fr>
 	</description>
@@ -134,6 +138,129 @@ Vous pouvez vendre les palettes de bois de chauffage aux points de livraison pla
 			<fr>Pas de palettes de Firewood à proximité!</fr>
 			<it>Nessun pallet Firewood nelle vicinanze!</it>
 		</text>
-	</l10n>
 
+		<text name="fw_helpHeader">
+			<en>Firewood</en>
+			<de>Firewood</de>
+			<fr>Firewood</fr>
+			<it>Firewood</it>
+		</text>
+		<text name="fw_helpTitle_01">
+			<en>What is?</en>
+			<de>Was ist das?</de>
+			<fr>Qu'est-ce qui est?</fr>
+			<it>Cosa è?</it>
+		</text>
+		<text name="fw_helpTitle_02">
+			<en>How to do it?</en>
+			<de>Wie man das macht?</de>
+			<fr>Comment faire?</fr>
+			<it>Come si fa?</it>
+		</text>
+		<text name="fw_helpTitle_03">
+			<en>Wood Business</en>
+			<de>Wood Business</de>
+			<fr>Wood Business</fr>
+			<it>Lavorare con la legna</it>
+		</text>
+		<text name="fw_helpText_01_p1">
+			<en>
+				<![CDATA[
+Cut your logs in small pieces to make firewood with an axe or hatchet, fill the pallets and then sell them to the many professional resellers spread all around map, you can also place custom sell points where you want, at the village, near single houses and others wholesalers.
+]]>
+			</en>
+			<de>
+				<![CDATA[
+Schneiden Sie Ihre Stämme in kleine Stücke, um Brennholz mit einer Axt oder einem Beil zu machen, füllen Sie die Paletten und verkaufen Sie sie dann an die vielen professionellen Wiederverkäufer, die überall auf der Karte verteilt sind. Sie können auch eigene Verkaufspunkte platzieren, wo Sie wollen, im Dorf, in der Nähe von einzelnen Häusern und anderen Großhändlern.
+]]>
+			</de>
+			<fr>
+				<![CDATA[
+Coupez vos bûches en petits morceaux pour en faire du bois de chauffage avec une hache ou une hachette, remplissez les palettes et vendez-les ensuite aux nombreux revendeurs professionnels répartis tout autour de la carte. Vous pouvez également placer des points de vente personnalisés où vous voulez, au village, près des maisons individuelles et d'autres grossistes.
+]]>
+			</fr>
+			<it>
+				<![CDATA[
+Tagliate tronchi in piccoli pezzi per poi farne legna da ardere con un'ascia o un'accetta, riempendo i pallet li potrete poi vendere ai molti grossisti sparsi per tutta la mappa, potrete inoltre piazzare punti di vendita personalizzati dove volete, al villaggio, vicino a singole case e altri grossisti.
+]]>
+			</it>
+		</text>
+		<text name="fw_helpText_02_p1">
+			<en>
+				<![CDATA[
+Buy an axe or hatchet and also purchase the empty pallets to take to the cutting area.
+Go to your forest and cut the trees that will have to be processed into fairly small pieces with the chainsaw. 
+Afterwards, splitting them with the axe will automatically fill the pallets with firewood ready for sale, at many of the selling points on the map.
+]]>
+			</en>
+			<de>
+				<![CDATA[
+Kaufen Sie eine Axt oder ein Beil und kaufen Sie auch die leeren Paletten, um sie zum Schneideplatz zu bringen.
+Gehen Sie in Ihren Wald und schneiden Sie die Bäume, die verarbeitet werden müssen, mit der Kettensäge in recht kleine Stücke. 
+Wenn Sie sie anschließend mit der Axt spalten, werden die Paletten automatisch mit verkaufsfertigem Brennholz gefüllt, und zwar an vielen der Verkaufsstellen auf der Karte.
+]]>
+			</de>
+			<fr>
+				<![CDATA[
+Achetez une hache ou une hachette et achetez également les palettes vides à emporter dans la zone de découpe.
+Allez dans votre forêt et coupez les arbres qui devront être transformés en assez petits morceaux avec la tronçonneuse. 
+Ensuite, en les fendant avec la hache, les palettes se rempliront automatiquement de bois de chauffage prêt à être vendu, dans de nombreux points de vente sur la carte.
+]]>
+			</fr>
+			<it>
+				<![CDATA[
+Compra un'ascia o un accetta ed acquista anche gli appositi pallet vuoti da portare nella zona di taglio.
+Recati nel tuo bosco per tagliare gli alberi che dovranno essere processati in pezzi abbastanza piccoli con la motosega. 
+Successivamente lo spacco con l'ascia farà riempire automaticamente i pallet di legna pronta per la vendita, presso alcuni dei punti vendita sulla mappa.
+]]>
+			</it>
+		</text>
+		<text name="fw_helpText_03_p1">
+			<en>
+				<![CDATA[
+Keep the following in mind when processing wood:
+ - Cutting the first straight branchless trunk, typically 6 meters, will always be more profitable to sell at the sawmill.
+ - The selling points which can be placed, have a variable and random capacity and purchase price. 
+ - Each of these points will have its own icon on the game map. 
+ - The green color will indicate the possibility of buying more firewood.
+ - With the base game the buyers will consume firewood every day. 
+ - With the Seasons Mod the consumption will only occur in cold periods.
+]]>
+			</en>
+			<de>
+				<![CDATA[
+Beachten Sie bei der Verarbeitung von Holz Folgendes:
+ - Das Schneiden des ersten geraden astlosen Stammes, typischerweise 6 Meter, ist immer profitabler für den Verkauf im Sägewerk.
+ - Die Verkaufspunkte, die platziert werden können, haben eine variable und zufällige Kapazität und einen Einkaufspreis. 
+ - Jeder dieser Punkte hat sein eigenes Symbol auf dem Spielplan. 
+ - Die grüne Farbe wird die Möglichkeit anzeigen, mehr Brennholz zu kaufen.
+ - Mit dem Basisspiel werden die Käufer jeden Tag Brennholz verbrauchen. 
+ - Mit der Seasons Mod wird der Verbrauch nur in kalten Perioden auftreten.
+]]>
+			</de>
+			<fr>
+				<![CDATA[
+Gardez les points suivants à l'esprit lors de la transformation du bois :
+ - Il sera toujours plus rentable de vendre à la scierie le premier tronc droit sans branches, généralement de 6 mètres.
+ - Les points de vente qui peuvent être placés, ont une capacité et un prix d'achat variables et aléatoires. 
+ - Chacun de ces points aura sa propre icône sur la carte du jeu. 
+ - La couleur verte indiquera la possibilité d'acheter plus de bois de chauffage.
+ - Avec le jeu de base, les acheteurs consommeront du bois de chauffage tous les jours. 
+ - Avec le Seasons Mod, la consommation n'aura lieu qu'en période de froid.
+]]>
+			</fr>
+			<it>
+				<![CDATA[
+Nel lavorare la legna tieni presente quanto segue:
+ - Il taglio del primo fusto diritto e senza rami, tipicamente 6 metri, sarà sempre più conveniente venderlo in segheria.
+ - I punti vendita posizionabili hanno una capacità ed un prezzo di acquisto variabili e casuali. 
+ - Ognuno di questi punti avrà una propria icona nella mappa di gioco. 
+ - Il colore verde indicherà la possibilità di comprare altra legna.
+ - Con il gioco base gli acquirenti consumeranno legna ogni giorno. 
+ - Con la Seasons Mod il consumo avverrà soltanto nei periodi freddi.
+]]>
+			</it>
+		</text>
+
+	</l10n>
 </modDesc>

@@ -3,6 +3,13 @@
     <category title="$l10n_fw_helpHeader">
         <page title="$l10n_fw_helpTitle_01">
             <item type="text" value="$l10n_fw_helpText_01_p1" />
+            <item type="image" value="$rmModDir/gui/helplineImages01.png" imageUVs="0px 0px 1024px 915px" heightScale="2.2" />
+        </page>
+        <page title="$l10n_fw_helpTitle_02">
+            <item type="text" value="$l10n_fw_helpText_02_p1" />
+        </page>
+        <page title="$l10n_fw_helpTitle_03">
+            <item type="text" value="$l10n_fw_helpText_03_p1" />
         </page>
     </category>
 </helpLines>
