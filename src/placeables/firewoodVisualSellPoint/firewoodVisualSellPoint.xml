@@ -28,13 +28,21 @@
         <dummyVisual node="2|0" />
         <fill>
             <animation duration="1">
+                <part node="3|1">
+                    <keyFrame time="0" visibility="false" />
+                    <keyFrame time="0.2" visibility="true" />
+                </part>
                 <part node="3|2">
                     <keyFrame time="0" visibility="false" />
-                    <keyFrame time="0.25" visibility="true" />
+                    <keyFrame time="0.4" visibility="true" />
                 </part>
                 <part node="3|3">
                     <keyFrame time="0" visibility="false" />
-                    <keyFrame time="0.75" visibility="true" />
+                    <keyFrame time="0.6" visibility="true" />
+                </part>
+                <part node="3|4">
+                    <keyFrame time="0" visibility="false" />
+                    <keyFrame time="0.8" visibility="true" />
                 </part>
             </animation>
         </fill>

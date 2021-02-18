@@ -10,22 +10,25 @@
 			<![CDATA[
 Chop the wood and split it with the axe to make firewood, you need a pallet nearby.
 You can sell the firewood pallets at the placeable sell points and in many common sell points.
+If you need more informations, please visiti the ingame help.
 Have fun with your friends in multiplayer!
 ]]>
 		</en>
 		<de>
 			<![CDATA[
-Hacken Sie das Holz und teilen Sie es mit der Axt, um Brennholz herzustellen. Sie benötigen eine spezielle Palette in der Nähe.
-Sie können die Brennholzpaletten an den entsprechenden platzierbaren Lieferpunkten verkaufen.
-Have fun with your friends in multiplayer!
+Hacken Sie das Holz und spalten Sie es mit der Axt, um Brennholz zu machen, Sie brauchen eine Palette in der Nähe.
+Sie können die Brennholzpaletten an den platzierbaren Verkaufspunkten und in vielen gewöhnlichen Verkaufspunkten verkaufen.
+Wenn Sie mehr Informationen benötigen, besuchen Sie bitte die Ingame-Hilfe.
+Viel Spaß mit Ihren Freunden im Multiplayer!
 
 ]]>
 		</de>
 		<fr>
 			<![CDATA[
-Hachez le bois et fendez-le avec la hache pour faire du bois de chauffage, vous avez besoin d'une palette spéciale à proximité.
-Vous pouvez vendre les palettes de bois de chauffage aux points de livraison placables appropriés.
-Have fun with your friends in multiplayer!
+Coupez le bois et fendez-le avec la hache pour en faire du bois de chauffage, il vous faut une palette à proximité.
+Vous pouvez vendre les palettes de bois de chauffage dans les points de vente qui peuvent être placés et dans de nombreux points de vente communs.
+Si vous avez besoin de plus d'informations, veuillez consulter l'aide en jeu.
+Amusez-vous avec vos amis en multijoueur !
 ]]>
 		</fr>
 	</description>
@@ -130,7 +133,7 @@ Have fun with your friends in multiplayer!
 			<en>Log too big! keep cutting !!</en>
 			<de>Holz zu groß! schneide weiter !!</de>
 			<fr>bois trop gros! coupe encore !!</fr>
-			<it>Legno troppo grande, taglia ancora!</it>
+			<it>Tronco troppo grosso, taglia ancora!</it>
 		</text>
 		<text name="fw_warning_nopallet">
 			<en>No Firewood pallets nearby!</en>
@@ -138,7 +141,6 @@ Have fun with your friends in multiplayer!
 			<fr>Pas de palettes de Firewood à proximité!</fr>
 			<it>Nessun pallet Firewood nelle vicinanze!</it>
 		</text>
-
 		<text name="fw_helpHeader">
 			<en>Firewood</en>
 			<de>Firewood</de>
@@ -158,9 +160,9 @@ Have fun with your friends in multiplayer!
 			<it>Come si fa?</it>
 		</text>
 		<text name="fw_helpTitle_03">
-			<en>Wood Business</en>
-			<de>Wood Business</de>
-			<fr>Wood Business</fr>
+			<en>Wood business</en>
+			<de>Holz-Geschäft</de>
+			<fr>Commerce du bois</fr>
 			<it>Lavorare con la legna</it>
 		</text>
 		<text name="fw_helpText_01_p1">
@@ -261,6 +263,5 @@ Nel lavorare la legna tieni presente quanto segue:
 ]]>
 			</it>
 		</text>
-
 	</l10n>
 </modDesc>
