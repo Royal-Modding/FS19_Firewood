@@ -15,8 +15,8 @@ Firewood.scanTimeout = 750
 Firewood.foundSplitShape = nil
 
 Firewood.sellPoints = {}
-Firewood.inRangeTimer = 0
-Firewood.inRangeTimeout = 500
+Firewood.inRangeSellPointTimer = 0
+Firewood.inRangeSellPointTimeout = 500
 Firewood.inRangeSellPoint = nil
 
 function Firewood:initialize()
@@ -35,6 +35,10 @@ function Firewood:initialize()
     --        return string.find(vehicleData.filename, "firewoodPallet.xml"), "Firewood Pallet"
     --    end
     --)
+
+    self.gameEnv["g_firewood"] = {}
+    self.gameEnv["g_firewood"].Firewood = self
+    self.gameEnv["g_firewood"].FirewoodTool = FirewoodTool
 end
 
 function Firewood:onValidateVehicleTypes(vehicleTypeManager, addSpecialization, addSpecializationBySpecialization, addSpecializationByVehicleType, addSpecializationByFunction)
@@ -96,7 +100,7 @@ end
 function Firewood:onUpdate(dt)
     if g_dedicatedServerInfo == nil and g_currentMission.player.isEntered then
         self.scanTimer = self.scanTimer + dt
-        self.inRangeTimer = self.inRangeTimer + dt
+        self.inRangeSellPointTimer = self.inRangeSellPointTimer + dt
 
         if self.scanTimer >= self.scanTimeout then
             self.scanTimer = 0
@@ -106,8 +110,8 @@ function Firewood:onUpdate(dt)
             raycastAll(x, y, z, dx, dy, dz, "raycastCallback", 5, self)
         end
 
-        if self.inRangeTimer >= self.inRangeTimeout then
-            self.inRangeTimer = 0
+        if self.inRangeSellPointTimer >= self.inRangeSellPointTimeout then
+            self.inRangeSellPointTimer = 0
             self.inRangeSellPoint = self:getClosestSellPoint(g_currentMission.player, 8)
         end
 

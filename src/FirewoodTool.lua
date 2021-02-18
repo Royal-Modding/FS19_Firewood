@@ -10,7 +10,9 @@
 ---@field rootNode integer
 ---@field baseDirectory string
 FirewoodTool = {}
+FirewoodTool.maxChoppingVolume = 400
 FirewoodTool.treeCollisionMask = 16777216
+
 FirewoodTool_mt = Class(FirewoodTool, HandTool)
 
 InitObjectClass(FirewoodTool, "FirewoodTool")
@@ -28,7 +30,6 @@ function FirewoodTool:new(isServer, isClient, customMt)
     ft.choppingMaxTimeout = 6000 / ft.choppingScale
     ft.choppingMinTimeoutVolume = 75
     ft.choppingMaxTimeoutVolume = 350
-    ft.maxChoppingVolume = 400
     ft.maxPalletRange = 16
 
     ft.showNotOwnedWarning = false
@@ -119,7 +120,7 @@ function FirewoodTool:update(dt, allowInput)
                 self.choppingTimer = self.choppingTimer + dt
                 if self.choppingTimer >= self.choppingData.chopTime then
                     if self.choppingData.pallet ~= nil then
-                        self.chop(self.choppingData.pallet, self:getChoppingVolume(self.choppingData), self.choppingData.objectId)
+                        self.chop(self.choppingData.pallet, self.getChoppingVolume(self.choppingData.volume), self.choppingData.objectId)
                         g_soundManager:playSample(self.splitSample)
                         self.pauseTimer = self.pauseTimeout
                     end
@@ -155,7 +156,7 @@ function FirewoodTool:checkCanBeChopped(choppingData, doNotWarn)
         self.showNotOwnedWarning = true and not doNotWarn
         return false
     end
-    if choppingData.volume > self.maxChoppingVolume then
+    if choppingData.volume > FirewoodTool.maxChoppingVolume then
         self.showTooBigWarning = true and not doNotWarn
         return false
     end
@@ -196,22 +197,26 @@ function FirewoodTool:getChoppingTime(volume)
     return time
 end
 
-function FirewoodTool:getChoppingVolume(choppingData)
+function FirewoodTool.getChoppingVolume(logVolume)
+    if logVolume > FirewoodTool.maxChoppingVolume then
+        return nil
+    end
+
     -- maxGain if volume <= maxGainVolume otherwise gain drops progressively to minGain untill minGainVolume
     local maxGain = 1.3
     local maxGainVolume = 30
     local minGain = 0.35
     local minGainVolume = 280
     local gain = 1
-    if choppingData.volume <= maxGainVolume then
+    if logVolume <= maxGainVolume then
         gain = maxGain
-    elseif choppingData.volume >= minGainVolume then
+    elseif logVolume >= minGainVolume then
         gain = minGain
     else
-        local normalizedInvertedVolume = 1 - (choppingData.volume - maxGainVolume) / (minGainVolume - maxGainVolume)
+        local normalizedInvertedVolume = 1 - (logVolume - maxGainVolume) / (minGainVolume - maxGainVolume)
         gain = minGain + (maxGain - minGain) * normalizedInvertedVolume
     end
-    return choppingData.volume * gain
+    return logVolume * gain
 end
 
 function FirewoodTool:onActivate(allowInput)
