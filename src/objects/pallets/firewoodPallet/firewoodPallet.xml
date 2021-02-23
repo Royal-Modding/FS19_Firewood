@@ -10,7 +10,7 @@
             <fillTypes>firewood</fillTypes>
         </specs>
         <image>objects/pallets/firewoodPallet/store_firewoodPallet.png</image>
-        <price>25</price>
+        <price>50</price>
         <allowLeasing>false</allowLeasing>
         <showInStore>true</showInStore>
         <canBeSold>false</canBeSold>

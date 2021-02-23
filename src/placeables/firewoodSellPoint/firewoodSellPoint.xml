@@ -10,7 +10,6 @@
         <functions>
             <function>$l10n_fw_function_firewoodSellPoint</function>
         </functions>
-        <dailyUpkeep>0</dailyUpkeep>
         <lifetime>100000</lifetime>
         <rotation>0</rotation>
         <brand>LIZARD</brand>
@@ -35,28 +34,4 @@
     <hotspots baseColor="1 0.415 0 1" activeColor="0 1 0.2 1">
         <hotspot name="Firewood" fullName="$l10n_fw_shopItem_firewoodSellPoint" imageFilename="hud/fillTypes/hud_hotspot_firewood.png" imageUVs="0 0 1024 1024" width="12" height="12" hidable="true" baseColor="0 1 0.2 1" category="CATEGORY_TRIGGERS" />
     </hotspots>
-
-    <!--
-    <seasons>
-        <maskAreas>
-            <maskArea startNode="1|0" widthNode="1|1" heightNode="1|2"/>
-        </maskAreas>
-    </seasons>
-    -->
-
-    <!--<tipOcclusionUpdateArea sizeX="3" sizeZ="3" />-->
-
-    <!-- mi sa che questa è l'area nella quale toglie il foliage -->
-    <!--<clearAreas>
-        <clearArea startNode="1|0" widthNode="1|1" heightNode="1|2" />
-    </clearAreas>-->
-
-    <!--
-    <leveling requireLeveling="true" maxSmoothDistance="10" maxSlope="75" maxEdgeAngle="30">
-        <levelAreas>
-            <levelArea startNode="1|0" widthNode="1|1" heightNode="1|2" groundType="cement"/>
-        </levelAreas>
-    </leveling>
-    -->
-
 </placeable>

@@ -10,7 +10,6 @@
         <functions>
             <function>$l10n_fw_function_firewoodSellPoint</function>
         </functions>
-        <dailyUpkeep>0</dailyUpkeep>
         <lifetime>100000</lifetime>
         <rotation>0</rotation>
         <brand>LIZARD</brand>
