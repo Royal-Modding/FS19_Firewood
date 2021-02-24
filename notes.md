@@ -1,4 +1,4 @@
-## Here is an overview which bits are used for which feature:
+# Here is an overview which bits are used for which feature
 
 ```
 
@@ -49,41 +49,3 @@ bits for tools = 1,13 = 8194
 Note that only the main body of a tractor, combine, fillable should have the corresponding bits set. Other parts such as the wheel collisions normally don't need to have the trigger flag set, unless you really need it. E.g. the colliding part of the basin of a trailer.
 
 Numbers preceded by a 0x are hexadecimal values. These are shown in the attribute panel fo the GIANTS Editor. The other values are the corresponding decimal values. These are used in the exporter settings in Maya, 3ds Max or Blender.
-
-
-
-
-
-
-
-
-
-- Please add more details to the description. Among other things, the prices of axe, hatchet and pallet.
-Please also the capacity from your Pallet.
-
-
-- How to sell the wood at dealers who actually accept it?
-https://image.giants-software.com/index.php?hash=8DhLPeNs
-https://image.giants-software.com/index.php?hash=uuYxzRsp
-Also on another map it did not work.
-https://image.giants-software.com/index.php?hash=sMpe7ufh
-
-
-- Are only full pallets accepted here? It was not possible that one delivers there which were less full.
-https://image.giants-software.com/index.php?hash=HDYV9Smg
-
-- Here you can see that it was only possible to deliver 2 times full, is it so intentional that the actual capacity is 4700, but you can still deliver 6000 and more?
-https://image.giants-software.com/index.php?hash=RQVvtyEy
-
-- Please check the following:
-the following files seems to be unused/not referenced anywhere in the mod (Guideline Item 9.1)
-unused file (file: FS19_Firewood/gui/helplineImages01.dds, size: 2.00 MB)
-
-
-
-I know that someone like translated things everywhere, but "Firewood" its name of mod itself, so in my opinion it's not appropriate a translation of mod name itself.
-Pallet it's accepted when 50% full, this also useful to avoid unwanted selling when travelling near placeable sell point.
-Sell point placeable accept more than designated real capacity, exactly half the fillunit capacity of a pallet.
-File unused helplineImages01.dds it's a false positive, since it's used in helpline.
-Any other issue are fixed.
-
