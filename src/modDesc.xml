@@ -18,7 +18,7 @@ Empty pallet:
  - Price: 50
  - Capacity: 3000 l
 
-Prices:
+Other prices:
 Axe: 150
 Hatchet: 50
 Sell point: 10
@@ -35,7 +35,7 @@ Brennholzpalette:
 - Preis: 50
 - Fassungsvermögen: 3000 l
 
-Preise: 
+Andere Preise:
 Axt: 150
 Beil: 50
 Brennholzverkauf: 10
@@ -52,7 +52,7 @@ Palette vide:
 - Prix: 50
 - Capacité: 3000 l
 
-Des prix:
+Autres tarifs:
 Hache: 150
 Petite hache: 50
 Point de vente: 10
