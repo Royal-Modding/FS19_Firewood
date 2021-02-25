@@ -3,7 +3,7 @@
     <storeData>
         <name>$l10n_fw_shopItem_firewoodSellPoint</name>
         <image>placeables/firewoodSellPoint/store_firewoodSellPoint.png</image>
-        <price>0</price>
+        <price>10</price>
         <specs>
             <fillTypes>firewood</fillTypes>
         </specs>

@@ -4,6 +4,7 @@
 	<version>${version}</version>
 	<title>
 		<en>${title}</en>
+		<de>Brennholz</de>
 	</title>
 	<description>
 		<en>
@@ -17,6 +18,7 @@ Prices:
 Empty pallet: 50 
 Axe: 150
 Hatchet: 50
+Sell point: 10
 ]]>
 		</en>
 		<de>
@@ -30,6 +32,7 @@ Preis:
 Brennholzpalette: 50 
 Axt: 150
 Beil: 50
+Brennholzverkauf: 10
 ]]>
 		</de>
 		<fr>
@@ -43,6 +46,7 @@ Prix:
 Empty pallet: 50 
 Hache: 150
 Petite hache: 50
+Point de vente: 10
 ]]>
 		</fr>
 	</description>
@@ -98,13 +102,14 @@ Petite hache: 50
 		<text name="fw_fillType_firewood">
 			<en>Firewood</en>
 			<de>Brennholz</de>
+			<fr>Bois de chauffage</fr>
 			<it>Legna da ardere</it>
 		</text>
 		<text name="fw_function_firewoodPallet">
 			<en>This pallet can be used to fill with firewood ready for sell.</en>
 			<de>Diese Palette kann zum Befüllen mit verkaufsfertigem Brennholz verwendet werden.</de>
 			<fr>Cette palette peut être utilisée pour remplir de bois de chauffage prêt à être vendu.</fr>
-			<it>Questo pallet può essere utilizzato per riempire con legna da ardere pronta per la vendita.</it>
+			<it>Questo pallet può essere riempito con legna da ardere pronta per la vendita.</it>
 		</text>
 		<text name="fw_function_firewoodTool">
 			<en>Tool for splitting wood.</en>
@@ -121,8 +126,8 @@ Petite hache: 50
 		<text name="fw_shopItem_firewoodPallet">
 			<en>Firewood Pallet</en>
 			<de>Brennholzpalette</de>
-			<fr>Firewood Pallet</fr>
-			<it>Firewood Pallet</it>
+			<fr>Palette de bois</fr>
+			<it>Pallet per legna</it>
 		</text>
 		<text name="fw_shopItem_firewoodSellPoint">
 			<en>Firewood Sell</en>
@@ -151,14 +156,12 @@ Petite hache: 50
 		<text name="fw_warning_nopallet">
 			<en>No Firewood pallets nearby!</en>
 			<de>Keine Brennholzpalette in der Nähe!</de>
-			<fr>Pas de palettes de Firewood à proximité!</fr>
-			<it>Nessun pallet Firewood nelle vicinanze!</it>
+			<fr>Pas de palettes de bois de chauffage à proximité!</fr>
+			<it>Nessun pallet di legna da ardere nelle vicinanze!</it>
 		</text>
 		<text name="fw_helpHeader">
 			<en>Firewood</en>
-			<de>Firewood</de>
-			<fr>Firewood</fr>
-			<it>Firewood</it>
+			<de>Brennholz</de>
 		</text>
 		<text name="fw_helpTitle_01">
 			<en>What is?</en>
@@ -203,16 +206,16 @@ Tagliate tronchi in piccoli pezzi per poi farne legna da ardere con un'ascia o u
 		<text name="fw_helpText_02_p1">
 			<en>
 				<![CDATA[
-Buy an axe or hatchet and also purchase the empty pallets to take to the cutting area.
-Go to your forest and cut the trees that will have to be processed into fairly small pieces with the chainsaw.
-Afterwards, splitting them with the axe will automatically fill the pallets with firewood ready for sale, at many of the selling points on the map.
+Buy a hatchet or axe, and also empty firewood pallets to bring to the cutting place.
+Go to the forest, cut the trees into small pieces with the chainsaw.
+If you then split them with the axe, the pallets will automatically be filled with firewood ready for sale at many selling points on the map.
 ]]>
 			</en>
 			<de>
 				<![CDATA[
-Kaufen Sie ein Beil oder eine Axt und kaufen Sie auch leeren Brennholzpaletten, um sie zum Schneideplatz zu bringen.
-Gehen Sie in Ihren Wald, sägen Sie die Bäume mit der Kettensäge in kleine Stücke.
-Wenn Sie sie anschließend mit der Axt spalten, werden die Paletten automatisch mit verkaufsfertigem Brennholz gefüllt, die dann an vielen Verkaufsstellen auf der Karte verkauft werden können.
+Kaufen Sie ein Beil oder eine Axt und sowie auch leere Brennholzpaletten, um sie zum Schneideplatz zu bringen.
+Gehen Sie in den Wald, sägen Sie die Bäume mit der Kettensäge in kleine Stücke.
+Wenn Sie diese anschließend mit der Axt spalten, werden die Paletten automatisch mit verkaufsfertigem Brennholz gefüllt, die dann an vielen Verkaufsstellen auf der Karte verkauft werden können.
 ]]>
 			</de>
 			<fr>
@@ -236,6 +239,7 @@ Successivamente lo spacco con l'ascia farà riempire automaticamente i pallet di
 Keep the following in mind when processing wood:
  - Cutting the first straight branchless trunk, typically 6 meters, will always be more profitable to sell at the sawmill.
  - The selling points which can be placed, have a variable and random capacity and purchase price.
+ - Pallets can be sold there only if they are at least 50% full.
  - Each of these points will have its own icon on the game map.
  - The green color will indicate the possibility of buying more firewood.
  - With the base game the buyers will consume firewood every day.
@@ -247,6 +251,7 @@ Keep the following in mind when processing wood:
 Beachten Sie bei der Verarbeitung von Holz folgendes:
  - Das sägen des ersten geraden astlosen Stammes, typischerweise 6 Meter, ist immer profitabler für den Verkauf im Sägewerk.
  - Die Verkaufspunkte, die platziert werden können, haben eine variable und zufällige Kapazität und Einkaufspreis.
+ - Paletten können dort nur verkauft werden, wenn sie zu mindestens 50% gefüllt sind.
  - Jeder dieser Punkte hat sein eigenes Symbol auf dem Karte.
  - Die grüne Farbe zeigt die Möglichkeit an, mehr Brennholz zu kaufen.
  - Mit dem Basisspiel werden die Käufer jeden Tag Brennholz verbrauchen.
@@ -258,6 +263,7 @@ Beachten Sie bei der Verarbeitung von Holz folgendes:
 Gardez les points suivants à l'esprit lors de la transformation du bois :
  - Il sera toujours plus rentable de vendre à la scierie le premier tronc droit sans branches, généralement de 6 mètres.
  - Les points de vente qui peuvent être placés, ont une capacité et un prix d'achat variables et aléatoires.
+ - Les palettes ne peuvent y être vendues que si elles sont remplies à au moins 50%.
  - Chacun de ces points aura sa propre icône sur la carte du jeu.
  - La couleur verte indiquera la possibilité d'acheter plus de bois de chauffage.
  - Avec le jeu de base, les acheteurs consommeront du bois de chauffage tous les jours.
@@ -269,6 +275,7 @@ Gardez les points suivants à l'esprit lors de la transformation du bois :
 Nel lavorare la legna tieni presente quanto segue:
  - Il taglio del primo fusto diritto e senza rami, tipicamente 6 metri, sarà sempre più conveniente venderlo in segheria.
  - I punti vendita posizionabili hanno una capacità ed un prezzo di acquisto variabili e casuali.
+ - I pallet potranno esservi venduti solo se sono almeno pieni al 50%.
  - Ognuno di questi punti avrà una propria icona nella mappa di gioco.
  - Il colore verde indicherà la possibilità di comprare altra legna.
  - Con il gioco base gli acquirenti consumeranno legna ogni giorno.
