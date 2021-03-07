@@ -107,88 +107,103 @@ Point de vente: 10
 	<l10n>
 		<text name="input_FIREWOOD_MAKE">
 			<en>Make firewood quickly</en>
+			<pl>Porąb szybko drewno</pl>
 		</text>
 		<text name="fw_fillType_firewood">
 			<en>Firewood</en>
 			<de>Brennholz</de>
 			<fr>Bois de chauffage</fr>
 			<it>Legna da ardere</it>
+			<pl>Drewno opałowe</pl>
 		</text>
 		<text name="fw_function_firewoodPallet">
 			<en>This pallet can be used to fill with firewood ready for sell.</en>
 			<de>Diese Palette kann zum Befüllen mit verkaufsfertigem Brennholz verwendet werden.</de>
 			<fr>Cette palette peut être utilisée pour remplir de bois de chauffage prêt à être vendu.</fr>
 			<it>Questo pallet può essere riempito con legna da ardere pronta per la vendita.</it>
+			<pl>Ta paleta może być użyta do transportu drewna opałowego na sprzedaż.</pl>
 		</text>
 		<text name="fw_function_firewoodTool">
 			<en>Tool for splitting wood.</en>
 			<de>Werkzeug zum Spalten von Holz.</de>
 			<fr>Outil de fendage du bois.</fr>
 			<it>Attrezzo per spaccare la legna.</it>
+			<pl>Narzędzie do rozłupywania drewna.</pl>
 		</text>
 		<text name="fw_function_firewoodSellPoint">
 			<en>Sell point for firewood.</en>
 			<de>Verkaufspunkt für Brennholz.</de>
 			<fr>Point de vente pour le bois de chauffage.</fr>
 			<it>Punto vendita per la legna da ardere.</it>
+			<pl>Punkt sprzedaży drewna opałowego.</pl>
 		</text>
 		<text name="fw_shopItem_firewoodPallet">
 			<en>Firewood Pallet</en>
 			<de>Brennholzpalette</de>
 			<fr>Palette de bois</fr>
 			<it>Pallet per legna</it>
+			<pl>Paleta na drewno opałowe</pl>
 		</text>
 		<text name="fw_shopItem_firewoodSellPoint">
 			<en>Firewood Sell</en>
 			<de>Brennholzverkauf</de>
 			<fr>Vente Bois</fr>
 			<it>Vendita Legna</it>
+			<pl>Punkt sprzedaży drewna opałowego</pl>
 		</text>
 		<text name="fw_shopItem_smallHatchet">
 			<en>Hatchet</en>
 			<de>Beil</de>
 			<fr>Hache</fr>
 			<it>Accetta</it>
+			<pl>Toporek</pl>
 		</text>
 		<text name="fw_shopItem_bigHatchet">
 			<en>Axe</en>
 			<de>Axt</de>
 			<fr>Hache</fr>
 			<it>Ascia</it>
+			<pl>Siekiera</pl>
 		</text>
 		<text name="fw_warning_logtoobig">
 			<en>Log too big, please cut smaller!</en>
 			<de>Stamm zu groß, bitte kleiner schneiden!</de>
 			<fr>Bois trop gros, coupe encore!</fr>
 			<it>Tronco troppo grosso, taglia ancora!</it>
+			<pl>Za długa kłoda, potnij ją!</pl>
 		</text>
 		<text name="fw_warning_nopallet">
 			<en>No Firewood pallets nearby!</en>
 			<de>Keine Brennholzpalette in der Nähe!</de>
 			<fr>Pas de palettes de bois de chauffage à proximité!</fr>
 			<it>Nessun pallet di legna da ardere nelle vicinanze!</it>
+			<pl>Brak odpowiedniej palety w pobliżu!</pl>
 		</text>
 		<text name="fw_helpHeader">
 			<en>Firewood</en>
 			<de>Brennholz</de>
+			<pl>Drewno kominkowe</pl>
 		</text>
 		<text name="fw_helpTitle_01">
 			<en>What is?</en>
 			<de>Was ist das?</de>
 			<fr>Qu'est-ce qui est?</fr>
 			<it>Cosa è?</it>
+			<pl>Co to jest?</pl>
 		</text>
 		<text name="fw_helpTitle_02">
 			<en>How to do it?</en>
 			<de>Wie macht man das?</de>
 			<fr>Comment faire?</fr>
 			<it>Come si fa?</it>
+			<pl>Jak to zrobić?</pl>
 		</text>
 		<text name="fw_helpTitle_03">
 			<en>Wood business</en>
 			<de>Holz Händler</de>
 			<fr>Commerce du bois</fr>
 			<it>Lavorare con la legna</it>
+			<pl>Biznes drzewny</pl>
 		</text>
 		<text name="fw_helpText_01_p1">
 			<en>
@@ -211,6 +226,9 @@ Coupez vos bûches en petits morceaux pour en faire du bois de chauffage avec un
 Tagliate tronchi in piccoli pezzi per poi farne legna da ardere con un'ascia o un'accetta, riempendo i pallet li potrete poi vendere ai molti grossisti sparsi per tutta la mappa, potrete inoltre piazzare punti di vendita personalizzati dove volete, al villaggio, vicino a singole case e altri grossisti.
 ]]>
 			</it>
+			<pl>
+<![CDATA[Potnij swoje kłody na małe kawałki, aby porąbać je na drewno opałowe za pomocą siekiery lub toporka, zapełnij palety, a następnie sprzedaj je wielu profesjonalnym sprzedawcom rozsianym po całej mapie, możesz również umieszczać niestandardowe punkty sprzedaży w dowolnym miejscu, w wiosce, w pobliżu pojedynczych domów i inni hurtownicy.]]>
+			</pl>
 		</text>
 		<text name="fw_helpText_02_p1">
 			<en>
@@ -241,6 +259,11 @@ Recati nel tuo bosco per tagliare gli alberi che dovranno essere processati in p
 Successivamente lo spacco con l'ascia farà riempire automaticamente i pallet di legna pronta per la vendita, presso alcuni dei punti vendita sulla mappa.
 ]]>
 			</it>
+			<pl>
+<![CDATA[Kup toporek lub siekierę, a także opróżnij palety, aby przynieść je na miejsce cięcia.
+Idź do lasu i potnij piłą łańcuchową ścięte drzewa na małe kawałki.
+Następnie połup je siekierą. Palety zostaną automatycznie załadowane drewnem opałowym gotowym do sprzedaży w wielu punktach sprzedaży na mapie.]]>
+			</pl>
 		</text>
 		<text name="fw_helpText_03_p1">
 			<en>
@@ -291,6 +314,16 @@ Nel lavorare la legna tieni presente quanto segue:
  - Con la Seasons Mod il consumo avverrà soltanto nei periodi freddi.
 ]]>
 			</it>
+			<pl>
+<![CDATA[Podczas obróbki drewna należy pamiętać o następujących kwestiach:
+  - Wycięcie pierwszego prostego pnia bez gałęzi, zwykle 6 metrów, zawsze będzie najbardziej opłacalne do sprzedaży w tartaku.
+  - Punkty sprzedaży, które można umieścić, mają zmienną i losową pojemność oraz cenę skupu.
+  - Palety można tam sprzedawać tylko wtedy, gdy są zapełnione w co najmniej 50%.
+  - Każdy z tych punktów będzie miał własną ikonę na mapie gry.
+  - Kolor zielony będzie wskazywał na możliwość dokupienia drewna opałowego.
+  - W podstawowej wersji gry kupujący będą codziennie zużywać drewno opałowe.
+  - Z modem Seasons, drewno będzie zużywane tylko w okresie zimowym.]]>
+			</pl>
 		</text>
 	</l10n>
 </modDesc>
