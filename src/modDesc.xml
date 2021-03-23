@@ -58,6 +58,23 @@ Petite hache: 50
 Point de vente: 10
 ]]>
 		</fr>
+		<ru>
+		<![CDATA[
+Нарежьте древесину и расколите её топором, чтобы сделать дрова. Для этого вам нужен поддон рядом.
+Вы можете продать поддоны с дровами в размещаемых точках продажи и во многих общих точках продажи.
+Если вам нужна дополнительная информация, пожалуйста, посетите справку в меню игры.
+Веселитесь с друзьями в мультиплеере!
+
+Пустой поддон:
+ - Цена: 50
+ - Ёмкость: 3000 л
+
+Другие части:
+Топор: 150
+Топорик: 50
+Точка продажи: 10
+]]>
+		</ru>
 	</description>
 	<multiplayer supported="true" />
 	<iconFilename>icon.png</iconFilename>
@@ -108,6 +125,7 @@ Point de vente: 10
 		<text name="input_FIREWOOD_MAKE">
 			<en>Make firewood quickly</en>
 			<pl>Porąb szybko drewno</pl>
+			<ru>Нарубать быстро дров</ru>
 		</text>
 		<text name="fw_fillType_firewood">
 			<en>Firewood</en>
@@ -115,6 +133,7 @@ Point de vente: 10
 			<fr>Bois de chauffage</fr>
 			<it>Legna da ardere</it>
 			<pl>Drewno opałowe</pl>
+			<ru>Дрова</ru>
 		</text>
 		<text name="fw_function_firewoodPallet">
 			<en>This pallet can be used to fill with firewood ready for sell.</en>
@@ -122,6 +141,7 @@ Point de vente: 10
 			<fr>Cette palette peut être utilisée pour remplir de bois de chauffage prêt à être vendu.</fr>
 			<it>Questo pallet può essere riempito con legna da ardere pronta per la vendita.</it>
 			<pl>Ta paleta może być użyta do transportu drewna opałowego na sprzedaż.</pl>
+			<ru>Этот поддон может быть использован для заполнения готовыми к продаже дровами.</ru>
 		</text>
 		<text name="fw_function_firewoodTool">
 			<en>Tool for splitting wood.</en>
@@ -129,6 +149,7 @@ Point de vente: 10
 			<fr>Outil de fendage du bois.</fr>
 			<it>Attrezzo per spaccare la legna.</it>
 			<pl>Narzędzie do rozłupywania drewna.</pl>
+			<ru>Инструмент для колки дров.</ru>
 		</text>
 		<text name="fw_function_firewoodSellPoint">
 			<en>Sell point for firewood.</en>
@@ -136,6 +157,7 @@ Point de vente: 10
 			<fr>Point de vente pour le bois de chauffage.</fr>
 			<it>Punto vendita per la legna da ardere.</it>
 			<pl>Punkt sprzedaży drewna opałowego.</pl>
+			<ru>Точка продажи дров.</ru>
 		</text>
 		<text name="fw_shopItem_firewoodPallet">
 			<en>Firewood Pallet</en>
@@ -143,6 +165,7 @@ Point de vente: 10
 			<fr>Palette de bois</fr>
 			<it>Pallet per legna</it>
 			<pl>Paleta na drewno opałowe</pl>
+			<ru>Поддон для дров</ru>
 		</text>
 		<text name="fw_shopItem_firewoodSellPoint">
 			<en>Firewood Sell</en>
@@ -150,6 +173,7 @@ Point de vente: 10
 			<fr>Vente Bois</fr>
 			<it>Vendita Legna</it>
 			<pl>Punkt sprzedaży drewna opałowego</pl>
+			<ru>Продажа дров</ru>
 		</text>
 		<text name="fw_shopItem_smallHatchet">
 			<en>Hatchet</en>
@@ -157,6 +181,7 @@ Point de vente: 10
 			<fr>Hache</fr>
 			<it>Accetta</it>
 			<pl>Toporek</pl>
+			<ru>Топорик</ru>
 		</text>
 		<text name="fw_shopItem_bigHatchet">
 			<en>Axe</en>
@@ -164,6 +189,7 @@ Point de vente: 10
 			<fr>Hache</fr>
 			<it>Ascia</it>
 			<pl>Siekiera</pl>
+			<ru>Топор</ru>
 		</text>
 		<text name="fw_warning_logtoobig">
 			<en>Log too big, please cut smaller!</en>
@@ -171,6 +197,7 @@ Point de vente: 10
 			<fr>Bois trop gros, coupe encore!</fr>
 			<it>Tronco troppo grosso, taglia ancora!</it>
 			<pl>Za długa kłoda, potnij ją!</pl>
+			<ru>Колода слишком большая, пожалуйста, отрежьте поменьше!</ru>
 		</text>
 		<text name="fw_warning_nopallet">
 			<en>No Firewood pallets nearby!</en>
@@ -178,11 +205,13 @@ Point de vente: 10
 			<fr>Pas de palettes de bois de chauffage à proximité!</fr>
 			<it>Nessun pallet di legna da ardere nelle vicinanze!</it>
 			<pl>Brak odpowiedniej palety w pobliżu!</pl>
+			<ru>Рядом нет поддонов для дров!</ru>
 		</text>
 		<text name="fw_helpHeader">
 			<en>Firewood</en>
 			<de>Brennholz</de>
 			<pl>Drewno kominkowe</pl>
+			<ru>Дрова</ru>
 		</text>
 		<text name="fw_helpTitle_01">
 			<en>What is?</en>
@@ -190,6 +219,7 @@ Point de vente: 10
 			<fr>Qu'est-ce qui est?</fr>
 			<it>Cosa è?</it>
 			<pl>Co to jest?</pl>
+			<ru>Что это?</ru>
 		</text>
 		<text name="fw_helpTitle_02">
 			<en>How to do it?</en>
@@ -197,6 +227,7 @@ Point de vente: 10
 			<fr>Comment faire?</fr>
 			<it>Come si fa?</it>
 			<pl>Jak to zrobić?</pl>
+			<ru>Как этим пользоваться?</ru>
 		</text>
 		<text name="fw_helpTitle_03">
 			<en>Wood business</en>
@@ -204,6 +235,7 @@ Point de vente: 10
 			<fr>Commerce du bois</fr>
 			<it>Lavorare con la legna</it>
 			<pl>Biznes drzewny</pl>
+			<ru>Зароботок на дровах</ru>
 		</text>
 		<text name="fw_helpText_01_p1">
 			<en>
@@ -229,6 +261,11 @@ Tagliate tronchi in piccoli pezzi per poi farne legna da ardere con un'ascia o u
 			<pl>
 <![CDATA[Potnij swoje kłody na małe kawałki, aby porąbać je na drewno opałowe za pomocą siekiery lub toporka, zapełnij palety, a następnie sprzedaj je wielu profesjonalnym sprzedawcom rozsianym po całej mapie, możesz również umieszczać niestandardowe punkty sprzedaży w dowolnym miejscu, w wiosce, w pobliżu pojedynczych domów i inni hurtownicy.]]>
 			</pl>
+			<ru>
+			<![CDATA[
+Разрежьте свои колоды на небольшие части, чтобы наколоть дров маленьким топориком или топором, заполните поддоны, а затем продавайте их диллерам, находящимся на карте. Вы также можете разместить пользовательские точки продажи, где хотите, в деревне, возле отдельных домов и у других оптовиков.
+]]>
+			</ru>
 		</text>
 		<text name="fw_helpText_02_p1">
 			<en>
@@ -264,6 +301,13 @@ Successivamente lo spacco con l'ascia farà riempire automaticamente i pallet di
 Idź do lasu i potnij piłą łańcuchową ścięte drzewa na małe kawałki.
 Następnie połup je siekierą. Palety zostaną automatycznie załadowane drewnem opałowym gotowym do sprzedaży w wielu punktach sprzedaży na mapie.]]>
 			</pl>
+			<ru>
+			<![CDATA[
+Купите маленький топорик или топор, а также пустые поддоны для дров и доставьте их к месту колки.
+Отправляйтесь в лес, разрежьте бензопилой стволы на маленькие колоды.
+Если Вы затем разделите их топором, поддоны начнут автоматически заполнятся дровами готовыми к продаже во многих точках продажи на карте.
+]]>
+			</ru>
 		</text>
 		<text name="fw_helpText_03_p1">
 			<en>
@@ -324,6 +368,18 @@ Nel lavorare la legna tieni presente quanto segue:
   - W podstawowej wersji gry kupujący będą codziennie zużywać drewno opałowe.
   - Z modem Seasons, drewno będzie zużywane tylko w okresie zimowym.]]>
 			</pl>
+			<ru>
+			<![CDATA[
+При обработке древесины обратите внимание на следующее:
+  - Первую отрезанную прямую часть ствола, как правило 6 метров, всегда будет более выгодно продать на лесопилке.
+  - Точки продажи, которые могут быть размещены, имеют переменную и случайную ёмкость и цену покупки.
+  - Поддоны могут быть проданы, только если они заполенеы не менее чем на 50%.
+  - Каждый из этих пунктов будет иметь свой собственный значок на карте.
+  - Зеленый цвет указывает на возможность покупки большего количества дров.
+  - С базовой игрой покупатели будут потреблять дрова каждый день.
+  - С модом Seasons потребление будет происходить только в холодные периоды.
+]]>
+			</ru>
 		</text>
 	</l10n>
 </modDesc>
