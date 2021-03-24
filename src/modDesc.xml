@@ -124,6 +124,7 @@ Point de vente: 10
 	<l10n>
 		<text name="input_FIREWOOD_MAKE">
 			<en>Make firewood quickly</en>
+			<fr>Faire rapidement du bois de chauffage</fr>
 			<pl>Porąb szybko drewno</pl>
 			<ru>Нарубать быстро дров</ru>
 		</text>
@@ -138,7 +139,7 @@ Point de vente: 10
 		<text name="fw_function_firewoodPallet">
 			<en>This pallet can be used to fill with firewood ready for sell.</en>
 			<de>Diese Palette kann zum Befüllen mit verkaufsfertigem Brennholz verwendet werden.</de>
-			<fr>Cette palette peut être utilisée pour remplir de bois de chauffage prêt à être vendu.</fr>
+			<fr>Cette palette peut être remplie de bois de chauffage prêt à être vendu.</fr>
 			<it>Questo pallet può essere riempito con legna da ardere pronta per la vendita.</it>
 			<pl>Ta paleta może być użyta do transportu drewna opałowego na sprzedaż.</pl>
 			<ru>Этот поддон может быть использован для заполнения готовыми к продаже дровами.</ru>
@@ -170,7 +171,7 @@ Point de vente: 10
 		<text name="fw_shopItem_firewoodSellPoint">
 			<en>Firewood Sell</en>
 			<de>Brennholzverkauf</de>
-			<fr>Vente Bois</fr>
+			<fr>Vente Bois de chauffage</fr>
 			<it>Vendita Legna</it>
 			<pl>Punkt sprzedaży drewna opałowego</pl>
 			<ru>Продажа дров</ru>
@@ -178,7 +179,7 @@ Point de vente: 10
 		<text name="fw_shopItem_smallHatchet">
 			<en>Hatchet</en>
 			<de>Beil</de>
-			<fr>Hache</fr>
+			<fr>Hachette</fr>
 			<it>Accetta</it>
 			<pl>Toporek</pl>
 			<ru>Топорик</ru>
@@ -194,7 +195,7 @@ Point de vente: 10
 		<text name="fw_warning_logtoobig">
 			<en>Log too big, please cut smaller!</en>
 			<de>Stamm zu groß, bitte kleiner schneiden!</de>
-			<fr>Bois trop gros, coupe encore!</fr>
+			<fr>Morceau de bois trop grand, coupez le en plus petits morceaux !</fr>
 			<it>Tronco troppo grosso, taglia ancora!</it>
 			<pl>Za długa kłoda, potnij ją!</pl>
 			<ru>Колода слишком большая, пожалуйста, отрежьте поменьше!</ru>
@@ -202,13 +203,14 @@ Point de vente: 10
 		<text name="fw_warning_nopallet">
 			<en>No Firewood pallets nearby!</en>
 			<de>Keine Brennholzpalette in der Nähe!</de>
-			<fr>Pas de palettes de bois de chauffage à proximité!</fr>
+			<fr>Pas de palettes de bois de chauffage à proximité !</fr>
 			<it>Nessun pallet di legna da ardere nelle vicinanze!</it>
 			<pl>Brak odpowiedniej palety w pobliżu!</pl>
 			<ru>Рядом нет поддонов для дров!</ru>
 		</text>
 		<text name="fw_helpHeader">
 			<en>Firewood</en>
+			<fr>Bois de chauffage</fr>
 			<de>Brennholz</de>
 			<pl>Drewno kominkowe</pl>
 			<ru>Дрова</ru>
@@ -216,7 +218,7 @@ Point de vente: 10
 		<text name="fw_helpTitle_01">
 			<en>What is?</en>
 			<de>Was ist das?</de>
-			<fr>Qu'est-ce qui est?</fr>
+			<fr>C'est quoi ?</fr>
 			<it>Cosa è?</it>
 			<pl>Co to jest?</pl>
 			<ru>Что это?</ru>
@@ -224,7 +226,7 @@ Point de vente: 10
 		<text name="fw_helpTitle_02">
 			<en>How to do it?</en>
 			<de>Wie macht man das?</de>
-			<fr>Comment faire?</fr>
+			<fr>Comment faire ?</fr>
 			<it>Come si fa?</it>
 			<pl>Jak to zrobić?</pl>
 			<ru>Как этим пользоваться?</ru>
