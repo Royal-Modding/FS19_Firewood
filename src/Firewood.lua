@@ -209,9 +209,10 @@ end
 
 ---Add Firewood to selling stationName
 function Firewood.sellingStationLoad(object, superFunc, ...)
-    if not superFunc(object, ...) then
-        return false
-    end
+    --if not superFunc(object, ...) then
+    --    return false
+    --end
+    local ret = superFunc(object, ...)
 
     local aW = object.acceptedFillTypes[FillType.WHEAT]
     local aB = object.acceptedFillTypes[FillType.BARLEY]
@@ -227,7 +228,7 @@ function Firewood.sellingStationLoad(object, superFunc, ...)
         object:initPricingDynamics()
     end
 
-    return true
+    return ret
 end
 
 ---Add a Firewood
