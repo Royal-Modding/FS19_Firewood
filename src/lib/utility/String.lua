@@ -1,7 +1,7 @@
 --- Royal Utility
 
 ---@author Royal Modding
----@version 1.8.0.0
+---@version 2.1.0.0
 ---@date 05/01/2021
 
 --- String utilities class
